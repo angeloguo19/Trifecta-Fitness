@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE4122AC243544DC0062A534 /* timerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4122AB243544DC0062A534 /* timerViewController.swift */; };
 		BEBEA5D1243018D100119720 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D0243018D100119720 /* AppDelegate.swift */; };
 		BEBEA5D3243018D100119720 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D2243018D100119720 /* SceneDelegate.swift */; };
 		BEBEA5D5243018D100119720 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D4243018D100119720 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE4122AB243544DC0062A534 /* timerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timerViewController.swift; sourceTree = "<group>"; };
 		BEBEA5CD243018D100119720 /* FitnessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBEA5D0243018D100119720 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEBEA5D2243018D100119720 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				BEBEA5D2243018D100119720 /* SceneDelegate.swift */,
 				BEBEA5D4243018D100119720 /* ViewController.swift */,
 				BEBEA5D6243018D100119720 /* Main.storyboard */,
+				BE4122AB243544DC0062A534 /* timerViewController.swift */,
 				BEBEA5DC243018D100119720 /* Assets.xcassets */,
 				BEBEA5DE243018D100119720 /* LaunchScreen.storyboard */,
 				BEBEA5E1243018D100119720 /* Info.plist */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEBEA5DB243018D100119720 /* FitnessApp.xcdatamodeld in Sources */,
+				BE4122AC243544DC0062A534 /* timerViewController.swift in Sources */,
 				BEBEA5D5243018D100119720 /* ViewController.swift in Sources */,
 				BEBEA5D1243018D100119720 /* AppDelegate.swift in Sources */,
 				BEBEA5D3243018D100119720 /* SceneDelegate.swift in Sources */,
