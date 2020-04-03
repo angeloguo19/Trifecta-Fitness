@@ -34,11 +34,29 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
            pickerTextField.text = String(row+1)
        }
     
+        @objc func donePicker() {
+           pickerTextField.resignFirstResponder()
+       }
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Make icon on right of text field
+        //let iconView = UIImageView(image: UIImage(named: "down_arrow"))
+        //pickerTextField.rightView = iconView
+        //pickerTextField.rightViewMode = .always
 
+        // Make done button
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
+        toolBar.setItems([doneButton], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        pickerTextField.inputAccessoryView = toolBar
+
+        //Make dropdownlist
         pickerTextField.inputView = pickerList
         
         //Connect Data
