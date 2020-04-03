@@ -43,11 +43,14 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Make icon on right of text field
-        //let iconView = UIImageView(image: UIImage(named: "down_arrow"))
-        //pickerTextField.rightView = iconView
-        //pickerTextField.rightViewMode = .always
-
+        /* Make icon on right of text field
+        let arrow = UIImageView(image: UIImage(named: "down_arrow"))
+        arrow.contentMode = UIView.ContentMode.center
+        arrow.frame = CGRect(x: 0.0, y: 0.0, width: 1, height: 1)
+        pickerTextField.rightView = arrow
+        pickerTextField.rightViewMode = UITextField.ViewMode.always
+        */
+        
         // Make done button
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
