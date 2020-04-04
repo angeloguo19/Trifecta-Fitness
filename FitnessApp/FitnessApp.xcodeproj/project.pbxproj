@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE35AC6E2437E1F700754558 /* meditationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE35AC6D2437E1F700754558 /* meditationViewController.swift */; };
+		BE35AC702438101900754558 /* moreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE35AC6F2438101900754558 /* moreInfoViewController.swift */; };
+		BE35AC7224381F1700754558 /* nutritionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE35AC7124381F1700754558 /* nutritionViewController.swift */; };
 		BE4122AC243544DC0062A534 /* timerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4122AB243544DC0062A534 /* timerViewController.swift */; };
 		BEBEA5D1243018D100119720 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D0243018D100119720 /* AppDelegate.swift */; };
 		BEBEA5D3243018D100119720 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D2243018D100119720 /* SceneDelegate.swift */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BE35AC6D2437E1F700754558 /* meditationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meditationViewController.swift; sourceTree = "<group>"; };
+		BE35AC6F2438101900754558 /* moreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moreInfoViewController.swift; sourceTree = "<group>"; };
+		BE35AC7124381F1700754558 /* nutritionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nutritionViewController.swift; sourceTree = "<group>"; };
 		BE4122AB243544DC0062A534 /* timerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timerViewController.swift; sourceTree = "<group>"; };
 		BEBEA5CD243018D100119720 /* FitnessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBEA5D0243018D100119720 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +70,9 @@
 				BEBEA5D2243018D100119720 /* SceneDelegate.swift */,
 				BEBEA5D4243018D100119720 /* ViewController.swift */,
 				BEBEA5D6243018D100119720 /* Main.storyboard */,
+				BE35AC7124381F1700754558 /* nutritionViewController.swift */,
+				BE35AC6F2438101900754558 /* moreInfoViewController.swift */,
+				BE35AC6D2437E1F700754558 /* meditationViewController.swift */,
 				BE4122AB243544DC0062A534 /* timerViewController.swift */,
 				BEBEA5DC243018D100119720 /* Assets.xcassets */,
 				BEBEA5DE243018D100119720 /* LaunchScreen.storyboard */,
@@ -144,7 +153,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE35AC6E2437E1F700754558 /* meditationViewController.swift in Sources */,
 				BEBEA5DB243018D100119720 /* FitnessApp.xcdatamodeld in Sources */,
+				BE35AC702438101900754558 /* moreInfoViewController.swift in Sources */,
+				BE35AC7224381F1700754558 /* nutritionViewController.swift in Sources */,
 				BE4122AC243544DC0062A534 /* timerViewController.swift in Sources */,
 				BEBEA5D5243018D100119720 /* ViewController.swift in Sources */,
 				BEBEA5D1243018D100119720 /* AppDelegate.swift in Sources */,

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rcs-ph-8BH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o3Z-Fr-It2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Nutrition-->
+        <!--Nutrition View Controller-->
         <scene sceneID="cyG-Ki-R2b">
             <objects>
-                <viewController id="Cnt-lm-WI9" sceneMemberID="viewController">
+                <viewController id="Cnt-lm-WI9" customClass="nutritionViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q47-FR-l94">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,15 +21,29 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afV-vS-BWd">
+                                <rect key="frame" x="320" y="332" width="35" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Waa-Gw-9xY" kind="show" id="tsk-kZ-fKY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="ZpI-vO-kPa"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Nutrition" id="fH4-69-H0D"/>
+                    <navigationItem key="navigationItem" id="ofW-UX-fuE"/>
+                    <connections>
+                        <outlet property="searchButton" destination="afV-vS-BWd" id="fOW-cQ-Zoh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EtA-EP-FQv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7" y="1657"/>
+            <point key="canvasLocation" x="902.89855072463774" y="1656.6964285714284"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="tc4-bc-4LF">
@@ -47,6 +61,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="KGH-qf-QoF" kind="show" id="Pit-uq-GXe"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -54,27 +71,29 @@
                             <outlet property="delegate" destination="Waa-Gw-9xY" id="Egt-3G-BUo"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="ve8-GU-5Bs"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4k-3I-nAB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="874" y="1657"/>
+            <point key="canvasLocation" x="1784.057971014493" y="1656.6964285714284"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="fss-lG-8na">
             <objects>
-                <viewController id="KGH-qf-QoF" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="KGH-qf-QoF" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Leg-nG-GdV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="TZz-yA-Jok"/>
                     </view>
+                    <navigationItem key="navigationItem" id="1DM-rp-uDa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8w-Fa-kTa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1725" y="1658"/>
+            <point key="canvasLocation" x="2634.7826086956525" y="1657.3660714285713"/>
         </scene>
-        <!--Fitness-->
+        <!--Table View Controller-->
         <scene sceneID="s5i-5m-RZW">
             <objects>
                 <tableViewController id="8L8-M5-foA" sceneMemberID="viewController">
@@ -90,6 +109,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="nnj-pD-1TH" kind="show" id="YKy-rg-iwa"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -97,98 +119,264 @@
                             <outlet property="delegate" destination="8L8-M5-foA" id="rMn-tv-aUj"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Fitness" id="Y2N-6U-3Yh"/>
+                    <navigationItem key="navigationItem" id="t3Z-rP-jcZ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TFe-xT-9p9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7" y="-1083"/>
+            <point key="canvasLocation" x="902.89855072463774" y="-1083.4821428571429"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="702-Nj-dGf">
             <objects>
-                <viewController id="nnj-pD-1TH" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="nnj-pD-1TH" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ISa-31-YG0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wko-CO-mjQ">
+                                <rect key="frame" x="91" y="703" width="44" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="...">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="7fE-iX-GTz" kind="show" id="hs1-HG-5dq"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Q72-iG-TKZ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Aqm-3z-p1P"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6TR-rL-Y0Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954" y="-1083"/>
+            <point key="canvasLocation" x="1863.7681159420292" y="-1083.4821428571429"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="rON-8m-pVY">
             <objects>
-                <viewController id="7fE-iX-GTz" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="7fE-iX-GTz" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bHr-oG-vkr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="sed-FT-YPg"/>
                     </view>
+                    <navigationItem key="navigationItem" id="3fF-Uz-kkb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2dZ-KB-Ote" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1862" y="-1083"/>
+            <point key="canvasLocation" x="2771.0144927536235" y="-1083.4821428571429"/>
         </scene>
-        <!--Meditation-->
+        <!--Meditation View Controller-->
         <scene sceneID="foZ-Mg-auU">
             <objects>
-                <viewController id="Huc-2h-vG2" sceneMemberID="viewController">
+                <viewController id="Huc-2h-vG2" customClass="meditationViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X0i-MS-ZsC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OuG-Y2-d6n">
+                                <rect key="frame" x="40" y="113" width="226" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="New Session">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Rcs-ph-8BH" kind="show" id="QHR-6n-tim"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tqb-06-6et">
+                                <rect key="frame" x="289" y="113" width="85" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Help">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="oVz-wa-uA4" kind="show" id="NUp-p4-Epn"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="phn-TR-a1i">
+                                <rect key="frame" x="57" y="412" width="300" height="340"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Average Daily Meditation Time:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpd-9B-4cH">
+                                <rect key="frame" x="30" y="207" width="354" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l37-Yi-sZT">
+                                <rect key="frame" x="137" y="275" width="140" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="gz8-t9-0sw"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Meditation" id="0KL-pH-GSc"/>
+                    <navigationItem key="navigationItem" id="sOL-I8-wYy"/>
+                    <connections>
+                        <outlet property="averagetimeLabel" destination="l37-Yi-sZT" id="WfJ-bV-v5j"/>
+                        <outlet property="moreInfoButton" destination="Tqb-06-6et" id="Mom-l4-C9u"/>
+                        <outlet property="newSessionButton" destination="OuG-Y2-d6n" id="vdJ-jf-rzI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bKW-MG-Iy2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7" y="294"/>
+            <point key="canvasLocation" x="902.89855072463774" y="293.97321428571428"/>
         </scene>
         <!--Timer View Controller-->
         <scene sceneID="bQ4-by-Igf">
             <objects>
-                <viewController id="Rcs-ph-8BH" customClass="timerViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Rcs-ph-8BH" customClass="timerViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TYQ-IO-2ym">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qpT-H0-xNs">
-                                <rect key="frame" x="159" y="293" width="100" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select time" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qpT-H0-xNs">
+                                <rect key="frame" x="136" y="358" width="142" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Update Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xS-8s-eCE">
+                                <rect key="frame" x="72" y="628" width="145" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRz-dI-wai">
+                                <rect key="frame" x="249" y="636" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="0W5-22-ADF"/>
                     </view>
+                    <navigationItem key="navigationItem" id="BaD-lj-Fag"/>
                     <connections>
-                        <outlet property="pickerTextField" destination="qpT-H0-xNs" id="3Bo-uo-Yrn"/>
+                        <outlet property="progressTextField" destination="FRz-dI-wai" id="NG6-5V-ExT"/>
+                        <outlet property="timerTextField" destination="qpT-H0-xNs" id="GWO-j0-dy1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSS-M7-cuf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="953.62318840579712" y="-86.383928571428569"/>
+            <point key="canvasLocation" x="1863.7681159420292" y="-86.383928571428569"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Wtr-jW-uR3">
             <objects>
-                <viewController id="oVz-wa-uA4" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="oVz-wa-uA4" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cuk-uC-2JJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Simple Meditation Technique" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njJ-H7-hkZ">
+                                <rect key="frame" x="42" y="133" width="330" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="meditation techniques, you can search online" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qtq-A7-SBE">
+                                <rect key="frame" x="27" y="588" width="360" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="for information. For free guided meditation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7CI-bd-rJb">
+                                <rect key="frame" x="27" y="614" width="360" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="videos, check out YouTube." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqr-yE-fza">
+                                <rect key="frame" x="27" y="640" width="360" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To learn more about meditation and different " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDy-u3-89g">
+                                <rect key="frame" x="27" y="563" width="360" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1.   Find a spot where you can sit or lie" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaB-Uk-fCw">
+                                <rect key="frame" x="20" y="204" width="374" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="      comfortably." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgS-g2-AUW">
+                                <rect key="frame" x="20" y="232" width="374" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2.  Close your eyes and breath naturally" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7W3-bt-B3I">
+                                <rect key="frame" x="20" y="282" width="374" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3.  Focus your attention on your breath. Notice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61e-3b-1vV">
+                                <rect key="frame" x="20" y="336" width="374" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="     the way your body moves as you breath. If" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUO-cU-vfA">
+                                <rect key="frame" x="20" y="364" width="374" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="     your mind wanders, forgive yourself and" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6T-N5-E06">
+                                <rect key="frame" x="20" y="391" width="374" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="     return your focus to your breath." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLS-dA-tJR">
+                                <rect key="frame" x="20" y="418" width="374" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="CF6-b1-ujh"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Xj8-lq-b7b"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wod-TI-wT7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954" y="679"/>
+            <point key="canvasLocation" x="1863.7681159420292" y="678.34821428571422"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2Kj-uY-P1C">
@@ -201,9 +389,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="kTA-gq-iW5"/>
-                        <segue destination="8L8-M5-foA" kind="relationship" relationship="viewControllers" id="NzZ-jE-EdC"/>
-                        <segue destination="Huc-2h-vG2" kind="relationship" relationship="viewControllers" id="HMa-GO-bwc"/>
-                        <segue destination="Cnt-lm-WI9" kind="relationship" relationship="viewControllers" id="Hty-FK-s3J"/>
+                        <segue destination="y0a-lJ-O4K" kind="relationship" relationship="viewControllers" id="NzZ-jE-EdC"/>
+                        <segue destination="8oz-q9-jXx" kind="relationship" relationship="viewControllers" id="HMa-GO-bwc"/>
+                        <segue destination="b7Y-a6-WCD" kind="relationship" relationship="viewControllers" id="Hty-FK-s3J"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qdC-35-QLq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -225,6 +413,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-7" y="-2113"/>
+        </scene>
+        <!--Meditation-->
+        <scene sceneID="WVp-dY-cTn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8oz-q9-jXx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Meditation" id="0KL-pH-GSc"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wvt-cO-ZbW">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Huc-2h-vG2" kind="relationship" relationship="rootViewController" id="isu-x3-M4G"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ekZ-Ma-3FG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7.2463768115942031" y="293.97321428571428"/>
+        </scene>
+        <!--Fitness-->
+        <scene sceneID="5Bs-nd-dkW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y0a-lJ-O4K" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Fitness" id="Y2N-6U-3Yh"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bgn-gM-7zz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8L8-M5-foA" kind="relationship" relationship="rootViewController" id="mFw-F0-Gnp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KtT-xU-jTG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7.2463768115942031" y="-1083.4821428571429"/>
+        </scene>
+        <!--Nutrition-->
+        <scene sceneID="NO6-nQ-kwT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b7Y-a6-WCD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Nutrition" id="fH4-69-H0D"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mFY-tl-tjS">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Cnt-lm-WI9" kind="relationship" relationship="rootViewController" id="ric-EH-qyb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XhL-Fl-awd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7.2463768115942031" y="1656.6964285714284"/>
         </scene>
     </scenes>
 </document>

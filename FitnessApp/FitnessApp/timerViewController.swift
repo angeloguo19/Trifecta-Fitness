@@ -12,31 +12,36 @@ import UIKit
 
 class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @IBOutlet weak var pickerTextField: UITextField!
+
+    @IBOutlet weak var timerTextField: UITextField!
+    @IBOutlet weak var progressTextField: UITextField!
     
-    let pickerList = UIPickerView()
+    let timerList = UIPickerView()
+    let progressList = UIPickerView()
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
            return 1
-       }
+    }
        
-       func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-           return 60
-       }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 60
+    }
        
     // This function sets the text of the picker view to row# + 1
-       func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-           return String(row+1)
-       }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(row+1) + " min"
+    }
     
-       // When user selects an option, this function will set the text of the text field to reflect the selected option.
-       func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-           pickerTextField.text = String(row+1)
-       }
+    // When user selects an option, this function will set the text of the text field to reflect the selected option.
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        timerTextField.text = String(row+1) + " min"
+        //progressTextField.text = String(row+1) + " min"
+    }
     
-        @objc func donePicker() {
-           pickerTextField.resignFirstResponder()
-       }
+    @objc func donePicker() {
+        timerTextField.resignFirstResponder()
+        progressTextField.resignFirstResponder()
+    }
     
     
     
@@ -57,14 +62,18 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
         toolBar.setItems([doneButton], animated: true)
         toolBar.isUserInteractionEnabled = true
-        pickerTextField.inputAccessoryView = toolBar
+        timerTextField.inputAccessoryView = toolBar
+        progressTextField.inputAccessoryView = toolBar
 
         //Make dropdownlist
-        pickerTextField.inputView = pickerList
+        timerTextField.inputView = timerList
+        progressTextField.inputView = progressList
         
         //Connect Data
-        self.pickerList.delegate = self
-        self.pickerList.dataSource = self
+        timerList.delegate = self
+        timerList.dataSource = self
+        progressList.delegate = self
+        progressList.dataSource = self
     }
     
     
