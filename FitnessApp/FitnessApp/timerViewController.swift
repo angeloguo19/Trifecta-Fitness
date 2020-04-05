@@ -21,36 +21,66 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var timerTextField: UITextField!
     @IBOutlet weak var progressTextField: UITextField!
     
+    @IBAction func startButtonTapped(_ sender: UIButton) {
+        if isTimerRunning == false {
+            runTimer()
+            startButton.isEnabled = false
+        }
+    }
+    @IBAction func pauseButtonTapped(_ sender: UIButton) {
+        if resumeTapped == false {
+            timer.invalidate()
+            resumeTapped = true
+            pauseButton.setTitle("Resume", for: UIControl.State.normal)
+        }
+        else if resumeTapped == true{
+            runTimer()
+            resumeTapped = false
+            pauseButton.setTitle("Pause", for: UIControl.State.normal)
+        }
+    }
+    @IBAction func resetButtonTapped(_ sender: UIButton) {
+        timer.invalidate()
+        totalTime = startTime
+        timerLabel.text = timeFormat(time: TimeInterval(totalTime))
+        isTimerRunning = false
+        resumeTapped = false
+        pauseButton.isEnabled = false
+        pauseButton.setTitle("Pause", for: UIControl.State.normal)
+        startButton.isEnabled = true
+    }
     
     
     let timerList = UIPickerView()
     let progressList = UIPickerView()
     
-    
-    var timer: Timer?
+    var timer = Timer()
+    var startTime: Int = 0
     var totalTime: Int = 0
+    var isTimerRunning = false
+    var resumeTapped = false
 
-
+    
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        isTimerRunning = true
+        pauseButton.isEnabled = true
+    }
     @objc func updateTimer() {
-        print(self.totalTime)
-        self.timerLabel.text = self.timeFormatted(self.totalTime) // will show timer
-        if totalTime != 0 {
-            totalTime -= 1  // decrease counter timer
+        if totalTime < 1 {
+            timer.invalidate()
+            isTimerRunning = false
+            //Send alert to indicate "time's up!"
         } else {
-            if let timer = self.timer {
-                timer.invalidate()
-                self.timer = nil
-            }
+            totalTime -= 1     //This will decrement(count down)the seconds.
+            timerLabel.text = timeFormat(time: TimeInterval(totalTime))
         }
     }
-    
-    func timeFormatted(_ totalSeconds: Int) -> String {
-        let seconds: Int = totalSeconds % 60
-        let minutes: Int = (totalSeconds / 60) % 60
-        return String(format: "%02d:%02d", minutes, seconds)
+    func timeFormat(time:TimeInterval) -> String {
+        let minutes = Int(time) / 60 % 60
+        let seconds = Int(time) % 60
+        return String(format:"%02i:%02i", minutes, seconds)
     }
-    
-    
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -66,7 +96,9 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     // When user selects an option, this function will set the text of the text field to reflect the selected option.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         timerTextField.text = String(row+1) + " min"
-        totalTime = row + 1
+        totalTime = (row + 1) * 60
+        startTime = (row + 1) * 60
+        timerLabel.text = timeFormat(time: TimeInterval(totalTime))
         //progressTextField.text = String(row+1) + " min"
     }
     @objc func donePicker() {
@@ -87,7 +119,7 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         pickerTextField.rightViewMode = UITextField.ViewMode.always
         */
         
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: false)
+        
         
         // Make done button
         let toolBar = UIToolbar()
@@ -108,11 +140,10 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         progressList.delegate = self
         progressList.dataSource = self
         
-        // Change appearance of start button
-        
+        // Change appearance of the buttons
         startButton.layer.shadowOpacity = 0.5
         startButton.layer.shadowRadius = 1
-        startButton.layer.cornerRadius = 30
+        startButton.layer.cornerRadius = 35
         startButton.layer.borderWidth = 1
         startButton.layer.borderColor = UIColor.black.cgColor
         startButton.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -120,7 +151,7 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         pauseButton.layer.shadowOpacity = 0.5
         pauseButton.layer.shadowRadius = 1
-        pauseButton.layer.cornerRadius = 30
+        pauseButton.layer.cornerRadius = 35
         pauseButton.layer.borderWidth = 1
         pauseButton.layer.borderColor = UIColor.black.cgColor
         pauseButton.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -128,11 +159,13 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         resetButton.layer.shadowOpacity = 0.5
         resetButton.layer.shadowRadius = 1
-        resetButton.layer.cornerRadius = 30
+        resetButton.layer.cornerRadius = 35
         resetButton.layer.borderWidth = 1
         resetButton.layer.borderColor = UIColor.black.cgColor
         resetButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         resetButton.layer.masksToBounds = false
+        
+        pauseButton.isEnabled = false
     }
     
     
