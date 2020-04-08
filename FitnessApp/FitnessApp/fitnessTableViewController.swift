@@ -58,7 +58,7 @@ class fitnessTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fitnessCell", for: indexPath) as! fitnessTableViewCell
 
-        //cell.name = workouts[indexPath.row]
+        
         cell.nameLabel.text = workouts[indexPath.row]
 
         return cell

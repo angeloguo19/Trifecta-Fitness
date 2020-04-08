@@ -10,19 +10,24 @@ import UIKit
 
 class nutritionViewController: UIViewController {
 
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         searchButton.setImage(UIImage(named: "search"), for: .normal)
-        //searchButton.layer.borderColor = UIColor.gray.cgColor
-        //searchButton.layer.borderWidth = 1
         
-        // Do any additional setup after loading the view.
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is recipesTableViewController
+        {
+            let vc = segue.destination as? recipesTableViewController
+            vc?.search = searchTextField.text!
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

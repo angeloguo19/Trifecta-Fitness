@@ -13,6 +13,8 @@
 		BE4122AC243544DC0062A534 /* timerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4122AB243544DC0062A534 /* timerViewController.swift */; };
 		BE8D67AF243A951500602C1B /* fitnessTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D67AE243A951500602C1B /* fitnessTableViewController.swift */; };
 		BE8D67B1243AA56700602C1B /* workoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D67B0243AA56700602C1B /* workoutViewController.swift */; };
+		BE8D67B3243D35DF00602C1B /* recipesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D67B2243D35DF00602C1B /* recipesTableViewController.swift */; };
+		BE8D67B5243D387600602C1B /* focusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D67B4243D387600602C1B /* focusViewController.swift */; };
 		BEBEA5D1243018D100119720 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D0243018D100119720 /* AppDelegate.swift */; };
 		BEBEA5D3243018D100119720 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D2243018D100119720 /* SceneDelegate.swift */; };
 		BEBEA5D5243018D100119720 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D4243018D100119720 /* ViewController.swift */; };
@@ -29,6 +31,8 @@
 		BE4122AB243544DC0062A534 /* timerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timerViewController.swift; sourceTree = "<group>"; };
 		BE8D67AE243A951500602C1B /* fitnessTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fitnessTableViewController.swift; sourceTree = "<group>"; };
 		BE8D67B0243AA56700602C1B /* workoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = workoutViewController.swift; sourceTree = "<group>"; };
+		BE8D67B2243D35DF00602C1B /* recipesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipesTableViewController.swift; sourceTree = "<group>"; };
+		BE8D67B4243D387600602C1B /* focusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = focusViewController.swift; sourceTree = "<group>"; };
 		BEBEA5CD243018D100119720 /* FitnessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBEA5D0243018D100119720 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEBEA5D2243018D100119720 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 				BEBEA5D2243018D100119720 /* SceneDelegate.swift */,
 				BEBEA5D4243018D100119720 /* ViewController.swift */,
 				BEBEA5D6243018D100119720 /* Main.storyboard */,
+				BE8D67B4243D387600602C1B /* focusViewController.swift */,
+				BE8D67B2243D35DF00602C1B /* recipesTableViewController.swift */,
 				BE8D67AE243A951500602C1B /* fitnessTableViewController.swift */,
 				BE8D67B0243AA56700602C1B /* workoutViewController.swift */,
 				BE35AC7124381F1700754558 /* nutritionViewController.swift */,
@@ -167,8 +173,10 @@
 				BE4122AC243544DC0062A534 /* timerViewController.swift in Sources */,
 				BEBEA5D5243018D100119720 /* ViewController.swift in Sources */,
 				BEBEA5D1243018D100119720 /* AppDelegate.swift in Sources */,
+				BE8D67B3243D35DF00602C1B /* recipesTableViewController.swift in Sources */,
 				BE8D67B1243AA56700602C1B /* workoutViewController.swift in Sources */,
 				BEBEA5D3243018D100119720 /* SceneDelegate.swift in Sources */,
+				BE8D67B5243D387600602C1B /* focusViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
