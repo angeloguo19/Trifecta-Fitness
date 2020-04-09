@@ -9,11 +9,15 @@
 import UIKit
 
 class focusViewController: UIViewController {
-
+    
+    var nameText:String = ""
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        nameLabel.text = nameText
     }
     
 

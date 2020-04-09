@@ -30,10 +30,14 @@ class recipesTableViewCell: UITableViewCell {
 class recipesTableViewController: UITableViewController {
     
     var search: String = ""
-    var allRecipes: [Recipes] = []
+    var allRecipes: List = List(list: [])
+    
+    struct List: Codable{
+        var list: [Fetch]
+    }
     
     struct Fetch: Codable {
-        var results: String
+        var results: Recipes
     }
     
     struct Recipes: Codable {
@@ -44,20 +48,21 @@ class recipesTableViewController: UITableViewController {
         var title: String
     }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //getAllData()
+        getAllData()
     
     }
-    /*
+    
     func getAllData() {
         
         // 2. BEGIN NETWORKING code
         let mySession = URLSession(configuration: URLSessionConfiguration.default)
         
      
-        let link: String = "https://api.spoonacular.com/recipes/search?query=" + search + "&number=2&instructionsRequired=true"
+        let link: String = "https://api.spoonacular.com/recipes/search?query=" + search + "&number=2&instructionsRequired=true&apiKey=611d546c1bc54cf8baa25037850009d7"
         let url = URL(string: link)!
 
         // 3. MAKE THE HTTPS REQUEST task
@@ -85,10 +90,11 @@ class recipesTableViewController: UITableViewController {
         // 4. DECODE THE RESULTING JSON
         //
             let decoder = JSONDecoder()
+            print(String(data: jsonData, encoding: .utf8))
 
             do {
                 // decode the JSON into our array of todoItem's
-                self.allRecipes = try decoder.decode([DBZ].self, from: jsonData)
+                self.allRecipes = try decoder.decode(List.self, from: jsonData)
                                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -101,7 +107,7 @@ class recipesTableViewController: UITableViewController {
         // actually make the http task run.
         task.resume()
     }
-    */
+    
     
     // MARK: - Table view data source
 
@@ -111,14 +117,14 @@ class recipesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1//allRecipes.count
+        
+        return allRecipes.list.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! recipesTableViewCell
 
-        //cell.recipeLabel.text = allRecipes[indexPath.row].title
+        cell.recipeLabel.text = allRecipes.list[indexPath.row].results.title
 
         return cell
     }
@@ -130,7 +136,7 @@ class recipesTableViewController: UITableViewController {
         let myRow = tableView!.indexPathForSelectedRow
         let myCurrCell = tableView.cellForRow(at: myRow!) as! recipesTableViewCell
         
-        
+        destVC.nameText = (myCurrCell.recipeLabel!.text)!
     }
     
 
