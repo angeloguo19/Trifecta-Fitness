@@ -30,14 +30,11 @@ class recipesTableViewCell: UITableViewCell {
 class recipesTableViewController: UITableViewController {
     
     var search: String = ""
-    var allRecipes: List = List(list: [])
     
-    struct List: Codable{
-        var list: [Fetch]
-    }
+    var totalRecipes: AllRecipes = AllRecipes(results: [])
     
-    struct Fetch: Codable {
-        var results: Recipes
+    struct AllRecipes: Codable {
+        var results: [Recipes]
     }
     
     struct Recipes: Codable {
@@ -61,8 +58,8 @@ class recipesTableViewController: UITableViewController {
         // 2. BEGIN NETWORKING code
         let mySession = URLSession(configuration: URLSessionConfiguration.default)
         
-     
-        let link: String = "https://api.spoonacular.com/recipes/search?query=" + search + "&number=2&instructionsRequired=true&apiKey=611d546c1bc54cf8baa25037850009d7"
+        //hard code 25 results at end
+        let link: String = "https://api.spoonacular.com/recipes/search?query=" + search + "&number=5&instructionsRequired=true&apiKey=611d546c1bc54cf8baa25037850009d7"
         let url = URL(string: link)!
 
         // 3. MAKE THE HTTPS REQUEST task
@@ -90,11 +87,11 @@ class recipesTableViewController: UITableViewController {
         // 4. DECODE THE RESULTING JSON
         //
             let decoder = JSONDecoder()
-            print(String(data: jsonData, encoding: .utf8))
+            //print(String(data: jsonData, encoding: .utf8))
 
             do {
                 // decode the JSON into our array of todoItem's
-                self.allRecipes = try decoder.decode(List.self, from: jsonData)
+                self.totalRecipes = try decoder.decode(AllRecipes.self, from: jsonData)
                                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -118,13 +115,13 @@ class recipesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return allRecipes.list.count
+        return totalRecipes.results.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! recipesTableViewCell
 
-        cell.recipeLabel.text = allRecipes.list[indexPath.row].results.title
+        cell.recipeLabel.text = totalRecipes.results[indexPath.row].title
 
         return cell
     }

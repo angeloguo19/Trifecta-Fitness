@@ -10,21 +10,27 @@ import UIKit
 
 class nutritionViewController: UIViewController {
 
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
+    var properSearch: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        searchButton.layer.cornerRadius = 5
         searchButton.setImage(UIImage(named: "search"), for: .normal)
+        backgroundImage.image = UIImage(named: "Nutrition")
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is recipesTableViewController
         {
+            properSearch = searchTextField.text!
             let vc = segue.destination as? recipesTableViewController
-            vc?.search = searchTextField.text!
+            vc?.search = properSearch.replacingOccurrences(of: " ", with: "_")
         }
     }
     
