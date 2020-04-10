@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class fitnessTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var statLabel: UILabel!
     
     var progress: Int = 0
     var leaderboard: String = ""
@@ -30,7 +32,8 @@ class fitnessTableViewCell: UITableViewCell {
 
 class fitnessTableViewController: UITableViewController {
     
-    var workouts = ["Push-Ups", "Tricep Dips", "Pull-Ups", "Sit-Ups", "Crunches", "Burpees", "Glute Bridges", "Squats", "Forward Lunges", "Calf Raises"]
+//    var workouts = ["Push-Ups", "Tricep Dips", "Pull-Ups", "Sit-Ups", "Crunches", "Burpees", "Glute Bridges", "Squats", "Forward Lunges", "Calf Raises"]
+    var workouts: [NSManagedObject] = []
 
     
     override func viewDidLoad() {
@@ -39,6 +42,30 @@ class fitnessTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      
+      //1
+      guard let appDelegate =
+        UIApplication.shared.delegate as? AppDelegate else {
+          return
+      }
+      
+      let managedContext =
+        appDelegate.persistentContainer.viewContext
+      
+      //2
+      let fetchRequest =
+        NSFetchRequest<NSManagedObject>(entityName: "Workout")
+      
+      //3
+      do {
+        workouts = try managedContext.fetch(fetchRequest)
+      } catch let error as NSError {
+        print("Could not fetch. \(error), \(error.userInfo)")
+      }
     }
 
     // MARK: - Table view data source
@@ -57,10 +84,13 @@ class fitnessTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fitnessCell", for: indexPath) as! fitnessTableViewCell
-
         
-        cell.nameLabel.text = workouts[indexPath.row]
-
+        let workout = workouts[indexPath.row]
+        
+        cell.nameLabel.text = workout.value(forKeyPath: "name") as? String
+        
+        cell.statLabel.text = workout.value(forKeyPath: "stat") as? String
+        
         return cell
     }
     
