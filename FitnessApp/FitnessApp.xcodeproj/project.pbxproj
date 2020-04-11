@@ -22,6 +22,7 @@
 		BEBEA5DB243018D100119720 /* FitnessApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D9243018D100119720 /* FitnessApp.xcdatamodeld */; };
 		BEBEA5DD243018D100119720 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEBEA5DC243018D100119720 /* Assets.xcassets */; };
 		BEBEA5E0243018D100119720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBEA5DE243018D100119720 /* LaunchScreen.storyboard */; };
+		BEE7816B2442249000234A68 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE7816A2442249000234A68 /* HomeTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		BEBEA5DC243018D100119720 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BEBEA5DF243018D100119720 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BEBEA5E1243018D100119720 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEE7816A2442249000234A68 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				BEBEA5D2243018D100119720 /* SceneDelegate.swift */,
 				BEBEA5D4243018D100119720 /* ViewController.swift */,
 				BEBEA5D6243018D100119720 /* Main.storyboard */,
+				BEE7816A2442249000234A68 /* HomeTableViewController.swift */,
 				BE8D67B4243D387600602C1B /* focusViewController.swift */,
 				BE8D67B2243D35DF00602C1B /* recipesTableViewController.swift */,
 				BE8D67AE243A951500602C1B /* fitnessTableViewController.swift */,
@@ -173,6 +176,7 @@
 				BE4122AC243544DC0062A534 /* timerViewController.swift in Sources */,
 				BEBEA5D5243018D100119720 /* ViewController.swift in Sources */,
 				BEBEA5D1243018D100119720 /* AppDelegate.swift in Sources */,
+				BEE7816B2442249000234A68 /* HomeTableViewController.swift in Sources */,
 				BE8D67B3243D35DF00602C1B /* recipesTableViewController.swift in Sources */,
 				BE8D67B1243AA56700602C1B /* workoutViewController.swift in Sources */,
 				BEBEA5D3243018D100119720 /* SceneDelegate.swift in Sources */,
