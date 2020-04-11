@@ -532,7 +532,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="yYI-69-P0l" kind="relationship" relationship="viewControllers" id="FSm-40-FHt"/>
+                        <segue destination="36f-34-UAc" kind="relationship" relationship="viewControllers" id="FSm-40-FHt"/>
                         <segue destination="y0a-lJ-O4K" kind="relationship" relationship="viewControllers" id="NzZ-jE-EdC"/>
                         <segue destination="8oz-q9-jXx" kind="relationship" relationship="viewControllers" id="HMa-GO-bwc"/>
                         <segue destination="b7Y-a6-WCD" kind="relationship" relationship="viewControllers" id="Hty-FK-s3J"/>
@@ -545,18 +545,50 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ChallengesViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAX-Aq-WAe">
+                                <rect key="frame" x="183" y="325" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="bNr-y4-DX2"/>
+                    <navigationItem key="navigationItem" id="Snf-a9-fNh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7" y="-2113"/>
+            <point key="canvasLocation" x="1339.1304347826087" y="-2607.5892857142858"/>
+        </scene>
+        <!--Stats View Controller-->
+        <scene sceneID="P2u-eR-ZPx">
+            <objects>
+                <viewController id="urL-Vh-9z4" customClass="StatsViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xWL-Uu-hjv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbl-W1-PJ1">
+                                <rect key="frame" x="186" y="334" width="38" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="iTR-fE-2Rs"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="flX-SA-e36"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z19-TR-wFz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1339.1304347826087" y="-1904.4642857142856"/>
         </scene>
         <!--Home-->
         <scene sceneID="zq9-AU-nLS">
@@ -611,11 +643,15 @@
                             <outlet property="delegate" destination="yYI-69-P0l" id="u1Q-P2-hAG"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="VtD-dW-As4"/>
+                    <navigationItem key="navigationItem" id="f30-aM-fz8"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="segue1" id="ZUD-Qp-54e"/>
+                        <segue destination="urL-Vh-9z4" kind="show" identifier="segue2" id="oy2-zc-znJ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvf-1u-Ax5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-862.31884057971024" y="-1855.5803571428571"/>
+            <point key="canvasLocation" x="247.82608695652175" y="-2310.2678571428569"/>
         </scene>
         <!--Meditation-->
         <scene sceneID="WVp-dY-cTn">
@@ -673,6 +709,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XhL-Fl-awd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-7.2463768115942031" y="1656.6964285714284"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="OO9-yf-Ul4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="36f-34-UAc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="VtD-dW-As4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rIK-EN-svs">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yYI-69-P0l" kind="relationship" relationship="rootViewController" id="eMu-4U-oew"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bHq-Rv-vIu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-662.31884057971024" y="-2310.2678571428569"/>
         </scene>
     </scenes>
 </document>

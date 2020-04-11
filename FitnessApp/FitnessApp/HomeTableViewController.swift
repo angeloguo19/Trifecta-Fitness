@@ -66,6 +66,10 @@ class HomeTableViewController: UITableViewController {
             cell.rightLabel.text = stats[indexPath.row]
         }
 
+
+
+        
+        
       // Configure the cell...
       //cell.places?.text = places[indexPath.row]
 
@@ -78,7 +82,38 @@ class HomeTableViewController: UITableViewController {
         return sectionTitles[section]
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let myRow = tableView!.indexPathForSelectedRow
+        let myCurrentCell = tableView!.cellForRow(at: myRow!) as! HomeTableViewCell
+        
+        if(myRow?.section==0){
+            let destVC = segue.destination as! ChallengesViewController
+            print("one")
+        }
+        else{
+            let destVC = segue.destination as! StatsViewController
+            print("two")
+        }
+        
+        
+        
+        
+        //destVC.place = (myCurrentCell.places?.text)!
+        //destVC.weatherPic = (myCurrentCell.weatherIcon?.image)!
+        //destVC.temp = (myCurrentCell.temperature?.text)!
+        
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var segue: String!
+        if indexPath.section == 0 {
+            segue = "segue1"
+        } else  {
+            segue = "segue2"
+        }
+    
+        
+        self.performSegue(withIdentifier: segue, sender: self)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
