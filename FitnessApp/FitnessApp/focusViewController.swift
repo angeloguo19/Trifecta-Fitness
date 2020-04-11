@@ -16,11 +16,16 @@ class focusViewController: UIViewController {
     var id: Int = 0
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var servingsLabel: UILabel!
+    @IBOutlet weak var foodPicture: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         nameLabel.text = nameText
+        timeLabel.text = "Total Time: " + String(waitNum) + " mins"
+        servingsLabel.text = "Servings: " + String(servingsNum)
     }
     
 
