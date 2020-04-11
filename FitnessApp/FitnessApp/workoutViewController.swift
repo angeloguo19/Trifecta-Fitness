@@ -7,14 +7,31 @@
 //
 
 import UIKit
+import CoreData
 
 class workoutViewController: UIViewController {
 
+    var workouts = [NSManagedObject]()
+    
     var nameText: String = ""
     
     @IBOutlet weak var workoutNameLabel: UILabel!
     
+    @IBOutlet weak var reps: UITextField!
     
+    
+    @IBAction func updateStat(_ sender: UIButton) {
+        
+        var editStat = 0;
+        editStat = (reps.text! as  NSString).integerValue
+        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Workout")
+    
+    }
     
     
     override func viewDidLoad() {
