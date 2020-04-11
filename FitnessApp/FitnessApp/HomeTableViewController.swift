@@ -26,10 +26,11 @@ class HomeTableViewCell: UITableViewCell {
 
 }
 class HomeTableViewController: UITableViewController {
-    
+    var challengeList=["Sergio", "Obama", "Bobert"]
     var stats = ["100","50","30","200","5"]
     var workouts = ["Push Ups","Sit Ups","Pull Ups","Squats","Miles"]
     var sectionTitles = ["Challenges", "Workouts"]
+    var sectionSizes = [3,5]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,21 +45,27 @@ class HomeTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return sectionSizes.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return stats.count
+        return sectionSizes[section]
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeTableViewCell
-        
-        cell.leftLabel.text = workouts[indexPath.row]
-        cell.rightLabel.text = stats[indexPath.row]
+        if(indexPath.section == 0){
+            cell.leftLabel.text = challengeList[indexPath.row]
+            cell.rightLabel.text = ""
+        }
+        else{
+            cell.leftLabel.text = workouts[indexPath.row]
+            cell.rightLabel.text = stats[indexPath.row]
+        }
+
       // Configure the cell...
       //cell.places?.text = places[indexPath.row]
 
