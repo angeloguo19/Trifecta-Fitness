@@ -57,7 +57,7 @@ class recipesTableViewController: UITableViewController {
     
     struct Recipes: Codable {
         var id: Int
-        var imageUrls: String
+        var image: String
         var readyInMinutes: Int
         var servings: Int
         var title: String
@@ -139,7 +139,7 @@ class recipesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! recipesTableViewCell
         
-        temp = "https://spoonacular.com/recipeImages/" +  totalRecipes.results[indexPath.row].imageUrls
+        temp = "https://spoonacular.com/recipeImages/" +  totalRecipes.results[indexPath.row].image
         urls = URL(string: temp)
         //cell.recipeImage.load(url: urls!))
 
@@ -159,6 +159,9 @@ class recipesTableViewController: UITableViewController {
         let myCurrCell = tableView.cellForRow(at: myRow!) as! recipesTableViewCell
         
         destVC.nameText = (myCurrCell.recipeLabel!.text)!
+        destVC.waitNum = (myCurrCell.waitTime)
+        destVC.servingsNum = (myCurrCell.totalServings)
+        destVC.id = (myCurrCell.recipeId)
     }
     
 

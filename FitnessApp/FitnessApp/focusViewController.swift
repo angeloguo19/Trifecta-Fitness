@@ -10,7 +10,10 @@ import UIKit
 
 class focusViewController: UIViewController {
     
-    var nameText:String = ""
+    var nameText: String = ""
+    var waitNum: Int = 0
+    var servingsNum: Int = 0
+    var id: Int = 0
     
     @IBOutlet weak var nameLabel: UILabel!
     
