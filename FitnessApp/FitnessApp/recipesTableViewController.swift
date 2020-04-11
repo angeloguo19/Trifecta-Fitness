@@ -8,12 +8,28 @@
 
 import UIKit
 
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}
+
 class recipesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var recipeLabel: UILabel!
+    @IBOutlet weak var recipeImage: UIImageView!
     
-    var waitTime: String = ""
-    var servings: Int = 0
+    var waitTime: Int = 0
+    var totalServings: Int = 0
+    var recipeId: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +46,8 @@ class recipesTableViewCell: UITableViewCell {
 class recipesTableViewController: UITableViewController {
     
     var search: String = ""
+    var urls: URL?
+    var temp: String = ""
     
     var totalRecipes: AllRecipes = AllRecipes(results: [])
     
@@ -39,7 +57,7 @@ class recipesTableViewController: UITableViewController {
     
     struct Recipes: Codable {
         var id: Int
-        //var image: UIImage
+        var imageUrls: String
         var readyInMinutes: Int
         var servings: Int
         var title: String
@@ -120,8 +138,15 @@ class recipesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! recipesTableViewCell
+        
+        temp = "https://spoonacular.com/recipeImages/" +  totalRecipes.results[indexPath.row].imageUrls
+        urls = URL(string: temp)
+        //cell.recipeImage.load(url: urls!))
 
         cell.recipeLabel.text = totalRecipes.results[indexPath.row].title
+        cell.waitTime = totalRecipes.results[indexPath.row].readyInMinutes
+        cell.totalServings = totalRecipes.results[indexPath.row].servings
+        cell.recipeId = totalRecipes.results[indexPath.row].id
 
         return cell
     }
