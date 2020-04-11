@@ -710,11 +710,11 @@
             </objects>
             <point key="canvasLocation" x="-7.2463768115942031" y="1656.6964285714284"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="OO9-yf-Ul4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="36f-34-UAc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="VtD-dW-As4"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="VtD-dW-As4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rIK-EN-svs">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
