@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for workoutName in defaultWorkouts {
                 let workout = NSManagedObject(entity: entity,insertInto: managedContext)
                 workout.setValue(workoutName, forKey: "name")
-                workout.setValue("0", forKey: "stat")
+                workout.setValue(0, forKey: "stat")
                 workouts.append(workout)
             }
             do {
