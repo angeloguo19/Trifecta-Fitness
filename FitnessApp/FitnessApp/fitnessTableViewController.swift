@@ -53,7 +53,7 @@ class fitnessTableViewController: UITableViewController {
           return
       }
       
-      let managedContext =
+      let context =
         appDelegate.persistentContainer.viewContext
       
       //2
@@ -62,7 +62,7 @@ class fitnessTableViewController: UITableViewController {
       
       //3
       do {
-        workouts = try managedContext.fetch(fetchRequest)
+        workouts = try context.fetch(fetchRequest)
       } catch let error as NSError {
         print("Could not fetch. \(error), \(error.userInfo)")
       }

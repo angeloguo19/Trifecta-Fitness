@@ -16,6 +16,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let userDefaults = UserDefaults.standard
+        let defaultValues = ["firstRun" : true]
+        userDefaults.register(defaults: defaultValues)
+        
+        var workouts = [NSManagedObject]()
+        let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        if userDefaults.bool(forKey: "firstRun") {
+
+            let defaultWorkouts = ["Push-Ups", "Tricep Dips", "Pull-Ups", "Sit-Ups", "Crunches", "Burpees", "Glute Bridges", "Squats", "Forward Lunges", "Calf Raises"]
+            let entity = NSEntityDescription.entity(forEntityName: "Workout", in: managedContext)!
+
+            for workoutName in defaultWorkouts {
+                let workout = NSManagedObject(entity: entity,insertInto: managedContext)
+                workout.setValue(workoutName, forKey: "name")
+                workout.setValue("0", forKey: "stat")
+                workouts.append(workout)
+            }
+            do {
+                try managedContext.save()
+                userDefaults.set(false, forKey: "firstRun")
+            } catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+        }
         return true
     }
 
