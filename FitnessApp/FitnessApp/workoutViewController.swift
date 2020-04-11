@@ -2,7 +2,7 @@
 //  workoutViewController.swift
 //  FitnessApp
 //
-//  Created by codeplus on 4/5/20.
+//  Created by loten on 4/5/20.
 //  Copyright © 2020 Duke University. All rights reserved.
 //
 
