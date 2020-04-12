@@ -25,6 +25,7 @@
 		BEE7816B2442249000234A68 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE7816A2442249000234A68 /* HomeTableViewController.swift */; };
 		BEE7816D24422BEA00234A68 /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE7816C24422BEA00234A68 /* ChallengesViewController.swift */; };
 		BEE7816F24422CB700234A68 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE7816E24422CB700234A68 /* StatsViewController.swift */; };
+		BEE781802442B2DD00234A68 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE7817F2442B2DD00234A68 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		BEE7816A2442249000234A68 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		BEE7816C24422BEA00234A68 /* ChallengesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		BEE7816E24422CB700234A68 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		BEE7817F2442B2DD00234A68 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,13 +82,13 @@
 		BEBEA5CF243018D100119720 /* FitnessApp */ = {
 			isa = PBXGroup;
 			children = (
+				BEE7817E2442B10E00234A68 /* HomePage */,
 				BEBEA5D0243018D100119720 /* AppDelegate.swift */,
 				BEBEA5D2243018D100119720 /* SceneDelegate.swift */,
 				BEBEA5D4243018D100119720 /* ViewController.swift */,
 				BEBEA5D6243018D100119720 /* Main.storyboard */,
 				BEE7816E24422CB700234A68 /* StatsViewController.swift */,
 				BEE7816C24422BEA00234A68 /* ChallengesViewController.swift */,
-				BEE7816A2442249000234A68 /* HomeTableViewController.swift */,
 				BE8D67B4243D387600602C1B /* focusViewController.swift */,
 				BE8D67B2243D35DF00602C1B /* recipesTableViewController.swift */,
 				BE8D67AE243A951500602C1B /* fitnessTableViewController.swift */,
@@ -101,6 +103,15 @@
 				BEBEA5D9243018D100119720 /* FitnessApp.xcdatamodeld */,
 			);
 			path = FitnessApp;
+			sourceTree = "<group>";
+		};
+		BEE7817E2442B10E00234A68 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				BEE7816A2442249000234A68 /* HomeTableViewController.swift */,
+				BEE7817F2442B2DD00234A68 /* LoginViewController.swift */,
+			);
+			path = HomePage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +197,7 @@
 				BEE7816B2442249000234A68 /* HomeTableViewController.swift in Sources */,
 				BE8D67B3243D35DF00602C1B /* recipesTableViewController.swift in Sources */,
 				BE8D67B1243AA56700602C1B /* workoutViewController.swift in Sources */,
+				BEE781802442B2DD00234A68 /* LoginViewController.swift in Sources */,
 				BEBEA5D3243018D100119720 /* SceneDelegate.swift in Sources */,
 				BEE7816F24422CB700234A68 /* StatsViewController.swift in Sources */,
 				BE8D67B5243D387600602C1B /* focusViewController.swift in Sources */,

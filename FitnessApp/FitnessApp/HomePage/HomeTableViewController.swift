@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 class HomeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var leftLabel: UILabel!
@@ -26,14 +28,21 @@ class HomeTableViewCell: UITableViewCell {
 
 }
 class HomeTableViewController: UITableViewController {
+    @IBAction func loginTapped(_ sender: Any) {
+        print("hello")
+        self.performSegue(withIdentifier: "loginSegue", sender: self)
+
+    }
     var challengeList=["Sergio", "Obama", "Bobert"]
     var stats = ["100","50","30","200","5"]
     var workouts = ["Push Ups","Sit Ups","Pull Ups","Squats","Miles"]
     var sectionTitles = ["Challenges", "Workouts"]
     var sectionSizes = [3,5]
+    
+    var username = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("hi")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -83,19 +92,24 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let myRow = tableView!.indexPathForSelectedRow
-        let myCurrentCell = tableView!.cellForRow(at: myRow!) as! HomeTableViewCell
-        
-        if(myRow?.section==0){
-            let destVC = segue.destination as! ChallengesViewController
-            print("one")
+        if(segue.identifier=="loginSegue"){
+            let destVC = segue.destination as! LoginViewController
+            
         }
         else{
-            let destVC = segue.destination as! StatsViewController
-            print("two")
+            let myRow = tableView!.indexPathForSelectedRow
+            let myCurrentCell = tableView!.cellForRow(at: myRow!) as! HomeTableViewCell
+            
+            if(myRow?.section==0){
+                let destVC = segue.destination as! ChallengesViewController
+                print("one")
+            }
+            else{
+                let destVC = segue.destination as! StatsViewController
+                print("two")
+            }
+            
         }
-        
-        
         
         
         //destVC.place = (myCurrentCell.places?.text)!
@@ -114,49 +128,28 @@ class HomeTableViewController: UITableViewController {
         
         self.performSegue(withIdentifier: segue, sender: self)
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("hi")
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func getData(){
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Login")
+        request.returnsObjectsAsFaults = false
+        do{
+            let result = try context.fetch(request)
+            for data in result as! [NSManagedObject]
+            {
+                username = data.value(forKey:"username") as! String
+                print(username)
+            }
+        }
+        catch{
+            print("fails")
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
