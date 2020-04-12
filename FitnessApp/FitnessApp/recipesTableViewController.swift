@@ -30,6 +30,7 @@ class recipesTableViewCell: UITableViewCell {
     var waitTime: Int = 0
     var totalServings: Int = 0
     var recipeId: Int = 0
+    var instruction: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,6 +49,7 @@ class recipesTableViewController: UITableViewController {
     var search: String = ""
     var urls: URL?
     var temp: String = ""
+    var ids: Int = 0
     
     var totalRecipes: AllRecipes = AllRecipes(results: [])
     
@@ -62,8 +64,22 @@ class recipesTableViewController: UITableViewController {
         var servings: Int
         var title: String
     }
+    /*
+    var totalInstructions: Information = Information(extendedIngredients: [], instructions: "")
     
-
+    struct Information: Codable {
+        var extendedIngredients: [Ingredients]
+        var instructions: String
+    }
+    
+    struct Ingredients: Codable {
+        var amount: Double
+        var unit: String
+        var originalName: String
+        var original: String
+    }
+    */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -122,8 +138,59 @@ class recipesTableViewController: UITableViewController {
         // actually make the http task run.
         task.resume()
     }
-    
-    
+    /*
+    func getData() {
+        
+        // 2. BEGIN NETWORKING code
+        let mySession = URLSession(configuration: URLSessionConfiguration.default)
+        
+        //hard code 25 results at end
+        let link: String = "https://api.spoonacular.com/recipes/" + String(ids) + "/information?includeNutrition=false&apiKey=611d546c1bc54cf8baa25037850009d7"
+        let url = URL(string: link)!
+
+        // 3. MAKE THE HTTPS REQUEST task
+        
+        let alert1 = UIAlertController(title: "No Internet Connection", message: "iPhone must be connected to internet for app to run", preferredStyle: .alert)
+        
+        alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        let task = mySession.dataTask(with: url) { data, response, error in
+
+            // ensure there is no error for this HTTP response
+            guard error == nil else {
+                DispatchQueue.main.async {
+                    self.present(alert1, animated: true)
+                }
+                return
+            }
+            // ensure there is data returned from this HTTP response
+            guard let jsonData = data else {
+                print("No data")
+                return
+            }
+            print("Got the data from network")
+        
+        // 4. DECODE THE RESULTING JSON
+        //
+            let decoder = JSONDecoder()
+            //print(String(data: jsonData, encoding: .utf8))
+
+            do {
+                // decode the JSON into our array of todoItem's
+                self.totalInstructions = try decoder.decode(Information.self, from: jsonData)
+                                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } catch {
+                print("JSON Decode error")
+            }
+        }
+     
+        // actually make the http task run.
+        task.resume()
+    }
+ */
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -147,6 +214,9 @@ class recipesTableViewController: UITableViewController {
         cell.waitTime = totalRecipes.results[indexPath.row].readyInMinutes
         cell.totalServings = totalRecipes.results[indexPath.row].servings
         cell.recipeId = totalRecipes.results[indexPath.row].id
+        
+        //getData()
+        //cell.instruction = totalInstructions.instructions
 
         return cell
     }
@@ -161,7 +231,9 @@ class recipesTableViewController: UITableViewController {
         destVC.nameText = (myCurrCell.recipeLabel!.text)!
         destVC.waitNum = (myCurrCell.waitTime)
         destVC.servingsNum = (myCurrCell.totalServings)
-        destVC.id = (myCurrCell.recipeId)
+        //destVC.allInstructions = (myCurrCell.instruction)
+        
+        
     }
     
 
