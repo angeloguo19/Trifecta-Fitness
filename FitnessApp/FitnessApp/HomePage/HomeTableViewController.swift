@@ -29,8 +29,10 @@ class HomeTableViewCell: UITableViewCell {
 }
 class HomeTableViewController: UITableViewController {
     @IBAction func loginTapped(_ sender: Any) {
-        print("hello")
-        self.performSegue(withIdentifier: "loginSegue", sender: self)
+        let defaults = UserDefaults.standard
+        defaults.set(nil, forKey: "username")
+        dismiss(animated: true, completion: nil)
+        //self.performSegue(withIdentifier: "loginSegue", sender: self)
 
     }
     var challengeList=["Sergio", "Obama", "Bobert"]

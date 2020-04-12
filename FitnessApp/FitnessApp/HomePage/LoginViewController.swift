@@ -15,6 +15,52 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBAction func loginTapped(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        defaults.set(usernameField.text, forKey: "username")
+        
+        self.performSegue(withIdentifier: "loginSegue", sender: self)
+
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        usernameField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("hi")
+        
+        let defaults = UserDefaults.standard
+        let tempUsername = defaults.string(forKey: "username")
+        if(tempUsername != nil){
+            print(tempUsername)
+             
+            self.performSegue(withIdentifier: "loginSegue", sender: self)
+            print("wtf")
+        }
+        else{
+         //print("yo")
+        }
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("hi")
+       // print(username)
+        //getData()
+        usernameField.delegate = self
+        passwordField.delegate = self
+        // Do any additional setup after loading the view.
+    }
+    
+    
+    
+    func storeData(){
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Login", in: context)
         let newEntity = NSManagedObject(entity: entity!, insertInto: context)
@@ -27,25 +73,8 @@ class LoginViewController: UIViewController {
         }catch{
             print("failed to save username")
         }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        usernameField.resignFirstResponder()
-        passwordField.resignFirstResponder()
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("hi")
-        print(username)
-        getData()
-        print(username  )
         
-        usernameField.delegate = self
-        passwordField.delegate = self
-        // Do any additional setup after loading the view.
     }
-    
     func getData(){
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Login")
