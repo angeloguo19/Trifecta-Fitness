@@ -736,18 +736,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pug-b0-EC7">
-                                            <rect key="frame" x="40" y="32" width="75" height="21"/>
+                                            <rect key="frame" x="40" y="32" width="150" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="75" id="6bm-fH-j3W"/>
+                                                <constraint firstAttribute="width" constant="150" id="6bm-fH-j3W"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRC-Eq-sXd">
-                                            <rect key="frame" x="294" y="32" width="75" height="21"/>
+                                            <rect key="frame" x="334" y="32" width="50" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="75" id="9mS-2y-Ej9"/>
+                                                <constraint firstAttribute="width" constant="50" id="9mS-2y-Ej9"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -757,7 +757,7 @@
                                     <constraints>
                                         <constraint firstItem="pug-b0-EC7" firstAttribute="centerY" secondItem="XLc-4W-XS0" secondAttribute="centerY" id="Pbk-un-tub"/>
                                         <constraint firstItem="pug-b0-EC7" firstAttribute="leading" secondItem="XLc-4W-XS0" secondAttribute="leadingMargin" constant="20" id="Qvv-2f-U3D"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="jRC-Eq-sXd" secondAttribute="trailing" constant="25" id="XJx-xb-cco"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="jRC-Eq-sXd" secondAttribute="trailing" constant="10" id="XJx-xb-cco"/>
                                         <constraint firstItem="jRC-Eq-sXd" firstAttribute="centerY" secondItem="pug-b0-EC7" secondAttribute="centerY" id="ebO-gA-NUo"/>
                                     </constraints>
                                 </tableViewCellContentView>

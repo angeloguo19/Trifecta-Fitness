@@ -206,9 +206,13 @@ class recipesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! recipesTableViewCell
         
+        
+        
+        
+        
         temp = "https://spoonacular.com/recipeImages/" +  totalRecipes.results[indexPath.row].image
         urls = URL(string: temp)
-        //cell.recipeImage.load(url: urls!))
+        cell.recipeImage.load(url: urls!)
 
         cell.recipeLabel.text = totalRecipes.results[indexPath.row].title
         cell.waitTime = totalRecipes.results[indexPath.row].readyInMinutes

@@ -42,8 +42,36 @@ class HomeTableViewController: UITableViewController {
     var sectionSizes = [3,5]
     
     var username = ""
+    
+    var debugging = false
+    
+    struct jsonCall: Codable{
+        var message: Message
+    }
+    struct Message: Codable{
+        var Stats: [StatsStruct]
+        var Challenges: [ChallengesStruct]
+    }
+    struct StatsStruct: Codable{
+        var workout: String
+        var amount: Int
+    }
+    struct ChallengesStruct: Codable{
+        var opponent: String
+        var workout: String
+        var amount: Int //should be int
+        var you: Int //should be int
+        var them: Int
+        var completed: Bool
+        //var first: String
+    }
+    //var mainCall: jsonCall
+
+    var mainCall: jsonCall = jsonCall(message: Message(Stats:[],Challenges:[]))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAllData()
         print("hi")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -51,31 +79,116 @@ class HomeTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    
+    func getAllData() {
+        
+        // 2. BEGIN NETWORKING code
+        //
+                let mySession = URLSession(configuration: URLSessionConfiguration.default)
 
+                let url = URL(string: "http://152.3.69.115:8081/api/stats/low10")!
+
+        // 3. MAKE THE HTTPS REQUEST task
+        //
+                let task = mySession.dataTask(with: url) { data, response, error in
+
+                    // ensure there is no error for this HTTP response
+                    guard error == nil else {
+                        print ("error: \(error!)")
+                        
+                        DispatchQueue.main.async {
+                            let alert1 = UIAlertController(title: "Error", message: "Issues connecting with internet", preferredStyle: .alert) //.actionSheet
+                            alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            self.present(alert1, animated: true)
+                        }
+                        return
+                    }
+
+                    // ensure there is data returned from this HTTP response
+                    guard let jsonData = data else {
+                        print("No data")
+                        return
+                    }
+                    
+                    print("Got the data from network")
+        // 4. DECODE THE RESULTING JSON
+        //
+                    let decoder = JSONDecoder()
+                    print(String(data: jsonData, encoding: .utf8))
+                    do {
+                        // decode the JSON into our array of todoItem's
+                        self.mainCall = try decoder.decode(jsonCall.self, from: jsonData)
+                                
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                        
+                    } catch {
+                        print("JSON Decode error")
+                    }
+                }
+
+            // actually make the http task run.
+            task.resume()
+        
+    }
+    
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return sectionSizes.count
+        if debugging{
+            return sectionSizes.count
+        }
+        else{
+            return 2 //Challenges + workout
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return sectionSizes[section]
+        
+        if debugging{
+                 return sectionSizes[section]
+        }
+        if section == 0{
+            return mainCall.message.Challenges.count
+        }
+        else if section == 1{
+            return mainCall.message.Stats.count
+        }
+        return 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeTableViewCell
-        if(indexPath.section == 0){
-            cell.leftLabel.text = challengeList[indexPath.row]
-            cell.rightLabel.text = ""
+        
+        if debugging{
+            if(indexPath.section == 0){
+                cell.leftLabel.text = challengeList[indexPath.row]
+                cell.rightLabel.text = ""
+            }
+            else{
+                cell.leftLabel.text = workouts[indexPath.row]
+                cell.rightLabel.text = stats[indexPath.row]
+            }
         }
+        
         else{
-            cell.leftLabel.text = workouts[indexPath.row]
-            cell.rightLabel.text = stats[indexPath.row]
+            if(indexPath.section == 0){
+                cell.leftLabel.text = mainCall.message.Challenges[indexPath.row].opponent
+                cell.rightLabel.text = ""
+            }
+            else{
+                cell.leftLabel.text = mainCall.message.Stats[indexPath.row].workout
+                cell.rightLabel.text = String(mainCall.message.Stats[indexPath.row].amount)
+            }
         }
+
 
 
 
