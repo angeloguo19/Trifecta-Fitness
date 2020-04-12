@@ -15,9 +15,12 @@ class focusViewController: UIViewController {
     var servingsNum: Int = 0
     var id: Int = 0
     
+    var allInstructions: String = ""
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var servingsLabel: UILabel!
+    @IBOutlet weak var instructionsLabel: UILabel!
     @IBOutlet weak var foodPicture: UIImageView!
     
     struct Information: Codable {
@@ -42,8 +45,13 @@ class focusViewController: UIViewController {
         nameLabel.text = nameText
         timeLabel.text = "Total Time: " + String(waitNum) + " mins"
         servingsLabel.text = "Servings: " + String(servingsNum)
+        
+        
+        instructionsLabel.text = totalInstructions.instructions
+        
     }
     
+   
     func getData() {
         
         // 2. BEGIN NETWORKING code
@@ -84,9 +92,9 @@ class focusViewController: UIViewController {
                 // decode the JSON into our array of todoItem's
                 self.totalInstructions = try decoder.decode(Information.self, from: jsonData)
                                 
-                //DispatchQueue.main.async {
-                //    self.tableView.reloadData()
-                //}
+                DispatchQueue.main.async {
+                    //self.tableView.reloadData()
+                }
             } catch {
                 print("JSON Decode error")
             }
