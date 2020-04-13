@@ -182,9 +182,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sy5-OF-Dvz">
-                                                <rect key="frame" x="36" y="562" width="335" height="320"/>
+                                                <rect key="frame" x="36" y="562" width="335" height="300"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="320" id="LRu-ia-Z6d"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="LRu-ia-Z6d"/>
                                                     <constraint firstAttribute="width" constant="335" id="gmn-Wg-X80"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
