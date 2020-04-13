@@ -30,7 +30,6 @@ class recipesTableViewCell: UITableViewCell {
     var waitTime: Int = 0
     var totalServings: Int = 0
     var instruction: String = ""
-    var recipeID: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -236,16 +235,8 @@ class recipesTableViewController: UITableViewController {
         cell.recipeLabel.text = totalRecipes.results[indexPath.row].title
         cell.waitTime = totalRecipes.results[indexPath.row].readyInMinutes
         cell.totalServings = totalRecipes.results[indexPath.row].servings
-        cell.recipeID = String(totalRecipes.results[indexPath.row].id)
-        
         
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        //ids = String(totalRecipes.results[indexPath.row].id)
-        //getmoreData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -258,7 +249,6 @@ class recipesTableViewController: UITableViewController {
         destVC.waitNum = (myCurrCell.waitTime)
         destVC.servingsNum = (myCurrCell.totalServings)
         destVC.foodImage = (myCurrCell.recipeImage.image!)
-        //destVC.allInstructions = (myCurrCell.instruction)
         destVC.allInstructions = totalInstructions[myRow!.row].instructions
         
     }
