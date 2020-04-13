@@ -166,8 +166,8 @@ class recipesTableViewController: UITableViewController {
         let mySession = URLSession(configuration: URLSessionConfiguration.default)
         
         //hard code 25 results at end
-        let link: String = "https://api.spoonacular.com/recipes/informationBulk?ids=" + ids + "&apiKey=611d546c1bc54cf8baa25037850009d7"
-        //let link: String = "https://api.spoonacular.com/recipes/" + ids + "/information?includeNutrition=false&apiKey=3779cda1cd174fa1b8677bd02ba7ba90"
+        let link: String = "https://api.spoonacular.com/recipes/informationBulk?ids=" + ids + "&apiKey=3779cda1cd174fa1b8677bd02ba7ba90"
+
         let url = URL(string: link)!
 
         // 3. MAKE THE HTTPS REQUEST task
@@ -254,14 +254,12 @@ class recipesTableViewController: UITableViewController {
         let myRow = tableView!.indexPathForSelectedRow
         let myCurrCell = tableView.cellForRow(at: myRow!) as! recipesTableViewCell
         
-        
         destVC.nameText = (myCurrCell.recipeLabel!.text)!
         destVC.waitNum = (myCurrCell.waitTime)
         destVC.servingsNum = (myCurrCell.totalServings)
         destVC.foodImage = (myCurrCell.recipeImage.image!)
         //destVC.allInstructions = (myCurrCell.instruction)
         destVC.allInstructions = totalInstructions[myRow!.row].instructions
-
         
     }
     
