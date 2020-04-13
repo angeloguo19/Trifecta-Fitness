@@ -29,8 +29,8 @@ class recipesTableViewCell: UITableViewCell {
     
     var waitTime: Int = 0
     var totalServings: Int = 0
-    var recipeId: Int = 0
     var instruction: String = ""
+    var recipeID: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,7 +49,7 @@ class recipesTableViewController: UITableViewController {
     var search: String = ""
     var urls: URL?
     var temp: String = ""
-    var idsArray: [String] = []
+    var ids: String = ""
     
     var totalRecipes: AllRecipes = AllRecipes(results: [])
     
@@ -64,27 +64,27 @@ class recipesTableViewController: UITableViewController {
         var servings: Int
         var title: String
     }
-    /*
-    var totalInstructions: Information = Information(extendedIngredients: [], instructions: "")
+    
+    var totalInstructions: [Information] = [Information(instructions: "")]
     
     struct Information: Codable {
-        var extendedIngredients: [Ingredients]
+        //var extendedIngredients: [Ingredients]
         var instructions: String
     }
     
     struct Ingredients: Codable {
-        var amount: Double
-        var unit: String
-        var originalName: String
-        var original: String
+        //var amount: Double
+        //var unit: String
+        //var originalName: String
+        //var original: String
     }
-    */
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         getAllData()
-    
+        
     }
     
     func getAllData() {
@@ -93,7 +93,7 @@ class recipesTableViewController: UITableViewController {
         let mySession = URLSession(configuration: URLSessionConfiguration.default)
         
         //hard code 25 results at end
-        let link: String = "https://api.spoonacular.com/recipes/search?query=" + search + "&number=2&instructionsRequired=true&apiKey=611d546c1bc54cf8baa25037850009d7"
+        let link: String = "https://api.spoonacular.com/recipes/search?query=" + search + "&number=2&instructionsRequired=true&apiKey=3779cda1cd174fa1b8677bd02ba7ba90"
         let url = URL(string: link)!
 
         // 3. MAKE THE HTTPS REQUEST task
@@ -130,6 +130,26 @@ class recipesTableViewController: UITableViewController {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
+                
+                if self.totalRecipes.results.count == 0 {
+                    let alert2 = UIAlertController(title: "No Search Results", message: "Sorry, but we were unable to find a recipe for the search you made", preferredStyle: .alert)
+                    
+                    alert2.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    DispatchQueue.main.async {
+                        self.present(alert2, animated: true)
+                    }
+                }
+                
+                if self.totalRecipes.results.count > 0 {
+                    self.ids = String(self.totalRecipes.results[0].id)
+                    if  self.totalRecipes.results.count > 1 {
+                        for num in (1...self.totalRecipes.results.count-1) {
+                            self.ids.append(",")
+                            self.ids.append(String(self.totalRecipes.results[num].id))
+                        }
+                    }
+                    self.getmoreData()
+                }
             } catch {
                 print("JSON Decode error")
             }
@@ -137,15 +157,17 @@ class recipesTableViewController: UITableViewController {
      
         // actually make the http task run.
         task.resume()
+    
     }
-    /*
-    func getData() {
+    
+    func getmoreData() {
         
         // 2. BEGIN NETWORKING code
         let mySession = URLSession(configuration: URLSessionConfiguration.default)
         
         //hard code 25 results at end
-        let link: String = "https://api.spoonacular.com/recipes/" + String(ids) + "/information?includeNutrition=false&apiKey=611d546c1bc54cf8baa25037850009d7"
+        let link: String = "https://api.spoonacular.com/recipes/informationBulk?ids=" + ids + "&apiKey=611d546c1bc54cf8baa25037850009d7"
+        //let link: String = "https://api.spoonacular.com/recipes/" + ids + "/information?includeNutrition=false&apiKey=3779cda1cd174fa1b8677bd02ba7ba90"
         let url = URL(string: link)!
 
         // 3. MAKE THE HTTPS REQUEST task
@@ -177,7 +199,7 @@ class recipesTableViewController: UITableViewController {
 
             do {
                 // decode the JSON into our array of todoItem's
-                self.totalInstructions = try decoder.decode(Information.self, from: jsonData)
+                self.totalInstructions = try decoder.decode([Information].self, from: jsonData)
                                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -186,17 +208,11 @@ class recipesTableViewController: UITableViewController {
                 print("JSON Decode error")
             }
         }
-     
-        // actually make the http task run.
+       
         task.resume()
     }
- */
-    func getIDs() {
-        for num in (0...totalRecipes.results.count) {
-            var new: String = String(totalRecipes.results[num].id)
-            idsArray.append(new)
-        }
-    }
+ 
+    
     
     // MARK: - Table view data source
 
@@ -209,13 +225,9 @@ class recipesTableViewController: UITableViewController {
         
         return totalRecipes.results.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! recipesTableViewCell
-        
-        
-        
-        
         
         temp = "https://spoonacular.com/recipeImages/" +  totalRecipes.results[indexPath.row].image
         urls = URL(string: temp)
@@ -224,14 +236,17 @@ class recipesTableViewController: UITableViewController {
         cell.recipeLabel.text = totalRecipes.results[indexPath.row].title
         cell.waitTime = totalRecipes.results[indexPath.row].readyInMinutes
         cell.totalServings = totalRecipes.results[indexPath.row].servings
-        cell.recipeId = totalRecipes.results[indexPath.row].id
+        cell.recipeID = String(totalRecipes.results[indexPath.row].id)
         
-        //getData()
-        //cell.instruction = totalInstructions.instructions
-
+        
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //ids = String(totalRecipes.results[indexPath.row].id)
+        //getmoreData()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -239,12 +254,14 @@ class recipesTableViewController: UITableViewController {
         let myRow = tableView!.indexPathForSelectedRow
         let myCurrCell = tableView.cellForRow(at: myRow!) as! recipesTableViewCell
         
+        
         destVC.nameText = (myCurrCell.recipeLabel!.text)!
         destVC.waitNum = (myCurrCell.waitTime)
         destVC.servingsNum = (myCurrCell.totalServings)
-        //destVC.allInstructions = (myCurrCell.instruction)
         destVC.foodImage = (myCurrCell.recipeImage.image!)
-        
+        //destVC.allInstructions = (myCurrCell.instruction)
+        destVC.allInstructions = totalInstructions[myRow!.row].instructions
+
         
     }
     
