@@ -14,6 +14,7 @@ class focusViewController: UIViewController {
     var waitNum: Int = 0
     var servingsNum: Int = 0
     var allInstructions: String = ""
+    var foodImage: UIImage?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -30,6 +31,7 @@ class focusViewController: UIViewController {
         timeLabel.text = "Total Time: " + String(waitNum) + " mins"
         servingsLabel.text = "Servings: " + String(servingsNum)
         instructionsLabel.text = allInstructions
+        foodPicture.image = foodImage
         
     }
     

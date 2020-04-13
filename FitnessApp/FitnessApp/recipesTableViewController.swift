@@ -49,7 +49,7 @@ class recipesTableViewController: UITableViewController {
     var search: String = ""
     var urls: URL?
     var temp: String = ""
-    var ids: Int = 0
+    var idsArray: [String] = []
     
     var totalRecipes: AllRecipes = AllRecipes(results: [])
     
@@ -191,6 +191,13 @@ class recipesTableViewController: UITableViewController {
         task.resume()
     }
  */
+    func getIDs() {
+        for num in (0...totalRecipes.results.count) {
+            var new: String = String(totalRecipes.results[num].id)
+            idsArray.append(new)
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -236,6 +243,7 @@ class recipesTableViewController: UITableViewController {
         destVC.waitNum = (myCurrCell.waitTime)
         destVC.servingsNum = (myCurrCell.totalServings)
         //destVC.allInstructions = (myCurrCell.instruction)
+        destVC.foodImage = (myCurrCell.recipeImage.image!)
         
         
     }
