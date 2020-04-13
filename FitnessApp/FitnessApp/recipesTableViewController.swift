@@ -64,10 +64,10 @@ class recipesTableViewController: UITableViewController {
         var title: String
     }
     
-    var totalInstructions: [Information] = [Information(instructions: "")]
+    var totalInstructions: [Information] = [Information(extendedIngredients: [], instructions: "")]
     
     struct Information: Codable {
-        //var extendedIngredients: [Ingredients]
+        var extendedIngredients: [Ingredients]
         var instructions: String
     }
     
@@ -75,7 +75,7 @@ class recipesTableViewController: UITableViewController {
         //var amount: Double
         //var unit: String
         //var originalName: String
-        //var original: String
+        var originalString: String
     }
     
     
@@ -250,6 +250,14 @@ class recipesTableViewController: UITableViewController {
         destVC.servingsNum = (myCurrCell.totalServings)
         destVC.foodImage = (myCurrCell.recipeImage.image!)
         destVC.allInstructions = totalInstructions[myRow!.row].instructions
+        
+        var allingredients: String = ""
+        for num in (0...totalInstructions[myRow!.row].extendedIngredients.count-2) {
+            allingredients.append(totalInstructions[myRow!.row].extendedIngredients[num].originalString)
+            allingredients.append("\n")
+        }
+        allingredients.append(totalInstructions[myRow!.row].extendedIngredients[totalInstructions[myRow!.row].extendedIngredients.count-1].originalString)
+        destVC.ingredientsText = allingredients
         
     }
     
