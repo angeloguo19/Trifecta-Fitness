@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 
 
 class meditationViewController: UIViewController {
@@ -15,6 +15,28 @@ class meditationViewController: UIViewController {
     @IBOutlet weak var averagetimeLabel: UILabel!
     @IBOutlet weak var newSessionButton: UIButton!
     @IBOutlet weak var moreInfoButton: UIButton!
+    
+    
+    var sessions: [NSManagedObject] = []
+    var average: String = ""
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSManagedObject>(entityName: "Session")
+        
+        do {
+            let sessions = try context.fetch(request)
+            average = String(sessions.count)
+            averagetimeLabel.text = average + " mins/day"
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+ 
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +50,12 @@ class meditationViewController: UIViewController {
         moreInfoButton.layer.borderColor = UIColor.black.cgColor
         
         
-        averagetimeLabel.text = " mins/day"
         // Do any additional setup after loading the view.
     }
     
-
+    
+    
+    
     /*
     // MARK: - Navigation
 

@@ -83,31 +83,29 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     
-    @IBAction func updateButtonTapped(_ sender: Any) {
+    @IBAction func updateButtonTapped(_ sender: UIButton) {
+    
         let addedTime = Int(progressTextField.text!)
-
-        var date: String = ""
-        let today = Date()
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        date = formatter.string(from: today)
         
-        var sessions = [NSManagedObject]()
+        let calendar = Calendar(identifier: .gregorian)
+        let units: Set<Calendar.Component> = [.year, .month, .day]
+        let components = calendar.dateComponents(units, from: Date())
+        let date = calendar.date(from: components)
+        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
            return
         }
         // 1
         let context = appDelegate.persistentContainer.viewContext
         // 2
-        let entity = NSEntityDescription.entity(forEntityName: "Person", in: context)!
-        let session = NSManagedObject(entity: entity, insertInto: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Session", in: context)!
+        let newSession = NSManagedObject(entity: entity, insertInto: context)
         // 3
-        session.setValue(date, forKeyPath: "date")
-        session.setValue(addedTime, forKey: "time")
+        newSession.setValue(date, forKey: "date")
+        newSession.setValue(addedTime, forKey: "time")
         // 4
         do {
             try context.save()
-            sessions.append(session)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
