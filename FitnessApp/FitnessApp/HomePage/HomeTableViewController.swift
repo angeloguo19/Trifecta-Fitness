@@ -76,20 +76,31 @@ class HomeTableViewController: UITableViewController {
         //var first: String
     }
     //var mainCall: jsonCall
+    
+    let backgroundColor = UIColor(red: CGFloat(1.0/255), green: 179.0/255, blue: 227.0/255, alpha: 1)
+    let cellColor = UIColor(red: CGFloat(191.0/255), green: CGFloat(100.0/255), blue: CGFloat(254.0/255), alpha: 1)
 
     var mainCall: jsonCall = jsonCall(message: Message(Stats:[],Challenges:[]))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: 156.0/255, green: 236.0/255, blue: 255.0/255, alpha: 1)
+        //self.view.backgroundColor = backgroundColor
         getAllData()
         //self.navigationController?.navigationBar.barTintColor = UIColor(red: 156.0/255, green: 236.0/255, blue: 255.0/255, alpha: 1)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.tabBarController?.tabBar.backgroundImage = UIImage()
+        self.tabBarController?.tabBar.backgroundColor = backgroundColor
         self.tabBarController?.tabBar.shadowImage = UIImage()
+        //tabBarController?.tabBar.backgroundImage = UIImage()
         self.tabBarController?.tabBar.layer.borderWidth = 0
         self.tabBarController?.tabBar.clipsToBounds = true
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = tableView.bounds
+        gradientLayer.colors = [CGColor(srgbRed: 1.0, green: 1, blue: 1, alpha: 1), CGColor(srgbRed: 1.0/255, green: 179.0/255, blue: 227.0/255, alpha: 1)]
+        let backgroundView = UIView(frame: tableView.bounds)
+        backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+        tableView.backgroundView = backgroundView
         print("hi")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -172,7 +183,15 @@ class HomeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeTableViewCell
     
         cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.frame.height/4
-        cell.mainCellLayer.backgroundColor = UIColor(red: CGFloat(186.0/255), green: CGFloat(159.0/255), blue: CGFloat(231.0/255), alpha: 1)
+        //cell.mainCellLayer.layer.borderWidth = 1
+        //cell.mainCellLayer.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = cell.mainCellLayer.bounds
+        gradientLayer.colors = [CGColor(srgbRed: 191.0/255, green: 97.0/255, blue: 254/255, alpha: 1), CGColor(srgbRed: 191.0/255, green: 50.0/255, blue: 254/255, alpha: 1), CGColor(srgbRed: 191.0/255, green: 97.0/255, blue: 254/255, alpha: 1)]
+        cell.mainCellLayer.layer.insertSublayer(gradientLayer, at: 0)
+        
+        cell.mainCellLayer.backgroundColor = cellColor
         cell.mainCellLayer.layer.masksToBounds = true
         cell.backgroundColor = cell.backgroundColor?.withAlphaComponent(0)
         cell.progressView.progress = Float(mainCall.message.Challenges[indexPath.row].you) / Float(mainCall.message.Challenges[indexPath.row].amount)

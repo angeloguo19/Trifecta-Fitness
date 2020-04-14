@@ -47,7 +47,7 @@ router.get('/', function(req, res) {
 // =============================================================================
 router.get('/ping', function(req, res) {
 	console.log("Pinging");
-	res.json({message: 'Online and Ready', err:null});
+	res.json({message: 'Online and Ready', err:""});
 });
 
 
@@ -470,7 +470,7 @@ router.route('/challenge/:challenger/:challenged/:workout/:amount')
 								return;
 							}				
 						});
-						res.json({message: "Challenge sent", err:null});
+						res.json({message: "Challenge sent", err:""});
 					});
 	  			});
 			});
