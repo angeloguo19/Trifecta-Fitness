@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             let defaultWorkouts = ["Push-Ups", "Tricep Dips", "Pull-Ups", "Sit-Ups", "Crunches", "Burpees", "Glute Bridges", "Squats", "Forward Lunges", "Calf Raises"]
             let entity = NSEntityDescription.entity(forEntityName: "Workout", in: managedContext)!
-
+            
             for workoutName in defaultWorkouts {
                 let workout = NSManagedObject(entity: entity,insertInto: managedContext)
                 workout.setValue(workoutName, forKey: "name")

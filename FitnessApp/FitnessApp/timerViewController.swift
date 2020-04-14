@@ -83,8 +83,39 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     
-    let timerList = UIPickerView()
+    @IBAction func updateButtonTapped(_ sender: Any) {
+        let addedTime = Int(progressTextField.text!)
+
+        var date: String = ""
+        let today = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        date = formatter.string(from: today)
+        
+        var sessions = [NSManagedObject]()
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+           return
+        }
+        // 1
+        let context = appDelegate.persistentContainer.viewContext
+        // 2
+        let entity = NSEntityDescription.entity(forEntityName: "Person", in: context)!
+        let session = NSManagedObject(entity: entity, insertInto: context)
+        // 3
+        session.setValue(date, forKeyPath: "date")
+        session.setValue(addedTime, forKey: "time")
+        // 4
+        do {
+            try context.save()
+            sessions.append(session)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
     
+    
+    
+    let timerList = UIPickerView()
     var timer = Timer()
     var startTime: Int = 0
     var totalTime: Int = 0
@@ -138,21 +169,7 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @objc func donePicker() {
         timerTextField.resignFirstResponder()
     }
-    
-    
-    // Update button
-    /*
-     var date: String = ""
-     let today = Date()
-     let formatter = DateFormatter.Style.short
-     date = formatter1.string(from: today)
-     */
-    
-    
-    
-    
-    
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
