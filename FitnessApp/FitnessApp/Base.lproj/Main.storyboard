@@ -497,15 +497,8 @@
                                     <action selector="pauseButtonTapped:" destination="Rcs-ph-8BH" eventType="touchUpInside" id="sgZ-Pq-38x"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Update Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xS-8s-eCE">
-                                <rect key="frame" x="72" y="679" width="145" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRz-dI-wai">
-                                <rect key="frame" x="249" y="687" width="97" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FRz-dI-wai">
+                                <rect key="frame" x="71" y="674" width="108" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -522,6 +515,14 @@
                                     <action selector="resetButtonTapped:" destination="Rcs-ph-8BH" eventType="touchUpInside" id="tds-8L-GHw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ9-Hv-bUV">
+                                <rect key="frame" x="208" y="672" width="160" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Update Progress">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="0W5-22-ADF"/>
@@ -529,11 +530,12 @@
                     <navigationItem key="navigationItem" id="BaD-lj-Fag"/>
                     <connections>
                         <outlet property="pauseButton" destination="g3a-tg-pjt" id="vI6-OF-gBv"/>
-                        <outlet property="progressTextField" destination="FRz-dI-wai" id="NG6-5V-ExT"/>
+                        <outlet property="progressTextField" destination="FRz-dI-wai" id="biy-3g-Obq"/>
                         <outlet property="resetButton" destination="ahS-FQ-loz" id="mwS-kX-oLL"/>
                         <outlet property="startButton" destination="OQG-Pw-fcE" id="uq3-ma-zjE"/>
                         <outlet property="timerLabel" destination="K11-ID-fv4" id="8ea-gu-XnS"/>
                         <outlet property="timerTextField" destination="qpT-H0-xNs" id="GWO-j0-dy1"/>
+                        <outlet property="updateButton" destination="QJ9-Hv-bUV" id="ogz-5J-Ebd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSS-M7-cuf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
