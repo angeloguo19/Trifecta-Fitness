@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LAB-SM-csN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LAB-SM-csN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -941,7 +941,7 @@
         <scene sceneID="zq9-AU-nLS">
             <objects>
                 <tableViewController id="yYI-69-P0l" userLabel="Home" customClass="HomeTableViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JT7-Bu-uoL">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JT7-Bu-uoL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -953,35 +953,73 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pug-b0-EC7">
-                                            <rect key="frame" x="40" y="32" width="150" height="21"/>
+                                        <view contentMode="scaleToFill" restorationIdentifier="displayLayer" translatesAutoresizingMaskIntoConstraints="NO" id="ifH-ig-56d">
+                                            <rect key="frame" x="25" y="10" width="364" height="65"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4T-Zw-3lh">
+                                                    <rect key="frame" x="25" y="25" width="78" height="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="Ita-gl-1Ob">
+                                                    <rect key="frame" x="0.0" y="60" width="364" height="0.0"/>
+                                                    <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="progressTintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="trackTintColor" white="1" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </progressView>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="ulc-hx-tP3">
+                                                    <rect key="frame" x="0.0" y="50" width="364" height="0.0"/>
+                                                    <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="progressTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="trackTintColor" white="1" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </progressView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf6-ec-UvD">
+                                                    <rect key="frame" x="281" y="10" width="58" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i55-kc-0MU">
+                                                    <rect key="frame" x="193" y="10" width="78" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="150" id="6bm-fH-j3W"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ita-gl-1Ob" secondAttribute="trailing" id="3MR-AY-L2H"/>
+                                                <constraint firstAttribute="trailing" secondItem="ulc-hx-tP3" secondAttribute="trailing" id="6xT-M5-jul"/>
+                                                <constraint firstItem="hf6-ec-UvD" firstAttribute="centerY" secondItem="C4T-Zw-3lh" secondAttribute="centerY" id="8Y8-bZ-LqB"/>
+                                                <constraint firstItem="Ita-gl-1Ob" firstAttribute="top" secondItem="ulc-hx-tP3" secondAttribute="bottom" constant="10" id="BLN-hl-U2C"/>
+                                                <constraint firstItem="C4T-Zw-3lh" firstAttribute="top" secondItem="ifH-ig-56d" secondAttribute="top" constant="25" id="FLg-ET-WYH"/>
+                                                <constraint firstItem="i55-kc-0MU" firstAttribute="centerX" secondItem="ifH-ig-56d" secondAttribute="centerX" constant="50" id="IcM-mE-Egs"/>
+                                                <constraint firstItem="C4T-Zw-3lh" firstAttribute="leading" secondItem="ifH-ig-56d" secondAttribute="leading" constant="25" id="PX1-cR-lL4"/>
+                                                <constraint firstAttribute="trailing" secondItem="hf6-ec-UvD" secondAttribute="trailing" constant="25" id="XyP-lM-JWU"/>
+                                                <constraint firstItem="hf6-ec-UvD" firstAttribute="leading" secondItem="i55-kc-0MU" secondAttribute="trailing" constant="10" id="YzD-qh-HNP"/>
+                                                <constraint firstItem="ulc-hx-tP3" firstAttribute="leading" secondItem="ifH-ig-56d" secondAttribute="leading" id="ajt-9q-z4b"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ita-gl-1Ob" secondAttribute="bottom" constant="5" id="cAz-hj-saB"/>
+                                                <constraint firstItem="i55-kc-0MU" firstAttribute="centerY" secondItem="C4T-Zw-3lh" secondAttribute="centerY" id="ieH-Yl-r1H"/>
+                                                <constraint firstItem="ulc-hx-tP3" firstAttribute="top" secondItem="C4T-Zw-3lh" secondAttribute="bottom" constant="25" id="mvI-7n-TRc"/>
+                                                <constraint firstItem="Ita-gl-1Ob" firstAttribute="leading" secondItem="ifH-ig-56d" secondAttribute="leading" id="tPI-P1-JuG"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRC-Eq-sXd">
-                                            <rect key="frame" x="334" y="32" width="50" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="50" id="9mS-2y-Ej9"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="pug-b0-EC7" firstAttribute="centerY" secondItem="XLc-4W-XS0" secondAttribute="centerY" id="Pbk-un-tub"/>
-                                        <constraint firstItem="pug-b0-EC7" firstAttribute="leading" secondItem="XLc-4W-XS0" secondAttribute="leadingMargin" constant="20" id="Qvv-2f-U3D"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="jRC-Eq-sXd" secondAttribute="trailing" constant="10" id="XJx-xb-cco"/>
-                                        <constraint firstItem="jRC-Eq-sXd" firstAttribute="centerY" secondItem="pug-b0-EC7" secondAttribute="centerY" id="ebO-gA-NUo"/>
+                                        <constraint firstAttribute="bottom" secondItem="ifH-ig-56d" secondAttribute="bottom" constant="10" id="23c-93-pKa"/>
+                                        <constraint firstItem="ifH-ig-56d" firstAttribute="leading" secondItem="XLc-4W-XS0" secondAttribute="leading" constant="25" id="OlR-nM-iGt"/>
+                                        <constraint firstItem="ifH-ig-56d" firstAttribute="top" secondItem="XLc-4W-XS0" secondAttribute="top" constant="10" id="ZS0-zz-lbz"/>
+                                        <constraint firstAttribute="trailing" secondItem="ifH-ig-56d" secondAttribute="trailing" constant="25" id="eOV-T0-n6K"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="leftLabel" destination="pug-b0-EC7" id="4xw-1O-prU"/>
-                                    <outlet property="rightLabel" destination="jRC-Eq-sXd" id="W2N-t4-FQO"/>
+                                    <outlet property="amountLabel" destination="hf6-ec-UvD" id="3UP-a7-mX7"/>
+                                    <outlet property="challengeLabel" destination="C4T-Zw-3lh" id="Fe1-Hn-E6u"/>
+                                    <outlet property="mainCellLayer" destination="ifH-ig-56d" id="laz-nI-VjI"/>
+                                    <outlet property="opProgressView" destination="Ita-gl-1Ob" id="fWC-7h-gIC"/>
+                                    <outlet property="progressView" destination="ulc-hx-tP3" id="bvx-dq-022"/>
+                                    <outlet property="workoutLabel" destination="i55-kc-0MU" id="Tl4-4k-h0p"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
