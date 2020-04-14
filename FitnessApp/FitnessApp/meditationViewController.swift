@@ -28,10 +28,15 @@ class meditationViewController: UIViewController {
         let request = NSFetchRequest<NSManagedObject>(entityName: "Session")
         
         do {
-            let sessions = try context.fetch(request)
-            average = String(sessions.count)
+            var total: Int = 0
+            sessions = try context.fetch(request)
+            for session in sessions {
+                if session.value(forKey: "time") != nil {
+                    total += (session.value(forKey: "time") as! Int)
+                }
+            }
+            average = String(total/7)
             averagetimeLabel.text = average + " mins/day"
-            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -48,7 +53,6 @@ class meditationViewController: UIViewController {
         moreInfoButton.layer.cornerRadius = 6
         moreInfoButton.layer.borderWidth = 1
         moreInfoButton.layer.borderColor = UIColor.black.cgColor
-        
         
         // Do any additional setup after loading the view.
     }
