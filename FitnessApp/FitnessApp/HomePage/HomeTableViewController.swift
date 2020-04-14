@@ -10,11 +10,21 @@ import UIKit
 import CoreData
 
 class HomeTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var leftLabel: UILabel!
-    @IBOutlet weak var rightLabel: UILabel!
     //@IBOutlet weak var taskLabel: UILabel!
    // @IBOutlet weak var completeYN: UISwitch!
+//    @IBOutlet weak var amountLabel: UILabel!
+//    @IBOutlet weak var workoutLabel: UILabel!
+//    @IBOutlet weak var opProgressView: UIProgressView!
+//    @IBOutlet weak var progressView: UIProgressView!
+//    @IBOutlet weak var challengeLabel: UILabel!
+//    @IBOutlet weak var mainCellLayer: UIView!
+    
+    @IBOutlet weak var opProgressView: UIProgressView!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var workoutLabel: UILabel!
+    @IBOutlet weak var challengeLabel: UILabel!
+    @IBOutlet weak var mainCellLayer: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -71,7 +81,15 @@ class HomeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(red: 156.0/255, green: 236.0/255, blue: 255.0/255, alpha: 1)
         getAllData()
+        //self.navigationController?.navigationBar.barTintColor = UIColor(red: 156.0/255, green: 236.0/255, blue: 255.0/255, alpha: 1)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.tabBarController?.tabBar.backgroundImage = UIImage()
+        self.tabBarController?.tabBar.shadowImage = UIImage()
+        self.tabBarController?.tabBar.layer.borderWidth = 0
+        self.tabBarController?.tabBar.clipsToBounds = true
         print("hi")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -134,7 +152,9 @@ class HomeTableViewController: UITableViewController {
         
     }
     
-    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return mainCall.message.Challenges.count
+    }
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -143,69 +163,43 @@ class HomeTableViewController: UITableViewController {
             return sectionSizes.count
         }
         else{
-            return 2 //Challenges + workout
+            return 1 //Challenges + workout
         }
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        
-        if debugging{
-                 return sectionSizes[section]
-        }
-        if section == 0{
-            return mainCall.message.Challenges.count
-        }
-        else if section == 1{
-            return mainCall.message.Stats.count
-        }
-        return 0
-    }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeTableViewCell
-        
-        if debugging{
-            if(indexPath.section == 0){
-                cell.leftLabel.text = challengeList[indexPath.row]
-                cell.rightLabel.text = ""
-            }
-            else{
-                cell.leftLabel.text = workouts[indexPath.row]
-                cell.rightLabel.text = stats[indexPath.row]
-            }
-        }
-        
-        else{
-            if(indexPath.section == 0){
-                cell.leftLabel.text = mainCall.message.Challenges[indexPath.row].opponent
-                cell.rightLabel.text = ""
-            }
-            else{
-                cell.leftLabel.text = mainCall.message.Stats[indexPath.row].workout
-                cell.rightLabel.text = String(mainCall.message.Stats[indexPath.row].amount)
-            }
-        }
-
-
-
-
-        
-        
-      // Configure the cell...
-      //cell.places?.text = places[indexPath.row]
-
-        // Configure the cell...
-
+    
+        cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.frame.height/4
+        cell.mainCellLayer.backgroundColor = UIColor(red: CGFloat(186.0/255), green: CGFloat(159.0/255), blue: CGFloat(231.0/255), alpha: 1)
+        cell.mainCellLayer.layer.masksToBounds = true
+        cell.backgroundColor = cell.backgroundColor?.withAlphaComponent(0)
+        cell.progressView.progress = Float(mainCall.message.Challenges[indexPath.row].you) / Float(mainCall.message.Challenges[indexPath.row].amount)
+        cell.opProgressView.progress = Float(mainCall.message.Challenges[indexPath.row].them) / Float(mainCall.message.Challenges[indexPath.row].amount)
+        let transform : CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 6.0)
+        cell.progressView.transform = transform
+        cell.opProgressView.transform = transform
+        print("Checking for data from \(mainCall)")
+        cell.challengeLabel.text = mainCall.message.Challenges[indexPath.row].opponent
+        cell.amountLabel.text = String( mainCall.message.Challenges[indexPath.row].amount)
+        cell.workoutLabel.text = mainCall.message.Challenges[indexPath.row].workout
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.tintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        header.textLabel?.font = header.textLabel?.font.withSize(35)
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitles[section]
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 75
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier=="loginSegue"){
             let destVC = segue.destination as! LoginViewController
