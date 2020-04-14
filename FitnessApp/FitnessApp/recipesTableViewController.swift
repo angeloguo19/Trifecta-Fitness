@@ -92,7 +92,7 @@ class recipesTableViewController: UITableViewController {
         let mySession = URLSession(configuration: URLSessionConfiguration.default)
         
         //hard code 25 results at end
-        let link: String = "https://api.spoonacular.com/recipes/search?query=" + search + "&number=2&instructionsRequired=true&apiKey=3779cda1cd174fa1b8677bd02ba7ba90"
+        let link: String = "https://api.spoonacular.com/recipes/search?query=" + search + "&number=1&instructionsRequired=true&apiKey=3779cda1cd174fa1b8677bd02ba7ba90"
         let url = URL(string: link)!
 
         // 3. MAKE THE HTTPS REQUEST task
