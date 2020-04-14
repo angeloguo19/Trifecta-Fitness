@@ -38,6 +38,7 @@ router.get('/', function(req, res) {
     	+ '\n/update/username/workout/amount'
 		+ '\n/leaderboard'
 		+ '\n/delete/username'
+		+ '\n/reset'
 	});
 });
 // more routes for our API will happen here
