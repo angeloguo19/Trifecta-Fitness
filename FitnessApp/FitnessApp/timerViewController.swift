@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 import UserNotifications
 
 class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -138,6 +138,20 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @objc func donePicker() {
         timerTextField.resignFirstResponder()
     }
+    
+    
+    // Update button
+    /*
+     var date: String = ""
+     let today = Date()
+     let formatter = DateFormatter.Style.short
+     date = formatter1.string(from: today)
+     */
+    
+    
+    
+    
+    
     
     
     override func viewDidLoad() {
