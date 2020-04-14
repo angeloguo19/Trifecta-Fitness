@@ -8,11 +8,40 @@
 
 import UIKit
 
-
+import UserNotifications
 
 class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
 
+    // MARK: - Notification Code
+    func permission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+            if success {
+                    print("All set!")
+            }
+        }
+    }
+    func scheduleNotification() {
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Time's Up"
+        content.body = "Timer has finished"
+        content.sound = UNNotificationSound.default
+
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1.0, repeats: false)
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { (error : Error?) in
+            if let theError = error {
+                print(theError.localizedDescription)
+            }
+        }
+        
+    }
+    
+    // MARK: Main Code
+    
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
@@ -64,7 +93,7 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     
     func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         isTimerRunning = true
         pauseButton.isEnabled = true
     }
@@ -72,7 +101,11 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         if totalTime < 1 {
             timer.invalidate()
             isTimerRunning = false
-            //Send alert to indicate "time's up!"
+            
+            let timerAlert = UIAlertController(title: "Time's Up", message: "The timer has finished", preferredStyle: .alert)
+            timerAlert.addAction(UIAlertAction(title: "OK", style: .default ,handler: nil))
+            self.present(timerAlert, animated: true)
+             
         } else {
             totalTime -= 1     //This will decrement(count down)the seconds.
             timerLabel.text = timeFormat(time: TimeInterval(totalTime))
@@ -117,6 +150,8 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         pickerTextField.rightView = arrow
         pickerTextField.rightViewMode = UITextField.ViewMode.always
         */
+        
+        permission()
         
         // Make done button
         let toolBar = UIToolbar()
