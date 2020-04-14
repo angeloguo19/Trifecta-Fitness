@@ -1,0 +1,3 @@
+[submodule "FitnessAPI"]
+	path = FitnessAPI
+	url = https://github.com/Revilo2157/FitnessAPI
