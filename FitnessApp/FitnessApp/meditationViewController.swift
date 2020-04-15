@@ -19,7 +19,8 @@ class meditationViewController: UIViewController {
     
     var sessions: [NSManagedObject] = []
     var average: String = ""
-
+    var pastWeekTimes: [Int] = [0,0,0,0,0,0,0]
+    var days = [NSDate]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -65,15 +66,18 @@ class meditationViewController: UIViewController {
         view.layer.insertSublayer(gradientView, at: 0)
 
         // MARK: Core Data Call
-        // Get today's date
+        // Get NSDate for past 7 days
+        
         let calendar = Calendar(identifier: .gregorian)
         let units: Set<Calendar.Component> = [.year, .month, .day]
         let components = calendar.dateComponents(units, from: Date())
         let date: NSDate = calendar.date(from: components)! as NSDate
-        
-        // Get specific time data for past 7 days
-        
-        
+        days.append(date)
+        for i in 1 ... 6 {
+            let day = Calendar.current.date(byAdding: .day, value: -i, to: date as Date)!
+            days.append(day as NSDate)
+        }
+ 
     
     }
     
