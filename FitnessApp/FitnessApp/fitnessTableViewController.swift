@@ -31,19 +31,19 @@ class fitnessTableViewCell: UITableViewCell {
     }
 }
 
-let cellGradient = false
-let topCellColor = CGColor(srgbRed: 150/255.0, green: 222/255.0, blue: 192/255.0, alpha: 1)
-let bottomCellColor = CGColor(srgbRed: 0/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
-let cellColor = UIColor(red: 159/255.0, green: 222/255.0, blue: 192/255.0, alpha: 1)
-let topGradient = CGColor(srgbRed: 255/255.0, green: 159.0/255.0, blue: 231.0/255.0, alpha: 1)
-let bottomGradient = CGColor(srgbRed: 255/255.0, green: 179/255.0, blue: 71/255.0, alpha: 1)
 
 class fitnessTableViewController: UITableViewController {
     
 //    var workouts = ["Push-Ups", "Tricep Dips", "Pull-Ups", "Sit-Ups", "Crunches", "Burpees", "Glute Bridges", "Squats", "Forward Lunges", "Calf Raises"]
     var workouts: [NSManagedObject] = []
 
-    
+    let cellGradient = false
+    let topCellColor = CGColor(srgbRed: 150/255.0, green: 222/255.0, blue: 192/255.0, alpha: 1)
+    let bottomCellColor = CGColor(srgbRed: 0/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
+    let cellColor = UIColor(red: 255/255.0, green: 190/255.0, blue: 175/255.0, alpha: 1)
+    let topGradient = CGColor(srgbRed: 185/255.0, green: 239/255.0, blue: 213/255.0, alpha: 1)
+    let bottomGradient = CGColor(srgbRed: 253/255.0, green: 253/255.0, blue: 150/255.0, alpha: 1)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
