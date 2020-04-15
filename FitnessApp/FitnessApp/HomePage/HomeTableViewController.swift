@@ -31,7 +31,6 @@ class workoutTableCell: UITableViewCell {
 class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var opProgressView: UIProgressView!
     @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var workoutLabel: UILabel!
     @IBOutlet weak var challengeLabel: UILabel!
     @IBOutlet weak var mainCellLayer: UIView!
@@ -226,8 +225,8 @@ class HomeTableViewController: UITableViewController {
             let transform : CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 5.0)
             cell.progressView.transform = transform
             cell.opProgressView.transform = transform
-            cell.amountLabel.text = String( mainCall.message.Challenges[indexPath.row].amount)
-            cell.workoutLabel.text = mainCall.message.Challenges[indexPath.row].workout
+            //cell.amountLabel.text = String( mainCall.message.Challenges[indexPath.row].amount)
+            cell.workoutLabel.text = String( mainCall.message.Challenges[indexPath.row].amount)+" "+mainCall.message.Challenges[indexPath.row].workout
             cell.challengeLabel.text = mainCall.message.Challenges[indexPath.row].opponent
             cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.frame.height/4
             //cell.mainCellLayer.layer.borderWidth = 1
