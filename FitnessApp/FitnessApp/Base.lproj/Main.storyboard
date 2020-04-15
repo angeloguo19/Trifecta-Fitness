@@ -655,7 +655,9 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3qP-6a-xqY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="36f-34-UAc" kind="relationship" relationship="viewControllers" id="FSm-40-FHt"/>
@@ -957,31 +959,31 @@
                                             <rect key="frame" x="25" y="10" width="364" height="130"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4T-Zw-3lh">
-                                                    <rect key="frame" x="25" y="25" width="78" height="61"/>
+                                                    <rect key="frame" x="25" y="25" width="78" height="55"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="Ita-gl-1Ob">
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ita-gl-1Ob">
                                                     <rect key="frame" x="0.0" y="123" width="364" height="2"/>
                                                     <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="progressTintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="trackTintColor" white="1" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="progressTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </progressView>
-                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="ulc-hx-tP3">
-                                                    <rect key="frame" x="0.0" y="111" width="364" height="2"/>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="ulc-hx-tP3">
+                                                    <rect key="frame" x="0.0" y="113.5" width="364" height="2"/>
                                                     <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="progressTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="trackTintColor" white="1" alpha="0.25" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="progressTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </progressView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf6-ec-UvD">
-                                                    <rect key="frame" x="281" y="40.5" width="58" height="30"/>
+                                                    <rect key="frame" x="281" y="37.5" width="58" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i55-kc-0MU">
-                                                    <rect key="frame" x="193" y="40.5" width="78" height="30"/>
+                                                    <rect key="frame" x="193" y="37.5" width="78" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -990,19 +992,20 @@
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Ita-gl-1Ob" secondAttribute="trailing" id="3MR-AY-L2H"/>
-                                                <constraint firstAttribute="trailing" secondItem="ulc-hx-tP3" secondAttribute="trailing" id="6xT-M5-jul"/>
+                                                <constraint firstItem="ulc-hx-tP3" firstAttribute="centerX" secondItem="Ita-gl-1Ob" secondAttribute="centerX" id="5FK-0n-nUs"/>
                                                 <constraint firstItem="hf6-ec-UvD" firstAttribute="centerY" secondItem="C4T-Zw-3lh" secondAttribute="centerY" id="8Y8-bZ-LqB"/>
-                                                <constraint firstItem="Ita-gl-1Ob" firstAttribute="top" secondItem="ulc-hx-tP3" secondAttribute="bottom" constant="10" id="BLN-hl-U2C"/>
+                                                <constraint firstItem="Ita-gl-1Ob" firstAttribute="top" secondItem="ulc-hx-tP3" secondAttribute="bottom" constant="7.5" id="BLN-hl-U2C"/>
                                                 <constraint firstItem="C4T-Zw-3lh" firstAttribute="top" secondItem="ifH-ig-56d" secondAttribute="top" constant="25" id="FLg-ET-WYH"/>
                                                 <constraint firstItem="i55-kc-0MU" firstAttribute="centerX" secondItem="ifH-ig-56d" secondAttribute="centerX" constant="50" id="IcM-mE-Egs"/>
                                                 <constraint firstItem="C4T-Zw-3lh" firstAttribute="leading" secondItem="ifH-ig-56d" secondAttribute="leading" constant="25" id="PX1-cR-lL4"/>
                                                 <constraint firstAttribute="trailing" secondItem="hf6-ec-UvD" secondAttribute="trailing" constant="25" id="XyP-lM-JWU"/>
                                                 <constraint firstItem="hf6-ec-UvD" firstAttribute="leading" secondItem="i55-kc-0MU" secondAttribute="trailing" constant="10" id="YzD-qh-HNP"/>
-                                                <constraint firstItem="ulc-hx-tP3" firstAttribute="leading" secondItem="ifH-ig-56d" secondAttribute="leading" id="ajt-9q-z4b"/>
+                                                <constraint firstItem="ulc-hx-tP3" firstAttribute="leading" secondItem="ifH-ig-56d" secondAttribute="leading" id="alL-hp-AgI"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ita-gl-1Ob" secondAttribute="bottom" constant="5" id="cAz-hj-saB"/>
                                                 <constraint firstItem="i55-kc-0MU" firstAttribute="centerY" secondItem="C4T-Zw-3lh" secondAttribute="centerY" id="ieH-Yl-r1H"/>
-                                                <constraint firstItem="ulc-hx-tP3" firstAttribute="top" secondItem="C4T-Zw-3lh" secondAttribute="bottom" constant="25" id="mvI-7n-TRc"/>
                                                 <constraint firstItem="Ita-gl-1Ob" firstAttribute="leading" secondItem="ifH-ig-56d" secondAttribute="leading" id="tPI-P1-JuG"/>
+                                                <constraint firstAttribute="bottom" secondItem="C4T-Zw-3lh" secondAttribute="bottom" constant="50" id="uXV-BF-OWL"/>
+                                                <constraint firstAttribute="trailing" secondItem="ulc-hx-tP3" secondAttribute="trailing" id="vws-I6-KTT"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -1044,11 +1047,11 @@
             </objects>
             <point key="canvasLocation" x="247.82608695652175" y="-2310.2678571428569"/>
         </scene>
-        <!--Meditation-->
+        <!--Navigation Controller-->
         <scene sceneID="WVp-dY-cTn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8oz-q9-jXx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Meditation" id="0KL-pH-GSc"/>
+                    <tabBarItem key="tabBarItem" title="" image="Meditation" id="0KL-pH-GSc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wvt-cO-ZbW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -1063,11 +1066,11 @@
             </objects>
             <point key="canvasLocation" x="-7.2463768115942031" y="293.97321428571428"/>
         </scene>
-        <!--Fitness-->
+        <!--Navigation Controller-->
         <scene sceneID="5Bs-nd-dkW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y0a-lJ-O4K" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Fitness" id="Y2N-6U-3Yh"/>
+                    <tabBarItem key="tabBarItem" title="" image="Fitness" id="Y2N-6U-3Yh"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bgn-gM-7zz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -1082,11 +1085,11 @@
             </objects>
             <point key="canvasLocation" x="902.89855072463774" y="-1083.4821428571429"/>
         </scene>
-        <!--Nutrition-->
+        <!--Navigation Controller-->
         <scene sceneID="NO6-nQ-kwT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="b7Y-a6-WCD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Nutrition" id="fH4-69-H0D"/>
+                    <tabBarItem key="tabBarItem" title="" image="Apple" id="fH4-69-H0D"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mFY-tl-tjS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -1101,11 +1104,11 @@
             </objects>
             <point key="canvasLocation" x="-7.2463768115942031" y="1656.6964285714284"/>
         </scene>
-        <!--Home-->
+        <!--Navigation Controller-->
         <scene sceneID="OO9-yf-Ul4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="36f-34-UAc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="VtD-dW-As4"/>
+                    <tabBarItem key="tabBarItem" title="" image="Home" id="VtD-dW-As4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rIK-EN-svs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -1140,4 +1143,10 @@
             <point key="canvasLocation" x="-1714.4927536231885" y="-1297.0982142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Apple" width="50" height="50"/>
+        <image name="Fitness" width="50" height="50"/>
+        <image name="Home" width="50" height="50"/>
+        <image name="Meditation" width="50" height="50"/>
+    </resources>
 </document>

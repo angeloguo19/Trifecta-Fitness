@@ -77,8 +77,9 @@ class HomeTableViewController: UITableViewController {
     }
     //var mainCall: jsonCall
     
-    let backgroundColor = UIColor(red: CGFloat(1.0/255), green: 179.0/255, blue: 227.0/255, alpha: 1)
-    let cellColor = UIColor(red: CGFloat(191.0/255), green: CGFloat(100.0/255), blue: CGFloat(254.0/255), alpha: 1)
+    let tabBarColor = UIColor(red: 1.0/255, green: 179.0/255, blue: 227.0/255, alpha: 0.9)
+    let cellDarkColor = CGColor(srgbRed: 165.0/255, green: 165.0/255, blue: 165.0/255, alpha: 1)
+    let cellLightColor = CGColor(srgbRed: 186.0/255, green: 200.0/255, blue: 231.0/255, alpha: 1)
 
     var mainCall: jsonCall = jsonCall(message: Message(Stats:[],Challenges:[]))
     
@@ -89,9 +90,17 @@ class HomeTableViewController: UITableViewController {
         //self.navigationController?.navigationBar.barTintColor = UIColor(red: 156.0/255, green: 236.0/255, blue: 255.0/255, alpha: 1)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.tabBarController?.tabBar.backgroundColor = backgroundColor
-        self.tabBarController?.tabBar.shadowImage = UIImage()
-        //tabBarController?.tabBar.backgroundImage = UIImage()
+        
+        //self.tabBarController?.tabBar.backgroundColor = UIColor.clear
+        //self.tabBarController?.tabBar.shadowImage = UIImage()
+        tabBarController?.tabBar.backgroundImage = UIImage()
+        
+        let amount = 125
+        var tabFrame = tabBarController?.tabBar.frame
+        tabFrame?.size.height = CGFloat(amount)
+        tabFrame?.origin.y = self.view.frame.size.height - CGFloat(amount)
+        tabBarController?.tabBar.frame = tabFrame!
+        tabBarController?.tabBar.backgroundColor = tabBarColor
         self.tabBarController?.tabBar.layer.borderWidth = 0
         self.tabBarController?.tabBar.clipsToBounds = true
         
@@ -142,7 +151,7 @@ class HomeTableViewController: UITableViewController {
                     
                     print("Got the data from network")
         // 4. DECODE THE RESULTING JSON
-        //
+                    //print(String(bytes: jsonData, encoding:  .utf8))
                     let decoder = JSONDecoder()
                     //print(String(data: jsonData, encoding: .utf8))
                     do {
@@ -188,15 +197,14 @@ class HomeTableViewController: UITableViewController {
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = cell.mainCellLayer.bounds
-        gradientLayer.colors = [CGColor(srgbRed: 191.0/255, green: 97.0/255, blue: 254/255, alpha: 1), CGColor(srgbRed: 191.0/255, green: 50.0/255, blue: 254/255, alpha: 1), CGColor(srgbRed: 191.0/255, green: 97.0/255, blue: 254/255, alpha: 1)]
+        gradientLayer.colors = [cellDarkColor, cellDarkColor]
         cell.mainCellLayer.layer.insertSublayer(gradientLayer, at: 0)
         
-        cell.mainCellLayer.backgroundColor = cellColor
         cell.mainCellLayer.layer.masksToBounds = true
         cell.backgroundColor = cell.backgroundColor?.withAlphaComponent(0)
         cell.progressView.progress = Float(mainCall.message.Challenges[indexPath.row].you) / Float(mainCall.message.Challenges[indexPath.row].amount)
         cell.opProgressView.progress = Float(mainCall.message.Challenges[indexPath.row].them) / Float(mainCall.message.Challenges[indexPath.row].amount)
-        let transform : CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 6.0)
+        let transform : CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 5.0)
         cell.progressView.transform = transform
         cell.opProgressView.transform = transform
         print("Checking for data from \(mainCall)")
