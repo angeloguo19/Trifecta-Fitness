@@ -965,13 +965,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ita-gl-1Ob">
-                                                    <rect key="frame" x="0.0" y="123" width="364" height="2"/>
+                                                    <rect key="frame" x="0.0" y="125.5" width="364" height="2"/>
                                                     <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="progressTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </progressView>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="ulc-hx-tP3">
-                                                    <rect key="frame" x="0.0" y="113.5" width="364" height="2"/>
+                                                    <rect key="frame" x="0.0" y="116" width="364" height="2"/>
                                                     <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="progressTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1001,7 +1001,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="hf6-ec-UvD" secondAttribute="trailing" constant="25" id="XyP-lM-JWU"/>
                                                 <constraint firstItem="hf6-ec-UvD" firstAttribute="leading" secondItem="i55-kc-0MU" secondAttribute="trailing" constant="10" id="YzD-qh-HNP"/>
                                                 <constraint firstItem="ulc-hx-tP3" firstAttribute="leading" secondItem="ifH-ig-56d" secondAttribute="leading" id="alL-hp-AgI"/>
-                                                <constraint firstAttribute="bottom" secondItem="Ita-gl-1Ob" secondAttribute="bottom" constant="5" id="cAz-hj-saB"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ita-gl-1Ob" secondAttribute="bottom" constant="2.5" id="cAz-hj-saB"/>
                                                 <constraint firstItem="i55-kc-0MU" firstAttribute="centerY" secondItem="C4T-Zw-3lh" secondAttribute="centerY" id="ieH-Yl-r1H"/>
                                                 <constraint firstItem="Ita-gl-1Ob" firstAttribute="leading" secondItem="ifH-ig-56d" secondAttribute="leading" id="tPI-P1-JuG"/>
                                                 <constraint firstAttribute="bottom" secondItem="C4T-Zw-3lh" secondAttribute="bottom" constant="50" id="uXV-BF-OWL"/>

@@ -77,8 +77,13 @@ class HomeTableViewController: UITableViewController {
     }
     //var mainCall: jsonCall
     
-    let tabBarColor = UIColor(red: 1.0/255, green: 179.0/255, blue: 227.0/255, alpha: 0.9)
-    let cellDarkColor = CGColor(srgbRed: 165.0/255, green: 165.0/255, blue: 165.0/255, alpha: 1)
+    let tabBarColor = UIColor(red: 128.0/255, green: 226.0/255, blue: 255/255, alpha: 0.9)
+    let cellGradient = false
+    let topCellColor = CGColor(srgbRed: 150/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
+    let bottomCellColor = CGColor(srgbRed: 0/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
+    let cellColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
+    let topGradient = CGColor(srgbRed: 186.0/255, green: 159.0/255, blue: 231.0/255, alpha: 1)
+    let bottomGradient = CGColor(srgbRed: 128.0/255, green: 250.0/255, blue: 255/255, alpha: 1)
     let cellLightColor = CGColor(srgbRed: 186.0/255, green: 200.0/255, blue: 231.0/255, alpha: 1)
 
     var mainCall: jsonCall = jsonCall(message: Message(Stats:[],Challenges:[]))
@@ -91,8 +96,8 @@ class HomeTableViewController: UITableViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        //self.tabBarController?.tabBar.backgroundColor = UIColor.clear
-        //self.tabBarController?.tabBar.shadowImage = UIImage()
+        self.tabBarController?.tabBar.backgroundColor = UIColor.clear
+        self.tabBarController?.tabBar.shadowImage = UIImage()
         tabBarController?.tabBar.backgroundImage = UIImage()
         
         let amount = 125
@@ -100,13 +105,20 @@ class HomeTableViewController: UITableViewController {
         tabFrame?.size.height = CGFloat(amount)
         tabFrame?.origin.y = self.view.frame.size.height - CGFloat(amount)
         tabBarController?.tabBar.frame = tabFrame!
-        tabBarController?.tabBar.backgroundColor = tabBarColor
+        
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = (tabBarController?.tabBar.bounds)!
+        tabBarController?.tabBar.insertSubview(blurView, at: 0)
+        //tabBarController?.tabBar.isTranslucent = true
+        
         self.tabBarController?.tabBar.layer.borderWidth = 0
         self.tabBarController?.tabBar.clipsToBounds = true
         
+        
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = tableView.bounds
-        gradientLayer.colors = [CGColor(srgbRed: 1.0, green: 1, blue: 1, alpha: 1), CGColor(srgbRed: 1.0/255, green: 179.0/255, blue: 227.0/255, alpha: 1)]
+        gradientLayer.colors = [topGradient, bottomGradient]
         let backgroundView = UIView(frame: tableView.bounds)
         backgroundView.layer.insertSublayer(gradientLayer, at: 0)
         tableView.backgroundView = backgroundView
@@ -195,13 +207,17 @@ class HomeTableViewController: UITableViewController {
         //cell.mainCellLayer.layer.borderWidth = 1
         //cell.mainCellLayer.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
         
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = cell.mainCellLayer.bounds
-        gradientLayer.colors = [cellDarkColor, cellDarkColor]
-        cell.mainCellLayer.layer.insertSublayer(gradientLayer, at: 0)
-        
+
+        cell.backgroundColor = UIColor.clear
         cell.mainCellLayer.layer.masksToBounds = true
-        cell.backgroundColor = cell.backgroundColor?.withAlphaComponent(0)
+        if cellGradient {
+            let gradientLayer = CAGradientLayer()
+            gradientLayer.frame = cell.mainCellLayer.bounds
+            gradientLayer.colors = [topCellColor, bottomCellColor]
+            cell.mainCellLayer.layer.insertSublayer(gradientLayer, at: 0)
+        } else {
+            cell.mainCellLayer.backgroundColor = cellColor
+        }
         cell.progressView.progress = Float(mainCall.message.Challenges[indexPath.row].you) / Float(mainCall.message.Challenges[indexPath.row].amount)
         cell.opProgressView.progress = Float(mainCall.message.Challenges[indexPath.row].them) / Float(mainCall.message.Challenges[indexPath.row].amount)
         let transform : CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 5.0)
