@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5C7857CE1C861F0A26A5807 /* Pods_FitnessApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3214110DB04128464132B00E /* Pods_FitnessApp.framework */; };
 		BE35AC6E2437E1F700754558 /* meditationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE35AC6D2437E1F700754558 /* meditationViewController.swift */; };
 		BE35AC702438101900754558 /* moreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE35AC6F2438101900754558 /* moreInfoViewController.swift */; };
 		BE35AC7224381F1700754558 /* nutritionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE35AC7124381F1700754558 /* nutritionViewController.swift */; };
@@ -30,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3214110DB04128464132B00E /* Pods_FitnessApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitnessApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DFC3E424568A6F4FE91A675 /* Pods-FitnessApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitnessApp/Pods-FitnessApp.release.xcconfig"; sourceTree = "<group>"; };
 		BE35AC6D2437E1F700754558 /* meditationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meditationViewController.swift; sourceTree = "<group>"; };
 		BE35AC6F2438101900754558 /* moreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moreInfoViewController.swift; sourceTree = "<group>"; };
 		BE35AC7124381F1700754558 /* nutritionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nutritionViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +55,7 @@
 		BEE7816C24422BEA00234A68 /* ChallengesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		BEE7816E24422CB700234A68 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
 		BEE7817F2442B2DD00234A68 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E264C7183124441A1B6A1650 /* Pods-FitnessApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitnessApp/Pods-FitnessApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,17 +63,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5C7857CE1C861F0A26A5807 /* Pods_FitnessApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24490CFD454A197D0139164A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E264C7183124441A1B6A1650 /* Pods-FitnessApp.debug.xcconfig */,
+				8DFC3E424568A6F4FE91A675 /* Pods-FitnessApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		78FE1A806DC9E526219F8006 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3214110DB04128464132B00E /* Pods_FitnessApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BEBEA5C4243018D100119720 = {
 			isa = PBXGroup;
 			children = (
 				BEBEA5CF243018D100119720 /* FitnessApp */,
 				BEBEA5CE243018D100119720 /* Products */,
+				24490CFD454A197D0139164A /* Pods */,
+				78FE1A806DC9E526219F8006 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,9 +148,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BEBEA5E4243018D100119720 /* Build configuration list for PBXNativeTarget "FitnessApp" */;
 			buildPhases = (
+				E45C260D06484612DF42BE24 /* [CP] Check Pods Manifest.lock */,
 				BEBEA5C9243018D100119720 /* Sources */,
 				BEBEA5CA243018D100119720 /* Frameworks */,
 				BEBEA5CB243018D100119720 /* Resources */,
+				4F5FFB3087AE055FDA5DA132 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,6 +208,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4F5FFB3087AE055FDA5DA132 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FitnessApp/Pods-FitnessApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FitnessApp/Pods-FitnessApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E45C260D06484612DF42BE24 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FitnessApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BEBEA5C9243018D100119720 /* Sources */ = {
@@ -346,6 +411,7 @@
 		};
 		BEBEA5E5243018D100119720 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E264C7183124441A1B6A1650 /* Pods-FitnessApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -363,6 +429,7 @@
 		};
 		BEBEA5E6243018D100119720 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DFC3E424568A6F4FE91A675 /* Pods-FitnessApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
