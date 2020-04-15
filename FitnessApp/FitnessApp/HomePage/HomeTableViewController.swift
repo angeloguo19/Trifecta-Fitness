@@ -48,6 +48,10 @@ class HomeTableViewCell: UITableViewCell {
     }
 
 }
+
+let tableView = UITableView.init(frame: CGRect.zero, style: .grouped)
+
+
 class HomeTableViewController: UITableViewController {
     @IBAction func loginTapped(_ sender: Any) {
         let defaults = UserDefaults.standard
@@ -56,10 +60,11 @@ class HomeTableViewController: UITableViewController {
         //self.performSegue(withIdentifier: "loginSegue", sender: self)
 
     }
+    
     var challengeList=["Sergio", "Obama", "Bobert"]
     var stats = ["100","50","30","200","5"]
     var workouts = ["Push Ups","Sit Ups","Pull Ups","Squats","Miles"]
-    var sectionTitles = ["Challenges", "Workouts"]
+    var sectionTitles = ["Challenges", "Your Stats"]
     var sectionSizes = [3,5]
     
     var username = ""
@@ -131,7 +136,7 @@ class HomeTableViewController: UITableViewController {
         let backgroundView = UIView(frame: tableView.bounds)
         backgroundView.layer.insertSublayer(gradientLayer, at: 0)
         tableView.backgroundView = backgroundView
-        print("hi")
+        //print("hi")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -262,11 +267,18 @@ class HomeTableViewController: UITableViewController {
             return cell
         }
     }
-    
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        //let label = UILabel()
+//        //label.text = sectionTitles[section]
+//        //return label
+//    }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.tintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        header.textLabel?.font = header.textLabel?.font.withSize(35)
+        header.textLabel?.font = UIFont(name: "Futura", size: 35)
+        //view.textLabel?.textColor = UIColor.white
+        header.textLabel?.textColor = UIColor.black
+           // header.textLabel?.font.withSize(35)
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
