@@ -17,7 +17,7 @@ class meditationViewController: UIViewController {
     @IBOutlet weak var moreInfoButton: UIButton!
     
     
-    var sessions: [NSManagedObject] = []
+    
     var average: String = ""
     var pastWeekTimes: [Int] = [0,0,0,0,0,0,0]
     var days = [NSDate]()
@@ -25,6 +25,7 @@ class meditationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        var sessions: [NSManagedObject] = []
         // Calculate average meditation time for past 7 days
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -66,8 +67,8 @@ class meditationViewController: UIViewController {
         view.layer.insertSublayer(gradientView, at: 0)
 
         // MARK: Core Data Call
-        // Get NSDate for past 7 days
         
+        // Get NSDate for past 7 days
         let calendar = Calendar(identifier: .gregorian)
         let units: Set<Calendar.Component> = [.year, .month, .day]
         let components = calendar.dateComponents(units, from: Date())
@@ -77,7 +78,40 @@ class meditationViewController: UIViewController {
             let day = Calendar.current.date(byAdding: .day, value: -i, to: date as Date)!
             days.append(day as NSDate)
         }
- 
+        
+        // Retrieve Session entity's and update pastWeekTimes array
+        var results: [NSManagedObject] = []
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Session")
+        request.returnsObjectsAsFaults = false
+        do {
+            let fetchResult = try context.fetch(request)
+            results = fetchResult as! [NSManagedObject]
+            for result in results {
+                let tempdate: NSDate = result.value(forKey: "date") as! NSDate
+                let temptime = result.value(forKey: "time") as! Int
+                var isIn: Int = 0
+                for n in 0 ... 6 {
+                    if tempdate == days[n] {
+                        pastWeekTimes[n] = temptime
+                        isIn = 1
+                    }
+                }
+                if isIn == 0 {
+                    context.delete(result)
+                    do {
+                        try context.save()
+                    } catch let error as NSError {
+                        print("Could not save. \(error), \(error.userInfo)")
+                    }
+                }
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        print(pastWeekTimes)
     
     }
     
