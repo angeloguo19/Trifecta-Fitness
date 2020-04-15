@@ -85,32 +85,62 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     @IBAction func updateButtonTapped(_ sender: UIButton) {
         if Int(progressTextField.text!) != nil {
-            let addedTime = Int(progressTextField.text!)
+            let addedTime: Int = Int(progressTextField.text!)!
             
             let calendar = Calendar(identifier: .gregorian)
             let units: Set<Calendar.Component> = [.year, .month, .day]
             let components = calendar.dateComponents(units, from: Date())
-            let date = calendar.date(from: components)
+            let date: NSDate = calendar.date(from: components)! as NSDate
             
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                return
-            }
-            // 1
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
-            // 2
-            let entity = NSEntityDescription.entity(forEntityName: "Session", in: context)!
-            let newSession = NSManagedObject(entity: entity, insertInto: context)
-            // 3
-            newSession.setValue(date, forKey: "date")
-            newSession.setValue(addedTime, forKey: "time")
-            // 4
+            
+            var changed = 0
+            
+            // Retrieve data to see if there's etity for today and update if present
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Session")
+            request.returnsObjectsAsFaults = false
             do {
-                try context.save()
+                let results = try context.fetch(request)
+                for result in results as! [NSManagedObject] {
+                    let tempdate: NSDate = result.value(forKey: "date") as! NSDate
+                    let temptime = result.value(forKey: "time") as! Int
+                    if tempdate == date {
+                        result.setValue(temptime + addedTime, forKey: "time")
+                        do {
+                            try context.save()
+                        } catch let error as NSError {
+                            print("Could not save. \(error), \(error.userInfo)")
+                        }
+                        changed = 1
+                    }
+                }
             } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+            // Make new entity for today's date
+            if changed == 0 {
+                let entity = NSEntityDescription.entity(forEntityName: "Session", in: context)!
+                let newSession = NSManagedObject(entity: entity, insertInto: context)
+                
+                newSession.setValue(date, forKey: "date")
+                newSession.setValue(addedTime, forKey: "time")
+                
+                do {
+                    try context.save()
+                } catch let error as NSError {
+                    print("Could not save. \(error), \(error.userInfo)")
+                }
+            }
+            
+        } else{
+            let alert = UIAlertController(title: "Integer was not Entered", message: "You must enter an integer to update your progress", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            DispatchQueue.main.async {
+                self.present(alert, animated: true)
             }
         }
-        
     }
     
     

@@ -20,27 +20,27 @@ class meditationViewController: UIViewController {
     var sessions: [NSManagedObject] = []
     var average: String = ""
 
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Calculate average meditation time for past 7 days
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSManagedObject>(entityName: "Session")
-        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Session")
+        request.returnsObjectsAsFaults = false
         do {
             var total: Int = 0
-            sessions = try context.fetch(request)
+            let result = try context.fetch(request)
+            sessions = result as! [NSManagedObject]
             for session in sessions {
-                if session.value(forKey: "time") != nil {
-                    total += (session.value(forKey: "time") as! Int)
-                }
+                total += (session.value(forKey: "time") as! Int)
             }
             average = String(total/7)
-            averagetimeLabel.text = average + " mins/day"
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
- 
+        averagetimeLabel.text = average + " mins/day"
     }
     
     override func viewDidLoad() {
@@ -64,7 +64,17 @@ class meditationViewController: UIViewController {
         gradientView.colors = [topGradient, bottomGradient]
         view.layer.insertSublayer(gradientView, at: 0)
 
-        // Do any additional setup after loading the view.
+        // MARK: Core Data Call
+        // Get today's date
+        let calendar = Calendar(identifier: .gregorian)
+        let units: Set<Calendar.Component> = [.year, .month, .day]
+        let components = calendar.dateComponents(units, from: Date())
+        let date: NSDate = calendar.date(from: components)! as NSDate
+        
+        // Get specific time data for past 7 days
+        
+        
+    
     }
     
     
