@@ -11,6 +11,7 @@ import CoreData
 
 class fitnessTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var mainCellLayer: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var statLabel: UILabel!
     
@@ -30,6 +31,13 @@ class fitnessTableViewCell: UITableViewCell {
     }
 }
 
+let cellGradient = false
+let topCellColor = CGColor(srgbRed: 150/255.0, green: 222/255.0, blue: 192/255.0, alpha: 1)
+let bottomCellColor = CGColor(srgbRed: 0/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
+let cellColor = UIColor(red: 159/255.0, green: 222/255.0, blue: 192/255.0, alpha: 1)
+let topGradient = CGColor(srgbRed: 255/255.0, green: 159.0/255.0, blue: 231.0/255.0, alpha: 1)
+let bottomGradient = CGColor(srgbRed: 255/255.0, green: 179/255.0, blue: 71/255.0, alpha: 1)
+
 class fitnessTableViewController: UITableViewController {
     
 //    var workouts = ["Push-Ups", "Tricep Dips", "Pull-Ups", "Sit-Ups", "Crunches", "Burpees", "Glute Bridges", "Squats", "Forward Lunges", "Calf Raises"]
@@ -38,10 +46,27 @@ class fitnessTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
+        
+        let gradientView = CAGradientLayer()
+        gradientView.colors = [topGradient, bottomGradient]
+        gradientView.frame = tableView.layer.bounds
+        let backgroundView = UIView(frame: tableView.layer.bounds)
+        backgroundView.layer.insertSublayer(gradientView, at: 0)
+        tableView.backgroundView = backgroundView
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 75
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.tintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        header.textLabel?.font = header.textLabel?.font.withSize(35)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,7 +111,17 @@ class fitnessTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fitnessCell", for: indexPath) as! fitnessTableViewCell
         
         let workout = workouts[indexPath.row]
-        
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.backgroundColor = UIColor.clear
+        cell.mainCellLayer.layer.cornerRadius = cell.bounds.height/4
+        cell.mainCellLayer.clipsToBounds = true
+        if cellGradient {
+            let gradientLayer = CAGradientLayer()
+            gradientLayer.frame = cell.mainCellLayer.bounds
+            gradientLayer.colors = [topCellColor, bottomCellColor]
+            cell.mainCellLayer.layer.insertSublayer(gradientLayer, at: 0)
+        }
+        cell.mainCellLayer.backgroundColor = cellColor
         cell.nameLabel.text = workout.value(forKeyPath: "name") as? String
         
         cell.statLabel.text = workout.value(forKeyPath: "stat") as? String

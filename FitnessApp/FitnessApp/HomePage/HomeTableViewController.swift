@@ -77,14 +77,12 @@ class HomeTableViewController: UITableViewController {
     }
     //var mainCall: jsonCall
     
-    let tabBarColor = UIColor(red: 128.0/255, green: 226.0/255, blue: 255/255, alpha: 0.9)
     let cellGradient = false
     let topCellColor = CGColor(srgbRed: 150/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
     let bottomCellColor = CGColor(srgbRed: 0/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
     let cellColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
     let topGradient = CGColor(srgbRed: 186.0/255, green: 159.0/255, blue: 231.0/255, alpha: 1)
     let bottomGradient = CGColor(srgbRed: 128.0/255, green: 250.0/255, blue: 255/255, alpha: 1)
-    let cellLightColor = CGColor(srgbRed: 186.0/255, green: 200.0/255, blue: 231.0/255, alpha: 1)
 
     var mainCall: jsonCall = jsonCall(message: Message(Stats:[],Challenges:[]))
     
