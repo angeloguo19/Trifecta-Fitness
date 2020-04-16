@@ -19,7 +19,13 @@ class workoutViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     
-
+    @IBAction func updateStat(_ sender: UIButton) {
+        let rep = (reps.text! as NSString).integerValue
+        let workout = nameText
+        var current = defaults.integer(forKey: workout)
+        current = current + rep
+        defaults.set(current, forKey: workout)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
