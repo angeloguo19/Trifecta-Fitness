@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults.set(0, forKey: "Calf Raises")
             
             //Youtube links
+            userDefaults.set("IODxDxX7oi4", forKey: "Push-UpsVideo")
             userDefaults.set("6kALZikXxLc", forKey: "Tricep DipsVideo")
             userDefaults.set("eGo4IYlbE5g", forKey: "Pull-UpsVideo")
             userDefaults.set("jDwoBqPH0jk", forKey: "Sit-UpsVideo")
