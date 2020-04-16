@@ -27,8 +27,8 @@ class meditationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        var sessions: [NSManagedObject] = []
         // Calculate average meditation time for past 7 days
+        var sessions: [NSManagedObject] = []
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Session")
@@ -45,40 +45,7 @@ class meditationViewController: UIViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         averagetimeLabel.text = average + " mins/day"
-    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        newSessionButton.layer.cornerRadius = 6
-        newSessionButton.layer.borderWidth = 1
-        newSessionButton.layer.borderColor = UIColor.black.cgColor
-        
-        moreInfoButton.layer.cornerRadius = 6
-        moreInfoButton.layer.borderWidth = 1
-        moreInfoButton.layer.borderColor = UIColor.black.cgColor
-        
-        var lineChartEntry = [ChartDataEntry]()
-        for i in 0...100 {
-            lineChartEntry.append(ChartDataEntry.init(x: Double(i), y: sin(Double(i)/(4*3.14))))
-        }
-        let values = LineChartDataSet(entries: lineChartEntry, label: "Sine Function")
-        values.colors = [NSUIColor.blue]
-        let data = LineChartData()
-        data.addDataSet(values)
-        chartView.data = data
-        chartView.chartDescription?.text = "Random Numbers to show Sergio It works XD"
-        
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        
-        let topGradient = CGColor(srgbRed: 255/255.0, green: 159.0/255.0, blue: 231.0/255.0, alpha: 1)
-        let bottomGradient = CGColor(srgbRed: 255/255.0, green: 179/255.0, blue: 71/255.0, alpha: 1)
-        let gradientView = CAGradientLayer()
-        gradientView.frame = view.layer.bounds
-        gradientView.colors = [topGradient, bottomGradient]
-        view.layer.insertSublayer(gradientView, at: 0)
-
         // MARK: Core Data Call
         
         // Get NSDate for past 7 days
@@ -94,12 +61,10 @@ class meditationViewController: UIViewController {
         
         // Retrieve Session entity's and update pastWeekTimes array
         var results: [NSManagedObject] = []
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Session")
-        request.returnsObjectsAsFaults = false
+        let requests = NSFetchRequest<NSFetchRequestResult>(entityName: "Session")
+        requests.returnsObjectsAsFaults = false
         do {
-            let fetchResult = try context.fetch(request)
+            let fetchResult = try context.fetch(requests)
             results = fetchResult as! [NSManagedObject]
             for result in results {
                 let tempdate: NSDate = result.value(forKey: "date") as! NSDate
@@ -123,15 +88,55 @@ class meditationViewController: UIViewController {
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-        
-        print(pastWeekTimes)
+    
+        // Make Line Graph
+        var lineChartEntry = [ChartDataEntry]()
+        for i in 0...6 {
+            lineChartEntry.append(ChartDataEntry.init(x: Double(i), y: Double(pastWeekTimes[i])))
+        }
+        let values = LineChartDataSet(entries: lineChartEntry, label: "Meditation Time")
+        values.colors = [NSUIColor.blue]
+        let data = LineChartData()
+        data.addDataSet(values)
+        chartView.data = data
+        // Customize Line Graph
+        chartView.xAxis.labelPosition = .bottom
+        chartView.leftAxis.axisMinimum = 0.0
+        chartView.rightAxis.enabled = false
+        //chartView.chartDescription?.text = "Meditation time over past week"
+    
     
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // UI for ViewController
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        let topGradient = CGColor(srgbRed: 255/255.0, green: 159.0/255.0, blue: 231.0/255.0, alpha: 1)
+        let bottomGradient = CGColor(srgbRed: 255/255.0, green: 179/255.0, blue: 71/255.0, alpha: 1)
+        let gradientView = CAGradientLayer()
+        gradientView.frame = view.layer.bounds
+        gradientView.colors = [topGradient, bottomGradient]
+        view.layer.insertSublayer(gradientView, at: 0)
+        
+        // UI for Buttons
+        newSessionButton.layer.cornerRadius = 6
+        newSessionButton.layer.borderWidth = 1
+        newSessionButton.layer.borderColor = UIColor.black.cgColor
+        
+        moreInfoButton.layer.cornerRadius = 6
+        moreInfoButton.layer.borderWidth = 1
+        moreInfoButton.layer.borderColor = UIColor.black.cgColor
+
+    }
     
     
-    
-    /*
+}
+
+  /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -141,4 +146,4 @@ class meditationViewController: UIViewController {
     }
     */
 
-}
+

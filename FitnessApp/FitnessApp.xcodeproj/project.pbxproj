@@ -24,6 +24,7 @@
 		BEBEA5DB243018D100119720 /* FitnessApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D9243018D100119720 /* FitnessApp.xcdatamodeld */; };
 		BEBEA5DD243018D100119720 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEBEA5DC243018D100119720 /* Assets.xcassets */; };
 		BEBEA5E0243018D100119720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBEA5DE243018D100119720 /* LaunchScreen.storyboard */; };
+		BEC1571F2447F53000949862 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC1571E2447F53000949862 /* WebKit.framework */; };
 		BEE7816B2442249000234A68 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE7816A2442249000234A68 /* HomeTableViewController.swift */; };
 		BEE7816D24422BEA00234A68 /* ChallengesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE7816C24422BEA00234A68 /* ChallengesViewController.swift */; };
 		BEE7816F24422CB700234A68 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE7816E24422CB700234A68 /* StatsViewController.swift */; };
@@ -51,6 +52,7 @@
 		BEBEA5DC243018D100119720 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BEBEA5DF243018D100119720 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BEBEA5E1243018D100119720 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEC1571E2447F53000949862 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		BEE7816A2442249000234A68 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		BEE7816C24422BEA00234A68 /* ChallengesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesViewController.swift; sourceTree = "<group>"; };
 		BEE7816E24422CB700234A68 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEC1571F2447F53000949862 /* WebKit.framework in Frameworks */,
 				B5C7857CE1C861F0A26A5807 /* Pods_FitnessApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,6 +85,7 @@
 		78FE1A806DC9E526219F8006 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BEC1571E2447F53000949862 /* WebKit.framework */,
 				3214110DB04128464132B00E /* Pods_FitnessApp.framework */,
 			);
 			name = Frameworks;
