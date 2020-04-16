@@ -16,6 +16,7 @@ class meditationViewController: UIViewController {
     @IBOutlet weak var averagetimeLabel: UILabel!
     @IBOutlet weak var newSessionButton: UIButton!
     @IBOutlet weak var moreInfoButton: UIButton!
+    @IBOutlet weak var chartView: LineChartView!
     
     
     
@@ -56,6 +57,17 @@ class meditationViewController: UIViewController {
         moreInfoButton.layer.cornerRadius = 6
         moreInfoButton.layer.borderWidth = 1
         moreInfoButton.layer.borderColor = UIColor.black.cgColor
+        
+        var lineChartEntry = [ChartDataEntry]()
+        for i in 0...100 {
+            lineChartEntry.append(ChartDataEntry.init(x: Double(i), y: sin(Double(i)/(4*3.14))))
+        }
+        let values = LineChartDataSet(entries: lineChartEntry, label: "Sine Function")
+        values.colors = [NSUIColor.blue]
+        let data = LineChartData()
+        data.addDataSet(values)
+        chartView.data = data
+        chartView.chartDescription?.text = "Random Numbers to show Sergio It works XD"
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()

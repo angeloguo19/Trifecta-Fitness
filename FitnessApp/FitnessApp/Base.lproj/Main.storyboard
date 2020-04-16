@@ -476,6 +476,7 @@
                     <navigationItem key="navigationItem" id="sOL-I8-wYy"/>
                     <connections>
                         <outlet property="averagetimeLabel" destination="l37-Yi-sZT" id="WfJ-bV-v5j"/>
+                        <outlet property="chartView" destination="phn-TR-a1i" id="72h-8f-7gE"/>
                         <outlet property="moreInfoButton" destination="Tqb-06-6et" id="Mom-l4-C9u"/>
                         <outlet property="newSessionButton" destination="OuG-Y2-d6n" id="vdJ-jf-rzI"/>
                     </connections>
