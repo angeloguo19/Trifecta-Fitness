@@ -18,29 +18,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let userDefaults = UserDefaults.standard
-        let defaultValues = ["firstRun" : true]
-        userDefaults.register(defaults: defaultValues)
-        
-        var workouts = [NSManagedObject]()
-        let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        userDefaults.set(true, forKey: "firstRun")
         
         if userDefaults.bool(forKey: "firstRun") {
 
             let defaultWorkouts = ["Push-Ups", "Tricep Dips", "Pull-Ups", "Sit-Ups", "Crunches", "Burpees", "Glute Bridges", "Squats", "Forward Lunges", "Calf Raises"]
-            let entity = NSEntityDescription.entity(forEntityName: "Workout", in: managedContext)!
             
-            for workoutName in defaultWorkouts {
-                let workout = NSManagedObject(entity: entity,insertInto: managedContext)
-                workout.setValue(workoutName, forKey: "name")
-                workout.setValue(0, forKey: "stat")
-                workouts.append(workout)
-            }
-            do {
-                try managedContext.save()
-                userDefaults.set(false, forKey: "firstRun")
-            } catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
-            }
+            userDefaults.set(false, forKey: "firstRun")
+            userDefaults.set(defaultWorkouts, forKey: "WorkoutsArray")
+            userDefaults.set(0, forKey: "Push-Ups")
+            userDefaults.set(0, forKey: "Tricep Dips")
+            userDefaults.set(0, forKey: "Pull-Ups")
+            userDefaults.set(0, forKey: "Sit-Ups")
+            userDefaults.set(0, forKey: "Crunches")
+            userDefaults.set(0, forKey: "Burpees")
+            userDefaults.set(0, forKey: "Glute Bridges")
+            userDefaults.set(0, forKey: "Squats")
+            userDefaults.set(0, forKey: "Forward Lunges")
+            userDefaults.set(0, forKey: "Calf Raises")
         }
         return true
     }

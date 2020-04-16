@@ -17,19 +17,9 @@ class workoutViewController: UIViewController {
     
     @IBOutlet weak var reps: UITextField!
     
+    let defaults = UserDefaults.standard
     
-//    @IBAction func updateStat(_ sender: UIButton) {
-//
-//        var editStat = 0;
-//        editStat = (reps.text! as  NSString).integerValue
-//
-//        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-//
-////        let context = appDelegate.persistentContainer.viewContext
-//
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Workout")
-//
-//    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

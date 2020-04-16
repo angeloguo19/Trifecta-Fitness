@@ -35,7 +35,7 @@ class fitnessTableViewCell: UITableViewCell {
 class fitnessTableViewController: UITableViewController {
     
 //    var workouts = ["Push-Ups", "Tricep Dips", "Pull-Ups", "Sit-Ups", "Crunches", "Burpees", "Glute Bridges", "Squats", "Forward Lunges", "Calf Raises"]
-    var workouts: [NSManagedObject] = []
+    let defaults = UserDefaults.standard
 
     let cellGradient = false
     let topCellColor = CGColor(srgbRed: 150/255.0, green: 222/255.0, blue: 192/255.0, alpha: 1)
@@ -69,29 +69,29 @@ class fitnessTableViewController: UITableViewController {
         header.textLabel?.font = header.textLabel?.font.withSize(35)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-      
-      //1
-      guard let appDelegate =
-        UIApplication.shared.delegate as? AppDelegate else {
-          return
-      }
-      
-      let context =
-        appDelegate.persistentContainer.viewContext
-      
-      //2
-      let fetchRequest =
-        NSFetchRequest<NSManagedObject>(entityName: "Workout")
-      
-      //3
-      do {
-        workouts = try context.fetch(fetchRequest)
-      } catch let error as NSError {
-        print("Could not fetch. \(error), \(error.userInfo)")
-      }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//      super.viewWillAppear(animated)
+//
+//      //1
+//      guard let appDelegate =
+//        UIApplication.shared.delegate as? AppDelegate else {
+//          return
+//      }
+//
+//      let context =
+//        appDelegate.persistentContainer.viewContext
+//
+//      //2
+//      let fetchRequest =
+//        NSFetchRequest<NSManagedObject>(entityName: "Workout")
+//
+//      //3
+//      do {
+//        workouts = try context.fetch(fetchRequest)
+//      } catch let error as NSError {
+//        print("Could not fetch. \(error), \(error.userInfo)")
+//      }
+//    }
 
     // MARK: - Table view data source
 
@@ -104,12 +104,14 @@ class fitnessTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workouts.count
+        return 10
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fitnessCell", for: indexPath) as! fitnessTableViewCell
         
+        let workouts = defaults.object(forKey: "WorkoutsArray") as? [String] ?? [String]()
+        print(workouts)
         let workout = workouts[indexPath.row]
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.clear
@@ -122,9 +124,8 @@ class fitnessTableViewController: UITableViewController {
             cell.mainCellLayer.layer.insertSublayer(gradientLayer, at: 0)
         }
         cell.mainCellLayer.backgroundColor = cellColor
-        cell.nameLabel.text = workout.value(forKeyPath: "name") as? String
-        
-        cell.statLabel.text = workout.value(forKeyPath: "stat") as? String
+        cell.nameLabel.text = workout
+        cell.statLabel.text = String(defaults.integer(forKey: workout))
         
         return cell
     }
