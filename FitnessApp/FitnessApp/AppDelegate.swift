@@ -36,6 +36,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults.set(0, forKey: "Squats")
             userDefaults.set(0, forKey: "Forward Lunges")
             userDefaults.set(0, forKey: "Calf Raises")
+            
+            //Youtube links
+            userDefaults.set("6kALZikXxLc", forKey: "Tricep DipsVideo")
+            userDefaults.set("eGo4IYlbE5g", forKey: "Pull-UpsVideo")
+            userDefaults.set("jDwoBqPH0jk", forKey: "Sit-UpsVideo")
+            userDefaults.set("Xyd_fa5zoEU", forKey: "CrunchesVideo")
+            userDefaults.set("JZQA08SlJnM", forKey: "BurpeesVideo")
+            userDefaults.set("wPM8icPu6H8", forKey: "Glute BridgesVideo")
+            userDefaults.set("aclHkVaku9U", forKey: "SquatsVideo")
+            userDefaults.set("QOVaHwm-Q6U", forKey: "Forward LungesVideo")
+            userDefaults.set("gwLzBJYoWlI", forKey: "Calf RaisesVideo")
         }
         return true
     }
