@@ -18,13 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let userDefaults = UserDefaults.standard
-        userDefaults.set(true, forKey: "firstRun")
         
-        if userDefaults.bool(forKey: "firstRun") {
+        
+        if userDefaults.bool(forKey: "firstRun") == false{
+            userDefaults.set(true, forKey: "firstRun")
 
             let defaultWorkouts = ["Push-Ups", "Tricep Dips", "Pull-Ups", "Sit-Ups", "Crunches", "Burpees", "Glute Bridges", "Squats", "Forward Lunges", "Calf Raises"]
-            
-            userDefaults.set(false, forKey: "firstRun")
             userDefaults.set(defaultWorkouts, forKey: "WorkoutsArray")
             userDefaults.set(0, forKey: "Push-Ups")
             userDefaults.set(0, forKey: "Tricep Dips")
