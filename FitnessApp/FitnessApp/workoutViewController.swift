@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import WebKit
 
 class workoutViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class workoutViewController: UIViewController {
     
     @IBOutlet weak var reps: UITextField!
     
+    @IBOutlet weak var tutorialVid: WKWebView!
     let defaults = UserDefaults.standard
     
     @IBAction func updateStat(_ sender: UIButton) {
@@ -25,6 +27,7 @@ class workoutViewController: UIViewController {
         var current = defaults.integer(forKey: workout)
         current = current + rep
         defaults.set(current, forKey: workout)
+        defaults.synchronize()
     }
     
     override func viewDidLoad() {
@@ -34,6 +37,12 @@ class workoutViewController: UIViewController {
 
         workoutNameLabel.layer.borderColor = UIColor.black.cgColor
         workoutNameLabel.layer.borderWidth = 1
+        let videoKey = nameText + "Video"
+        let video = defaults.string(forKey: videoKey)!
+        let link = "https://www.youtube.com/embed/" + video
+        let myURL = URL(string: link)
+        let youtubeRequest = URLRequest(url: myURL!)
+        tutorialVid.load(youtubeRequest)
        
     }
     
