@@ -1119,7 +1119,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="INS-WN-syj" secondAttribute="trailing" constant="25" id="cre-58-6Gb"/>
                                                 <constraint firstAttribute="bottom" secondItem="xUN-iY-2Ft" secondAttribute="bottom" constant="25" id="epB-MH-V8g"/>
                                                 <constraint firstItem="xUN-iY-2Ft" firstAttribute="top" secondItem="nIn-uH-REw" secondAttribute="top" constant="25" id="itz-uC-Jl8"/>
-                                                <constraint firstAttribute="width" constant="250" id="wA6-VC-uuQ"/>
                                             </constraints>
                                         </view>
                                     </subviews>

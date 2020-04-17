@@ -217,7 +217,7 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Checking for data from \(mainCall)")
+        //print("Checking for data from \(mainCall)")
         if(indexPath.section == 0) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeTableViewCell
             cell.progressView.progress = Float(mainCall.message.Challenges[indexPath.row].you) / Float(mainCall.message.Challenges[indexPath.row].amount)
