@@ -34,13 +34,13 @@ class meditationViewController: UIViewController {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Session")
         request.returnsObjectsAsFaults = false
         do {
-            var total: Int = 0
+            var total = 0
             let result = try context.fetch(request)
             sessions = result as! [NSManagedObject]
             for session in sessions {
                 total += (session.value(forKey: "time") as! Int)
             }
-            average = String(total/7)
+            average = String(Int(round(Double(total)/7.0)))
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -94,7 +94,7 @@ class meditationViewController: UIViewController {
         for i in 0...6 {
             lineChartEntry.append(ChartDataEntry.init(x: Double(i), y: Double(pastWeekTimes[i])))
         }
-        let values = LineChartDataSet(entries: lineChartEntry, label: "Meditation Time")
+        let values = LineChartDataSet(entries: lineChartEntry, label: "Time Spent Meditating")
         values.colors = [NSUIColor.blue]
         let data = LineChartData()
         data.addDataSet(values)
