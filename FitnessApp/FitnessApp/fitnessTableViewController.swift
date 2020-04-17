@@ -66,7 +66,9 @@ class fitnessTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
         header.tintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        header.textLabel?.font = header.textLabel?.font.withSize(35)
+        header.textLabel?.font = UIFont(name: "Futura", size: 35)
+         //view.textLabel?.textColor = UIColor.white
+         header.textLabel?.textColor = UIColor.black
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
