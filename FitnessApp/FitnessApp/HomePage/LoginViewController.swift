@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginTapped(_ sender: Any) {
         let defaults = UserDefaults.standard
         defaults.set(usernameField.text, forKey: "username")
-        //checkLogin()
+        checkLogin()
         self.performSegue(withIdentifier: "loginSegue", sender: self)
 
     }
