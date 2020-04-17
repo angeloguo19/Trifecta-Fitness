@@ -157,15 +157,16 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             timer.invalidate()
             isTimerRunning = false
             scheduleNotification()
-            /*
+            
             let timerAlert = UIAlertController(title: "Time's Up", message: "Would you like to automatically update your meditation time by " + String(startTime/60) + " mins?", preferredStyle: .alert)
             timerAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             timerAlert.addAction(UIAlertAction(title: "Yes", style: .default ,handler: {
                 action in
+                self.progressTextField.text = String(self.startTime/60)
                 self.updateButtonTapped(self.updateButton)
             }))
             self.present(timerAlert, animated: true)
-            */
+            
             resetButtonTapped(resetButton)
              
         } else {
