@@ -12,7 +12,7 @@ import CoreData
 class LoginViewController: UIViewController {
     
     struct jsonCall: Codable{
-        var err: String
+        var err: String?
     }
     
     var serverCall: jsonCall = jsonCall(err:"")
@@ -22,10 +22,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBAction func loginTapped(_ sender: Any) {
-        let defaults = UserDefaults.standard
-        defaults.set(usernameField.text, forKey: "username")
-        checkLogin()
-        self.performSegue(withIdentifier: "loginSegue", sender: self)
+        
+        if(usernameField.text == nil || usernameField.text!.isEmpty || hasWhiteSpace(str: usernameField.text!)){
+            let alertController = UIAlertController(title: "Incorrect Password or Username", message:
+                "Please enter your username or create a new account", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+            self.present(alertController, animated: true, completion: nil)
+
+        }
+        else{
+            checkLogin()
+        }
+
 
     }
     @IBAction func createTapped(_ sender: Any) {
@@ -107,7 +115,7 @@ class LoginViewController: UIViewController {
            // 2. BEGIN NETWORKING code
            //
                    let mySession = URLSession(configuration: URLSessionConfiguration.default)
-
+        
         let url = URL(string: "http://152.3.69.115:8081/api/stats/" + usernameField.text!)!
 
            // 3. MAKE THE HTTPS REQUEST task
@@ -157,14 +165,40 @@ class LoginViewController: UIViewController {
     }
        
     func checkUsername(){
-        if(serverCall.err == "An error occured"){
+        if(serverCall.err == nil){
+            print("Valid Username")
+            let defaults = UserDefaults.standard
+            defaults.set(usernameField.text, forKey: "username")
+            self.performSegue(withIdentifier: "loginSegue", sender: self)
+
+        }
+        else if(serverCall.err == "An error occured"){
             print("Username doesn't exist")
+            
+            let alertController = UIAlertController(title: "Incorrect Password or Username", message:
+                "Try entering your information again, or create a new account", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+
+            self.present(alertController, animated: true, completion: nil)
         }
         else{
-            print("yessir")
+            print("Shouldn't occur")
+            //self.performSegue(withIdentifier: "loginSegue", sender: self)
+
+            
         }
     }
     
+    func hasWhiteSpace(str:String) -> Bool{
+        
+       let character: Character = " "
+       if str.contains(" ") {
+           return true
+       } else {
+           return false
+       }
+    }
+
 
 
 

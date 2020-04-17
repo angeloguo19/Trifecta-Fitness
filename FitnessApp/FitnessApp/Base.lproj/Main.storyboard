@@ -873,6 +873,7 @@
                     <navigationItem key="navigationItem" id="Wck-oW-z5m"/>
                     <connections>
                         <outlet property="createAccount" destination="bfQ-aK-SFh" id="iXJ-bk-DnA"/>
+                        <outlet property="usernameField" destination="ble-N6-dI0" id="MIV-Pl-EBQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3yN-qU-Nim" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -906,7 +907,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginTapped:" destination="LAB-SM-csN" eventType="touchUpInside" id="UGV-mK-wRY"/>
-                                    <segue destination="o3Z-Fr-It2" kind="show" identifier="loginSegue" id="gXJ-Yo-ihL"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnW-sN-dKW">
@@ -952,6 +952,7 @@
                     <connections>
                         <outlet property="passwordField" destination="ubd-KH-ONa" id="CGE-wt-qyG"/>
                         <outlet property="usernameField" destination="L9e-KW-WKK" id="Snv-z1-s4h"/>
+                        <segue destination="o3Z-Fr-It2" kind="show" identifier="loginSegue" id="gaV-8g-1kr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDY-AQ-UiG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
