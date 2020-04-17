@@ -158,8 +158,12 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             isTimerRunning = false
             scheduleNotification()
             /*
-            let timerAlert = UIAlertController(title: "Time's Up", message: "The timer has finished", preferredStyle: .alert)
-            timerAlert.addAction(UIAlertAction(title: "OK", style: .default ,handler: nil))
+            let timerAlert = UIAlertController(title: "Time's Up", message: "Would you like to automatically update your meditation time by " + String(startTime/60) + " mins?", preferredStyle: .alert)
+            timerAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            timerAlert.addAction(UIAlertAction(title: "Yes", style: .default ,handler: {
+                action in
+                self.updateButtonTapped(self.updateButton)
+            }))
             self.present(timerAlert, animated: true)
             */
             resetButtonTapped(resetButton)
@@ -201,15 +205,7 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     // MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /* Make icon on right of text field
-        let arrow = UIImageView(image: UIImage(named: "down_arrow"))
-        arrow.contentMode = UIView.ContentMode.center
-        arrow.frame = CGRect(x: 0.0, y: 0.0, width: 1, height: 1)
-        pickerTextField.rightView = arrow
-        pickerTextField.rightViewMode = UITextField.ViewMode.always
-        */
-        
+                
         permission()
         
         // Make done button
