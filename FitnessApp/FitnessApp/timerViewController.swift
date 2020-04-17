@@ -9,10 +9,11 @@
 import UIKit
 import CoreData
 import UserNotifications
+import AVFoundation
 
 class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
 
+    
     // MARK: - Notification Code
     func permission() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
@@ -28,7 +29,7 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         content.body = "Timer has finished"
         content.sound = UNNotificationSound.default
 
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1.0, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.01, repeats: false)
 
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         
@@ -39,6 +40,8 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         }
         
     }
+    
+    
     
     // MARK: Main Code
     
@@ -157,9 +160,10 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         isTimerRunning = true
         pauseButton.isEnabled = true
+        scheduleNotification()
     }
     @objc func updateTimer() {
-        if totalTime < 1 {
+        if totalTime == 0 {
             timer.invalidate()
             isTimerRunning = false
             
@@ -200,7 +204,7 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         timerTextField.resignFirstResponder()
     }
 
-    
+    // MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -258,6 +262,7 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         updateButton.layer.cornerRadius = 6
         updateButton.layer.borderWidth = 1
         updateButton.layer.borderColor = UIColor.black.cgColor
+    
     }
     
     
