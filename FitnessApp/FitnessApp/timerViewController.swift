@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import UserNotifications
-import AVFoundation
 
 class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -18,19 +17,18 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func permission() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
             if success {
-                    print("All set!")
+                    //print("All set!")
             }
         }
     }
     func scheduleNotification() {
         
         let content = UNMutableNotificationContent()
-        content.title = "Time's Up"
+        content.title = "Time's Up!"
         content.body = "Timer has finished"
         content.sound = UNNotificationSound.default
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.01, repeats: false)
-
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request) { (error : Error?) in
@@ -38,12 +36,9 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 print(theError.localizedDescription)
             }
         }
-        
     }
     
-    
-    
-    // MARK: Main Code
+    // MARK: Init Vars/Button funcs
     
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var pauseButton: UIButton!
@@ -54,7 +49,6 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     @IBOutlet weak var progressTextField: UITextField!
     @IBOutlet weak var updateButton: UIButton!
-    
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
         if isTimerRunning == false {
@@ -84,7 +78,6 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         pauseButton.setTitle("Pause", for: UIControl.State.normal)
         startButton.isEnabled = true
     }
-    
     
     @IBAction func updateButtonTapped(_ sender: UIButton) {
         if Int(progressTextField.text!) != nil {
@@ -146,8 +139,7 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         }
     }
     
-    
-    
+    // MARK: Timer Setup
     let timerList = UIPickerView()
     var timer = Timer()
     var startTime: Int = 0
@@ -155,21 +147,22 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var isTimerRunning = false
     var resumeTapped = false
 
-    
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
         isTimerRunning = true
         pauseButton.isEnabled = true
-        scheduleNotification()
     }
     @objc func updateTimer() {
         if totalTime == 0 {
             timer.invalidate()
             isTimerRunning = false
-            
+            scheduleNotification()
+            /*
             let timerAlert = UIAlertController(title: "Time's Up", message: "The timer has finished", preferredStyle: .alert)
             timerAlert.addAction(UIAlertAction(title: "OK", style: .default ,handler: nil))
             self.present(timerAlert, animated: true)
+            */
+            resetButtonTapped(resetButton)
              
         } else {
             totalTime -= 1     //This will decrement(count down)the seconds.
@@ -183,6 +176,7 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     
+    // MARK: Pickerview Setup
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
            return 1
     }
