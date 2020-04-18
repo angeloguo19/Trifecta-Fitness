@@ -14,6 +14,15 @@ class workoutViewController: UIViewController {
     
     var nameText: String = ""
     
+    var username = ""
+    
+    struct jsonCall: Codable{
+        var message: String
+        var err: String?
+    }
+    
+    var serverCall: jsonCall = jsonCall(message: "",err:"")
+    
     @IBOutlet weak var workoutNameLabel: UILabel!
     
     @IBOutlet weak var reps: UITextField!
@@ -28,6 +37,57 @@ class workoutViewController: UIViewController {
         current = current + rep
         defaults.set(current, forKey: workout)
         defaults.synchronize()
+        
+        username = defaults.string(forKey: "username")!
+        print(username)
+        
+        
+        let mySession = URLSession(configuration: URLSessionConfiguration.default)
+        
+        let url = URL(string: "http://152.3.69.115:8081/api/update/" + username + "/" + nameText + "/" + reps.text!)!
+
+           // 3. MAKE THE HTTPS REQUEST task
+           //
+        let task = mySession.dataTask(with: url) { data, response, error in
+
+                       // ensure there is no error for this HTTP response
+            guard error == nil else {
+                print ("error: \(error!)")
+                               
+                DispatchQueue.main.async {
+                    let alert1 = UIAlertController(title: "Error", message: "Issues connecting with internet", preferredStyle: .alert) //.actionSheet
+                    alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert1, animated: true)
+                }
+                return
+            }
+
+                       // ensure there is data returned from this HTTP response
+            guard let jsonData = data else {
+                print("No data")
+                return
+            }
+                       
+                       //print("Got the data from network")
+           // 4. DECODE THE RESULTING JSON
+           //
+           let decoder = JSONDecoder()
+           //print(String(data: jsonData, encoding: .utf8))
+           do {
+               // decode the JSON into our array of todoItem's
+               self.serverCall = try decoder.decode(jsonCall.self, from: jsonData)
+                       
+               DispatchQueue.main.async {
+                   //self.tableView.reloadData()
+               }
+               
+           } catch {
+               print("JSON Decode error")
+           }
+        }
+
+               // actually make the http task run.
+        task.resume()
     }
     
     override func viewDidLoad() {
