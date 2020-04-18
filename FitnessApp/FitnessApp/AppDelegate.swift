@@ -28,30 +28,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if userDefaults.bool(forKey: "firstRun") == false{
             userDefaults.set(true, forKey: "firstRun")
 
-            let defaultWorkouts = ["Push-Ups", "Tricep Dips", "Pull-Ups", "Sit-Ups", "Crunches", "Burpees", "Glute Bridges", "Squats", "Forward Lunges", "Calf Raises"]
+            let defaultWorkouts = ["Push-Ups", "Sit-Ups", "Pull-Ups", "Burpees", "Squats", "Lunges", "Bicep Curls", "Calf Raises", "Bicycle Kicks"]
+
             userDefaults.set(defaultWorkouts, forKey: "WorkoutsArray")
+
             userDefaults.set(0, forKey: "Push-Ups")
-            userDefaults.set(0, forKey: "Tricep Dips")
-            userDefaults.set(0, forKey: "Pull-Ups")
             userDefaults.set(0, forKey: "Sit-Ups")
-            userDefaults.set(0, forKey: "Crunches")
+            userDefaults.set(0, forKey: "Pull-Ups")
             userDefaults.set(0, forKey: "Burpees")
-            userDefaults.set(0, forKey: "Glute Bridges")
             userDefaults.set(0, forKey: "Squats")
-            userDefaults.set(0, forKey: "Forward Lunges")
+            userDefaults.set(0, forKey: "Lunges")
+            userDefaults.set(0, forKey: "Bicep Curls")
             userDefaults.set(0, forKey: "Calf Raises")
+            userDefaults.set(0, forKey: "Bicycle Kicks")
             
             //Youtube links
             userDefaults.set("IODxDxX7oi4", forKey: "Push-UpsVideo")
-            userDefaults.set("6kALZikXxLc", forKey: "Tricep DipsVideo")
-            userDefaults.set("eGo4IYlbE5g", forKey: "Pull-UpsVideo")
             userDefaults.set("jDwoBqPH0jk", forKey: "Sit-UpsVideo")
-            userDefaults.set("Xyd_fa5zoEU", forKey: "CrunchesVideo")
+            userDefaults.set("eGo4IYlbE5g", forKey: "Pull-UpsVideo")
             userDefaults.set("JZQA08SlJnM", forKey: "BurpeesVideo")
-            userDefaults.set("wPM8icPu6H8", forKey: "Glute BridgesVideo")
             userDefaults.set("aclHkVaku9U", forKey: "SquatsVideo")
-            userDefaults.set("QOVaHwm-Q6U", forKey: "Forward LungesVideo")
+            userDefaults.set("QOVaHwm-Q6U", forKey: "LungesVideo")
             userDefaults.set("gwLzBJYoWlI", forKey: "Calf RaisesVideo")
+            userDefaults.set("Nkl8WnH6tDU", forKey: "Bicep CurlsVideo")
+            userDefaults.set("9FGilxCbdz8", forKey: "Bicycle KicksVideo")
         }
         return true
     }
