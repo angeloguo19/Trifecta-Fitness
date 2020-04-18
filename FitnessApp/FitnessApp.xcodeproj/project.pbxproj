@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B5C7857CE1C861F0A26A5807 /* Pods_FitnessApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3214110DB04128464132B00E /* Pods_FitnessApp.framework */; };
+		BB4E1F46244B6C6C00C31F7F /* challengesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E1F45244B6C6C00C31F7F /* challengesTableViewController.swift */; };
+		BB4E1F48244B6C9100C31F7F /* addScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E1F47244B6C9100C31F7F /* addScreenViewController.swift */; };
 		BE35AC6E2437E1F700754558 /* meditationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE35AC6D2437E1F700754558 /* meditationViewController.swift */; };
 		BE35AC702438101900754558 /* moreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE35AC6F2438101900754558 /* moreInfoViewController.swift */; };
 		BE35AC7224381F1700754558 /* nutritionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE35AC7124381F1700754558 /* nutritionViewController.swift */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		3214110DB04128464132B00E /* Pods_FitnessApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitnessApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFC3E424568A6F4FE91A675 /* Pods-FitnessApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitnessApp/Pods-FitnessApp.release.xcconfig"; sourceTree = "<group>"; };
+		BB4E1F45244B6C6C00C31F7F /* challengesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = challengesTableViewController.swift; sourceTree = "<group>"; };
+		BB4E1F47244B6C9100C31F7F /* addScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addScreenViewController.swift; sourceTree = "<group>"; };
 		BE35AC6D2437E1F700754558 /* meditationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meditationViewController.swift; sourceTree = "<group>"; };
 		BE35AC6F2438101900754558 /* moreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moreInfoViewController.swift; sourceTree = "<group>"; };
 		BE35AC7124381F1700754558 /* nutritionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nutritionViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +123,8 @@
 				BEBEA5D6243018D100119720 /* Main.storyboard */,
 				BEE7816E24422CB700234A68 /* StatsViewController.swift */,
 				BEE7816C24422BEA00234A68 /* ChallengesViewController.swift */,
+				BB4E1F45244B6C6C00C31F7F /* challengesTableViewController.swift */,
+				BB4E1F47244B6C9100C31F7F /* addScreenViewController.swift */,
 				BE8D67B4243D387600602C1B /* focusViewController.swift */,
 				BE8D67B2243D35DF00602C1B /* recipesTableViewController.swift */,
 				BE8D67AE243A951500602C1B /* fitnessTableViewController.swift */,
@@ -264,12 +270,14 @@
 				BE35AC7224381F1700754558 /* nutritionViewController.swift in Sources */,
 				BE8D67AF243A951500602C1B /* fitnessTableViewController.swift in Sources */,
 				BE4122AC243544DC0062A534 /* timerViewController.swift in Sources */,
+				BB4E1F46244B6C6C00C31F7F /* challengesTableViewController.swift in Sources */,
 				BE9C55182445841300A0C679 /* CreateAccountViewController.swift in Sources */,
 				BEBEA5D5243018D100119720 /* ViewController.swift in Sources */,
 				BEBEA5D1243018D100119720 /* AppDelegate.swift in Sources */,
 				BEE7816B2442249000234A68 /* HomeTableViewController.swift in Sources */,
 				BE8D67B3243D35DF00602C1B /* recipesTableViewController.swift in Sources */,
 				BE8D67B1243AA56700602C1B /* workoutViewController.swift in Sources */,
+				BB4E1F48244B6C9100C31F7F /* addScreenViewController.swift in Sources */,
 				BEE781802442B2DD00234A68 /* LoginViewController.swift in Sources */,
 				BEBEA5D3243018D100119720 /* SceneDelegate.swift in Sources */,
 				BEE7816F24422CB700234A68 /* StatsViewController.swift in Sources */,
