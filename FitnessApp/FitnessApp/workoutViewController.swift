@@ -43,6 +43,20 @@ class workoutViewController: UIViewController {
         let myURL = URL(string: link)
         let youtubeRequest = URLRequest(url: myURL!)
         tutorialVid.load(youtubeRequest)
+        
+        // UI for ViewController
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        let topGradient = CGColor(srgbRed: 255/255.0, green: 190/255.0, blue: 175/255.0, alpha: 1)
+        let bottomGradient = CGColor(srgbRed: 139/255.0, green: 207/255.0, blue: 250/255.0, alpha: 1)
+        let gradientView = CAGradientLayer()
+        gradientView.frame = view.layer.bounds
+        gradientView.colors = [topGradient, bottomGradient]
+        view.layer.insertSublayer(gradientView, at: 0)
+        
+        workoutNameLabel.layer.borderWidth = 0
+        
        
     }
     
