@@ -55,7 +55,6 @@ class recipesTableViewController: UITableViewController {
     struct AllRecipes: Codable {
         var results: [Recipes]
     }
-    
     struct Recipes: Codable {
         var id: Int
         var image: String
@@ -70,7 +69,6 @@ class recipesTableViewController: UITableViewController {
         var extendedIngredients: [Ingredients]
         var instructions: String
     }
-    
     struct Ingredients: Codable {
         //var amount: Double
         //var unit: String
@@ -78,14 +76,20 @@ class recipesTableViewController: UITableViewController {
         var originalString: String
     }
     
+    /*
+    let cellGradient = false
+    let topCellColor = CGColor(srgbRed: 150/255.0, green: 222/255.0, blue: 192/255.0, alpha: 1)
+    let bottomCellColor = CGColor(srgbRed: 0/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
+    let cellColor = UIColor(red: 239/255.0, green: 245/255.0, blue: 214/255.0, alpha: 1)
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         getAllData()
         
-        //navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        //navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
         
         let topGradient = CGColor(srgbRed: 110.0/255, green: 225.0/255, blue: 245/255, alpha: 1)
         let bottomGradient = CGColor(srgbRed: 240/255, green: 240/255, blue: 245/255, alpha: 1)
@@ -96,7 +100,7 @@ class recipesTableViewController: UITableViewController {
         backgroundView.layer.insertSublayer(gradientView, at: 0)
         tableView.backgroundView = backgroundView
     }
-    
+    // MARK: First Api Call
     func getAllData() {
         
         // 2. BEGIN NETWORKING code
@@ -112,10 +116,8 @@ class recipesTableViewController: UITableViewController {
         } else {
             url = URL(string: link)!
         }
-        
 
         // 3. MAKE THE HTTPS REQUEST task
-        
         let alert1 = UIAlertController(title: "No Internet Connection", message: "iPhone must be connected to internet for app to run", preferredStyle: .alert)
         
         alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -137,12 +139,8 @@ class recipesTableViewController: UITableViewController {
             print("Got the data from network")
         
         // 4. DECODE THE RESULTING JSON
-        //
             let decoder = JSONDecoder()
-            //print(String(data: jsonData, encoding: .utf8))
-
             do {
-                // decode the JSON into our array of todoItem's
                 self.totalRecipes = try decoder.decode(AllRecipes.self, from: jsonData)
                                 
                 DispatchQueue.main.async {
@@ -172,12 +170,10 @@ class recipesTableViewController: UITableViewController {
                 print("JSON Decode error")
             }
         }
-     
-        // actually make the http task run.
         task.resume()
-    
     }
     
+    // MARK: Second Api Call
     func getmoreData() {
         
         // 2. BEGIN NETWORKING code
@@ -189,7 +185,6 @@ class recipesTableViewController: UITableViewController {
         let url = URL(string: link)!
 
         // 3. MAKE THE HTTPS REQUEST task
-        
         let alert1 = UIAlertController(title: "No Internet Connection", message: "iPhone must be connected to internet for app to run", preferredStyle: .alert)
         
         alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -211,14 +206,10 @@ class recipesTableViewController: UITableViewController {
             print("Got the data from network")
         
         // 4. DECODE THE RESULTING JSON
-        //
             let decoder = JSONDecoder()
-            //print(String(data: jsonData, encoding: .utf8))
-
             do {
-                // decode the JSON into our array of todoItem's
                 self.totalInstructions = try decoder.decode([Information].self, from: jsonData)
-                                
+                        
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
@@ -226,7 +217,6 @@ class recipesTableViewController: UITableViewController {
                 print("JSON Decode error")
             }
         }
-       
         task.resume()
     }
  
@@ -235,18 +225,31 @@ class recipesTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return totalRecipes.results.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! recipesTableViewCell
+        /*
+        // Make cell appearance
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.backgroundColor = UIColor.clear
+        cell.mainCellLayer.layer.cornerRadius = cell.bounds.height/4
+        cell.mainCellLayer.clipsToBounds = true
+        if cellGradient {
+            let gradientLayer = CAGradientLayer()
+            gradientLayer.frame = cell.mainCellLayer.bounds
+            gradientLayer.colors = [topCellColor, bottomCellColor]
+            cell.mainCellLayer.layer.insertSublayer(gradientLayer, at: 0)
+        }
+        cell.mainCellLayer.backgroundColor = cellColor
+        */
         
+        // Assign cell values
         temp = "https://spoonacular.com/recipeImages/" +  totalRecipes.results[indexPath.row].image
         urls = URL(string: temp)
         cell.recipeImage.load(url: urls!)
@@ -258,6 +261,7 @@ class recipesTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: Preparge Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let destVC = segue.destination as! focusViewController
@@ -281,36 +285,7 @@ class recipesTableViewController: UITableViewController {
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+  
+  
 
 }
