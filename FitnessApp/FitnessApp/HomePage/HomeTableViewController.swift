@@ -59,7 +59,7 @@ class HomeTableViewController: UITableViewController {
         //self.performSegue(withIdentifier: "loginSegue", sender: self)
 
     }
-    
+        
     var challengeList=["Sergio", "Obama", "Bobert"]
     var stats = ["100","50","30","200","5"]
     var workouts = ["Push Ups","Sit Ups","Pull Ups","Squats","Miles"]
@@ -95,17 +95,25 @@ class HomeTableViewController: UITableViewController {
     let cellGradient = false
     let topCellColor = CGColor(srgbRed: 150/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
     let bottomCellColor = CGColor(srgbRed: 0/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
+    //let cellColor = UIColor(red: 255/255.0, green: 190/255.0, blue: 175/255.0, alpha: 1)
+
     let cellColor = UIColor(red: 239/255.0, green: 245/255.0, blue: 214/255.0, alpha: 1)
     let topGradient = CGColor(srgbRed: 186.0/255, green: 159.0/255, blue: 231.0/255, alpha: 1)
     let bottomGradient = CGColor(srgbRed: 128.0/255, green: 250.0/255, blue: 255/255, alpha: 1)
 
     var mainCall: jsonCall = jsonCall(message: Message(Stats:[],Challenges:[]))
     
+
+    @IBOutlet weak var logOutButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.view.backgroundColor = backgroundColor
         getAllData()
         //self.navigationController?.navigationBar.barTintColor = UIColor(red: 156.0/255, green: 236.0/255, blue: 255.0/255, alpha: 1)
+        logOutButton.layer.cornerRadius = logOutButton.frame.height/4
+        logOutButton.layer.borderWidth = 0
+        logOutButton.backgroundColor = cellColor
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -141,6 +149,8 @@ class HomeTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+
     }
     
     
@@ -273,11 +283,13 @@ class HomeTableViewController: UITableViewController {
 //    }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.text = sectionTitles[section]
         header.tintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-        header.textLabel?.font = UIFont(name: "Futura", size: 35)
+        //header.textLabel?.font = UIFont(name: "Georgia", size: 35)
         //view.textLabel?.textColor = UIColor.white
         header.textLabel?.textColor = UIColor.black
-           // header.textLabel?.font.withSize(35)
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 35)
+
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -119,17 +119,20 @@ class meditationViewController: UIViewController {
         let bottomGradient = CGColor(srgbRed: 255/255.0, green: 179/255.0, blue: 71/255.0, alpha: 1)
         let gradientView = CAGradientLayer()
         gradientView.frame = view.layer.bounds
-        gradientView.colors = [topGradient, bottomGradient]
+        gradientView.colors = [topGradient, bottomGradient].reversed()
         view.layer.insertSublayer(gradientView, at: 0)
         
+        let buttColor = UIColor(red: 239/255.0, green: 245/255.0, blue: 214/255.0, alpha: 1)
         // UI for Buttons
-        newSessionButton.layer.cornerRadius = 6
-        newSessionButton.layer.borderWidth = 1
+        newSessionButton.layer.cornerRadius = newSessionButton.frame.height/4
+        newSessionButton.layer.borderWidth = 0
         newSessionButton.layer.borderColor = UIColor.black.cgColor
+        newSessionButton.backgroundColor = buttColor
         
-        moreInfoButton.layer.cornerRadius = 6
-        moreInfoButton.layer.borderWidth = 1
+        moreInfoButton.layer.cornerRadius = moreInfoButton.frame.height/4
+        moreInfoButton.layer.borderWidth = 0
         moreInfoButton.layer.borderColor = UIColor.black.cgColor
+        moreInfoButton.backgroundColor = buttColor//(red: 150/255.0, green: 150/255.0, blue: 255/255.0, alpha: 1)
 
     }
     
