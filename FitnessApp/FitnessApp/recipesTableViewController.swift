@@ -100,6 +100,7 @@ class recipesTableViewController: UITableViewController {
         backgroundView.layer.insertSublayer(gradientView, at: 0)
         tableView.backgroundView = backgroundView
     }
+    
     // MARK: First Api Call
     func getAllData() {
         
@@ -284,8 +285,6 @@ class recipesTableViewController: UITableViewController {
         
     }
     
-
-  
   
 
 }
