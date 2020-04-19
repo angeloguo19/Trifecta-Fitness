@@ -48,6 +48,21 @@ class HomeTableViewCell: UITableViewCell {
 
 }
 
+class moreChallengesTableViewCell: UITableViewCell{
+    
+    @IBOutlet weak var mainCellLayer: UIView!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+}
+
 let tableView = UITableView.init(frame: CGRect.zero, style: .grouped)
 
 
@@ -209,7 +224,13 @@ class HomeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0) {
-            return mainCall.message.Challenges.count
+            if(mainCall.message.Challenges.count>5){
+                return 6
+            }
+            else{
+                return mainCall.message.Challenges.count
+
+            }
         } else {
             return mainCall.message.Stats.count
         }
@@ -229,31 +250,51 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //print("Checking for data from \(mainCall)")
         if(indexPath.section == 0) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeTableViewCell
-            cell.progressView.progress = Float(mainCall.message.Challenges[indexPath.row].you) / Float(mainCall.message.Challenges[indexPath.row].amount)
-            cell.opProgressView.progress = Float(mainCall.message.Challenges[indexPath.row].them) / Float(mainCall.message.Challenges[indexPath.row].amount)
-            let transform : CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 5.0)
-            cell.progressView.transform = transform
-            cell.opProgressView.transform = transform
-            //cell.amountLabel.text = String( mainCall.message.Challenges[indexPath.row].amount)
-            cell.workoutLabel.text = String( mainCall.message.Challenges[indexPath.row].amount)+" "+mainCall.message.Challenges[indexPath.row].workout
-            cell.challengeLabel.text = mainCall.message.Challenges[indexPath.row].opponent
-            cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.frame.height/4
-            //cell.mainCellLayer.layer.borderWidth = 1
-            //cell.mainCellLayer.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
-            
-            cell.selectionStyle = UITableViewCell.SelectionStyle.none
-            cell.backgroundColor = UIColor.clear
-            cell.mainCellLayer.layer.masksToBounds = true
-            if cellGradient {
-                let gradientLayer = CAGradientLayer()
-                gradientLayer.frame = cell.mainCellLayer.bounds
-                gradientLayer.colors = [topCellColor, bottomCellColor]
-                cell.mainCellLayer.layer.insertSublayer(gradientLayer, at: 0)
-            } else {
-                cell.mainCellLayer.backgroundColor = cellColor
+            if(indexPath.row<5){
+                let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeTableViewCell
+                cell.progressView.progress = Float(mainCall.message.Challenges[indexPath.row].you) / Float(mainCall.message.Challenges[indexPath.row].amount)
+                cell.opProgressView.progress = Float(mainCall.message.Challenges[indexPath.row].them) / Float(mainCall.message.Challenges[indexPath.row].amount)
+                let transform : CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 5.0)
+                cell.progressView.transform = transform
+                cell.opProgressView.transform = transform
+                //cell.amountLabel.text = String( mainCall.message.Challenges[indexPath.row].amount)
+                cell.workoutLabel.text = String( mainCall.message.Challenges[indexPath.row].amount)+" "+mainCall.message.Challenges[indexPath.row].workout
+                cell.challengeLabel.text = mainCall.message.Challenges[indexPath.row].opponent
+                cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.frame.height/4
+                //cell.mainCellLayer.layer.borderWidth = 1
+                //cell.mainCellLayer.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+                
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                cell.backgroundColor = UIColor.clear
+                cell.mainCellLayer.layer.masksToBounds = true
+                if cellGradient {
+                    let gradientLayer = CAGradientLayer()
+                    gradientLayer.frame = cell.mainCellLayer.bounds
+                    gradientLayer.colors = [topCellColor, bottomCellColor]
+                    cell.mainCellLayer.layer.insertSublayer(gradientLayer, at: 0)
+                } else {
+                    cell.mainCellLayer.backgroundColor = cellColor
+                }
+                return cell
             }
-            return cell
+            else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "moreChallengesTableViewCell", for: indexPath) as! moreChallengesTableViewCell
+                
+                cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.frame.height/4
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                cell.backgroundColor = UIColor.clear
+                cell.mainCellLayer.layer.masksToBounds = true
+                if cellGradient {
+                    let gradientLayer = CAGradientLayer()
+                    gradientLayer.frame = cell.mainCellLayer.bounds
+                    gradientLayer.colors = [topCellColor, bottomCellColor]
+                    cell.mainCellLayer.layer.insertSublayer(gradientLayer, at: 0)
+                } else {
+                    cell.mainCellLayer.backgroundColor = cellColor
+                }
+                return cell
+                
+            }
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "workCell", for: indexPath) as! workoutTableCell
             cell.amountLabel.text = String(mainCall.message.Stats[indexPath.row].amount)
@@ -309,9 +350,16 @@ class HomeTableViewController: UITableViewController {
             
             
             if(myRow?.section==0){
-                let myCurrentCell = tableView!.cellForRow(at: myRow!) as! HomeTableViewCell
-                let destVC = segue.destination as! ChallengesViewController
-                print("one")
+                if(myRow!.row<5){
+                    let myCurrentCell = tableView!.cellForRow(at: myRow!) as! HomeTableViewCell
+                    let destVC = segue.destination as! ChallengesViewController
+                    print("one")
+                }
+                else{
+                    let myCurrentCell = tableView!.cellForRow(at: myRow!) as! moreChallengesTableViewCell
+                    let destVC = segue.destination as! challengesTableViewController
+                    print("two")
+                }
             }
             else{
                 let myCurrentCell = tableView!.cellForRow(at: myRow!) as! workoutTableCell
@@ -330,7 +378,12 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var segue: String!
         if indexPath.section == 0 {
-            segue = "segue1"
+            if(indexPath.row<5){
+                segue = "segue1"
+            }
+            else{
+                segue = "segue3"
+            }
         } else  {
             segue = "segue2"
         }
