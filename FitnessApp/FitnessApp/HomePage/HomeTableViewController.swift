@@ -121,6 +121,11 @@ class HomeTableViewController: UITableViewController {
 
     @IBOutlet weak var logOutButton: UIButton!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("hi")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.view.backgroundColor = backgroundColor
@@ -392,10 +397,7 @@ class HomeTableViewController: UITableViewController {
         self.performSegue(withIdentifier: segue, sender: self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("hi")
-    }
+
     
     func getData(){
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

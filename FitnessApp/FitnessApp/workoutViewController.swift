@@ -12,6 +12,7 @@ import WebKit
 
 class workoutViewController: UIViewController {
     
+    @IBOutlet weak var currentLeaderView: UIView!
     var nameText: String = ""
     
     var username = ""
@@ -21,8 +22,25 @@ class workoutViewController: UIViewController {
         var err: String?
     }
     
-    var serverCall: jsonCall = jsonCall(message: "",err:"")
+    struct leaderBoard: Codable{
+        var message: Message
+    }
+    struct Message: Codable{
+        var Workouts: [workoutStruct]
+    }
+    struct workoutStruct: Codable{
+        var workout: String
+        var Data: [people]
+    }
+    struct people: Codable{
+        var username: String
+        var amount: Int
+    }
+   
     
+    var serverCall: jsonCall = jsonCall(message: "",err:"")
+    var leaderBoardCall: leaderBoard = leaderBoard(message: Message(Workouts: []))
+    //var mainCall: jsonCall = jsonCall(message: Message(Stats:[],Challenges:[]))
     @IBOutlet weak var workoutNameLabel: UILabel!
     
     @IBOutlet weak var reps: UITextField!
@@ -120,18 +138,55 @@ class workoutViewController: UIViewController {
         
         workoutNameLabel.layer.borderWidth = 0
         
+        
+        currentLeaderView.layer.cornerRadius = currentLeaderView.frame.height/4
+        
+        currentLeaderView.backgroundColor = UIColor(red: 239/255.0, green: 245/255.0, blue: 214/255.0, alpha: 1)
+        currentLeaderView.layer.masksToBounds = true
        
     }
     
+    func callLeaderboard() {
+        let mySession = URLSession(configuration: URLSessionConfiguration.default)
+        let url = URL(string: "http://152.3.69.115:8081/api/leaderboard")!
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let task = mySession.dataTask(with: url) { data, response, error in
+
+                       
+            guard error == nil else {
+                print ("error: \(error!)")
+                           
+                DispatchQueue.main.async {
+                    let alert1 = UIAlertController(title: "Error", message: "Issues connecting with internet", preferredStyle: .alert) //.actionSheet
+                    alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert1, animated: true)
+                }
+                return
+            }
+            guard let jsonData = data else {
+                print("No data")
+                return
+            }
+                       
+      
+            let decoder = JSONDecoder()
+            do {
+                self.leaderBoardCall = try decoder.decode(leaderBoard.self, from: jsonData)
+                
+                       
+                DispatchQueue.main.async {
+                   //self.tableView.reloadData()
+                //self.checkUsername()
+               }
+               
+            } catch {
+               print("JSON Decode error")
+            }
+        }
+        task.resume()
+           
     }
-    */
+    
 
 }
