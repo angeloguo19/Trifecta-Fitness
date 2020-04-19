@@ -451,11 +451,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e2r-Y3-N08">
-                                <rect key="frame" x="56" y="343" width="288" height="56"/>
+                                <rect key="frame" x="46" y="343" width="312" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Leader: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbz-nw-9mh">
-                                        <rect key="frame" x="57" y="13" width="174" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Leader: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbz-nw-9mh">
+                                        <rect key="frame" x="0.0" y="13" width="304" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <nil key="textColor"/>
@@ -471,6 +471,7 @@
                     <navigationItem key="navigationItem" id="Aqm-3z-p1P"/>
                     <connections>
                         <outlet property="currentLeaderView" destination="e2r-Y3-N08" id="Lcp-3k-SfW"/>
+                        <outlet property="leaderLabel" destination="Rbz-nw-9mh" id="UiF-GZ-lsI"/>
                         <outlet property="reps" destination="L8V-GF-w0q" id="8ZC-zf-afC"/>
                         <outlet property="tutorialVid" destination="5V2-Xq-Fzy" id="yLr-TT-NP2"/>
                         <outlet property="workoutNameLabel" destination="lgY-cp-ayK" id="vph-o9-LS9"/>

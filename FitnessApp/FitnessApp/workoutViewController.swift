@@ -13,6 +13,10 @@ import WebKit
 class workoutViewController: UIViewController {
     
     @IBOutlet weak var currentLeaderView: UIView!
+    @IBOutlet weak var leaderLabel: UILabel!
+    
+    
+    
     var nameText: String = ""
     
     var username = ""
@@ -143,7 +147,8 @@ class workoutViewController: UIViewController {
         
         currentLeaderView.backgroundColor = UIColor(red: 239/255.0, green: 245/255.0, blue: 214/255.0, alpha: 1)
         currentLeaderView.layer.masksToBounds = true
-       
+        
+        callLeaderboard()
     }
     
     func callLeaderboard() {
@@ -178,6 +183,7 @@ class workoutViewController: UIViewController {
                 DispatchQueue.main.async {
                    //self.tableView.reloadData()
                 //self.checkUsername()
+                    self.updateLeader()
                }
                
             } catch {
@@ -188,5 +194,15 @@ class workoutViewController: UIViewController {
            
     }
     
+    func updateLeader(){
+        
+        for wkout in leaderBoardCall.message.Workouts{
+            if wkout.workout == nameText{
+                leaderLabel.text = "Current Leader: " + wkout.Data[0].username
+
+                print(wkout.Data[0].username)
+            }
+        }
+    }
 
 }
