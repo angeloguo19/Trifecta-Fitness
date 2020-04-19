@@ -10,6 +10,10 @@ import UIKit
 
 class moreInfoViewController: UIViewController {
 
+    
+    @IBOutlet weak var firstLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +26,11 @@ class moreInfoViewController: UIViewController {
         gradientView.frame = view.layer.bounds
         gradientView.colors = [topGradient, bottomGradient].reversed()
         view.layer.insertSublayer(gradientView, at: 0)
-        // Do any additional setup after loading the view.
+    
+        // UI for labels
+        
+        firstLabel.text = "Find a spot where you can sit or lie \ncomfortably."
+        secondLabel.text = "Close your eyes and breath naturally"
     }
     
 
