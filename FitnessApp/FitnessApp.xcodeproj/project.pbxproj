@@ -20,6 +20,7 @@
 		BE8D67B5243D387600602C1B /* focusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8D67B4243D387600602C1B /* focusViewController.swift */; };
 		BE9C55182445841300A0C679 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9C55172445841300A0C679 /* CreateAccountViewController.swift */; };
 		BEAA5882244CE4D1006869B4 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAA5881244CE4D1006869B4 /* HomeTableViewController.swift */; };
+		BEAA5886244CFBB0006869B4 /* LeaderBoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAA5885244CFBB0006869B4 /* LeaderBoardTableViewController.swift */; };
 		BEBEA5D1243018D100119720 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D0243018D100119720 /* AppDelegate.swift */; };
 		BEBEA5D3243018D100119720 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D2243018D100119720 /* SceneDelegate.swift */; };
 		BEBEA5D5243018D100119720 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D4243018D100119720 /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 		BE8D67B4243D387600602C1B /* focusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = focusViewController.swift; sourceTree = "<group>"; };
 		BE9C55172445841300A0C679 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		BEAA5881244CE4D1006869B4 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		BEAA5885244CFBB0006869B4 /* LeaderBoardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardTableViewController.swift; sourceTree = "<group>"; };
 		BEBEA5CD243018D100119720 /* FitnessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBEA5D0243018D100119720 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEBEA5D2243018D100119720 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				BE8D67B2243D35DF00602C1B /* recipesTableViewController.swift */,
 				BE8D67AE243A951500602C1B /* fitnessTableViewController.swift */,
 				BE8D67B0243AA56700602C1B /* workoutViewController.swift */,
+				BEAA5885244CFBB0006869B4 /* LeaderBoardTableViewController.swift */,
 				BE35AC7124381F1700754558 /* nutritionViewController.swift */,
 				BE35AC6F2438101900754558 /* moreInfoViewController.swift */,
 				BE35AC6D2437E1F700754558 /* meditationViewController.swift */,
@@ -269,6 +272,7 @@
 				BEE7816F24422CB700234A68 /* StatsViewController.swift in Sources */,
 				BE8D67B5243D387600602C1B /* focusViewController.swift in Sources */,
 				BEAA5882244CE4D1006869B4 /* HomeTableViewController.swift in Sources */,
+				BEAA5886244CFBB0006869B4 /* LeaderBoardTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@ class workoutViewController: UIViewController {
     @IBOutlet weak var currentLeaderView: UIView!
     @IBOutlet weak var leaderLabel: UILabel!
     
+
     
     
     var nameText: String = ""
@@ -203,6 +204,15 @@ class workoutViewController: UIViewController {
                 print(wkout.Data[0].username)
             }
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destVC = segue.destination as! LeaderBoardTableViewController
+        destVC.nameText = self.nameText
+        
+    
+    
     }
 
 }
