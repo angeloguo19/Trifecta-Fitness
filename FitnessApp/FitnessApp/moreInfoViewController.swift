@@ -13,6 +13,9 @@ class moreInfoViewController: UIViewController {
     
     @IBOutlet weak var firstLabel: UILabel!
     @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var thirdLabel: UILabel!
+    @IBOutlet weak var fourthLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +32,10 @@ class moreInfoViewController: UIViewController {
     
         // UI for labels
         
-        firstLabel.text = "Find a spot where you can sit or lie \ncomfortably."
+        firstLabel.text = "Find a spot where you can sit or lie comfortably."
         secondLabel.text = "Close your eyes and breath naturally"
+        thirdLabel.text = "Focus your attention on your breath. Notice the way your body moves as you breath. If your mind wanders, forgive yourself and return your focus to your breath."
+        fourthLabel.text = "To learn more about meditation and different meditation techniques, you can search online for information. For free guided meditation videos, check out YouTube."
     }
     
 
