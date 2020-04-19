@@ -84,6 +84,17 @@ class recipesTableViewController: UITableViewController {
 
         getAllData()
         
+        //navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        //navigationController?.navigationBar.shadowImage = UIImage()
+        
+        let topGradient = CGColor(srgbRed: 110.0/255, green: 225.0/255, blue: 245/255, alpha: 1)
+        let bottomGradient = CGColor(srgbRed: 240/255, green: 240/255, blue: 245/255, alpha: 1)
+        let gradientView = CAGradientLayer()
+        gradientView.frame = tableView.layer.bounds
+        gradientView.colors = [topGradient, bottomGradient].reversed()
+        let backgroundView = UIView(frame: tableView.layer.bounds)
+        backgroundView.layer.insertSublayer(gradientView, at: 0)
+        tableView.backgroundView = backgroundView
     }
     
     func getAllData() {
@@ -92,8 +103,16 @@ class recipesTableViewController: UITableViewController {
         let mySession = URLSession(configuration: URLSessionConfiguration.default)
         
         //hard code 25 results at end
+        var url: URL = URL(string: "http://www.google.com")!
         let link: String = "https://api.spoonacular.com/recipes/search?query=" + search + "&number=1&instructionsRequired=true&apiKey=3779cda1cd174fa1b8677bd02ba7ba90"
-        let url = URL(string: link)!
+        if URL(string: link) == nil {
+            let alert3 = UIAlertController(title: "Search Error", message: "Please make sure that the recipe name entered contains letters only", preferredStyle: .alert)
+            alert3.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert3, animated: true)
+        } else {
+            url = URL(string: link)!
+        }
+        
 
         // 3. MAKE THE HTTPS REQUEST task
         
@@ -131,7 +150,7 @@ class recipesTableViewController: UITableViewController {
                 }
                 
                 if self.totalRecipes.results.count == 0 {
-                    let alert2 = UIAlertController(title: "No Search Results", message: "Sorry, but we were unable to find a recipe for the search you made", preferredStyle: .alert)
+                    let alert2 = UIAlertController(title: "No Search Results", message: "We were unable to find a recipe for the search you made", preferredStyle: .alert)
                     
                     alert2.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     DispatchQueue.main.async {

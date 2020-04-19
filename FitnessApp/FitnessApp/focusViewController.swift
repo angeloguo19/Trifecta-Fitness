@@ -36,6 +36,17 @@ class focusViewController: UIViewController {
         instructionsLabel.text = allInstructions
         ingredientsLabel.text = ingredientsText
         
+        // UI for ViewController
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        let topGradient = CGColor(srgbRed: 110.0/255, green: 225.0/255, blue: 245/255, alpha: 1)
+        let bottomGradient = CGColor(srgbRed: 240/255, green: 240/255, blue: 245/255, alpha: 1)
+        let gradientView = CAGradientLayer()
+        gradientView.frame = view.layer.bounds
+        gradientView.colors = [topGradient, bottomGradient].reversed()
+        view.layer.insertSublayer(gradientView, at: 0)
+        
     }
     
    

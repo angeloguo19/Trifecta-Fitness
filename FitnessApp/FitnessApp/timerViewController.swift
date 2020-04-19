@@ -224,35 +224,50 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         timerList.delegate = self
         timerList.dataSource = self
         
+        let buttColor = UIColor(red: 239/255.0, green: 245/255.0, blue: 214/255.0, alpha: 1)
         // Change appearance of the buttons
         startButton.layer.shadowOpacity = 0.5
         startButton.layer.shadowRadius = 1
         startButton.layer.cornerRadius = 35
-        startButton.layer.borderWidth = 1
+        startButton.layer.borderWidth = 0
         startButton.layer.borderColor = UIColor.black.cgColor
         startButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         startButton.layer.masksToBounds = false
+        startButton.layer.backgroundColor = buttColor.cgColor
         
         pauseButton.layer.shadowOpacity = 0.5
         pauseButton.layer.shadowRadius = 1
         pauseButton.layer.cornerRadius = 35
-        pauseButton.layer.borderWidth = 1
+        pauseButton.layer.borderWidth = 0
         pauseButton.layer.borderColor = UIColor.black.cgColor
         pauseButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         pauseButton.layer.masksToBounds = false
         pauseButton.isEnabled = false
+        pauseButton.layer.backgroundColor = buttColor.cgColor
         
         resetButton.layer.shadowOpacity = 0.5
         resetButton.layer.shadowRadius = 1
         resetButton.layer.cornerRadius = 35
-        resetButton.layer.borderWidth = 1
+        resetButton.layer.borderWidth = 0
         resetButton.layer.borderColor = UIColor.black.cgColor
         resetButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         resetButton.layer.masksToBounds = false
+        resetButton.layer.backgroundColor = buttColor.cgColor
         
         updateButton.layer.cornerRadius = 6
-        updateButton.layer.borderWidth = 1
+        updateButton.layer.borderWidth = 0
         updateButton.layer.borderColor = UIColor.black.cgColor
+        updateButton.layer.backgroundColor = buttColor.cgColor
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        let topGradient = CGColor(srgbRed: 255/255.0, green: 159.0/255.0, blue: 231.0/255.0, alpha: 1)
+        let bottomGradient = CGColor(srgbRed: 255/255.0, green: 179/255.0, blue: 71/255.0, alpha: 1)
+        let gradientView = CAGradientLayer()
+        gradientView.frame = view.layer.bounds
+        gradientView.colors = [topGradient, bottomGradient].reversed()
+        view.layer.insertSublayer(gradientView, at: 0)
     
     }
     
