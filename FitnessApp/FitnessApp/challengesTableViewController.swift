@@ -12,9 +12,10 @@ import CoreData
 class challengesTableViewCell: UITableViewCell {
     
     
+    @IBOutlet weak var mainCellLayer: UIView!
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var workoutLabel: UILabel!
     
     @IBOutlet weak var yourProgress: UIProgressView!
     @IBOutlet weak var theirProgress: UIProgressView!
@@ -76,10 +77,20 @@ class challengesTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         getAllData()
+        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        self.tabBarController?.tabBar.backgroundColor = UIColor.clear
+        self.tabBarController?.tabBar.shadowImage = UIImage()
+        tabBarController?.tabBar.backgroundImage = UIImage()
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let amount = 125
+        var tabFrame = tabBarController?.tabBar.frame
+        tabFrame?.size.height = CGFloat(amount)
+        tabFrame?.origin.y = self.view.frame.size.height - CGFloat(amount)
+        tabBarController?.tabBar.frame = tabFrame!
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = tableView.bounds
@@ -87,6 +98,16 @@ class challengesTableViewController: UITableViewController {
         let backgroundView = UIView(frame: tableView.bounds)
         backgroundView.layer.insertSublayer(gradientLayer, at: 0)
         tableView.backgroundView = backgroundView
+        
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = (tabBarController?.tabBar.bounds)!
+        tabBarController?.tabBar.insertSubview(blurView, at: 0)
+        
+        self.tabBarController?.tabBar.layer.borderWidth = 0
+        self.tabBarController?.tabBar.clipsToBounds = true
+        
+    
     }
     
    
@@ -156,8 +177,7 @@ class challengesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chalCell", for: indexPath) as! challengesTableViewCell
         // Configure the cell...
         cell.nameLabel.text = userInfo.message.Challenges[indexPath.row].opponent
-        cell.amountLabel.text = String(userInfo.message.Challenges[indexPath.row].amount)
-        cell.workoutLabel.text = userInfo.message.Challenges[indexPath.row].workout
+        cell.amountLabel.text = String(userInfo.message.Challenges[indexPath.row].amount)+" "+userInfo.message.Challenges[indexPath.row].workout
         
         cell.yourProgress.progress = Float(userInfo.message.Challenges[indexPath.row].you) / Float(userInfo.message.Challenges[indexPath.row].amount)
         cell.theirProgress.progress = Float(userInfo.message.Challenges[indexPath.row].them) / Float(userInfo.message.Challenges[indexPath.row].amount)
@@ -165,6 +185,20 @@ class challengesTableViewController: UITableViewController {
         cell.yourProgress.transform = transform
         cell.theirProgress.transform = transform
         
+        cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.frame.height/4
+        
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                    cell.backgroundColor = UIColor.clear
+                    cell.mainCellLayer.layer.masksToBounds = true
+                    if cellGradient {
+                        let gradientLayer = CAGradientLayer()
+                        gradientLayer.frame = cell.mainCellLayer.bounds
+                        gradientLayer.colors = [topCellColor, bottomCellColor]
+                        cell.mainCellLayer.layer.insertSublayer(gradientLayer, at: 0)
+                    } else {
+                        cell.mainCellLayer.backgroundColor = cellColor
+                    }
+         
         return cell
     }
     
