@@ -26,8 +26,24 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         var err: String
     }
     
+    @objc func donePicker() {
+        repsField.resignFirstResponder()
+        workoutField.resignFirstResponder()
+        userField.resignFirstResponder()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Make done button
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
+        toolBar.setItems([doneButton], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        repsField.inputAccessoryView = toolBar
+        workoutField.inputAccessoryView = toolBar
+        userField.inputAccessoryView = toolBar
+        
     //color the background
        let topGradient = CGColor(srgbRed: 255/255.0, green: 159.0/255.0, blue: 231.0/255.0, alpha: 1)
        let bottomGradient = CGColor(srgbRed: 255/255.0, green: 179/255.0, blue: 71/255.0, alpha: 1)
@@ -47,13 +63,7 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     //make dropdown
         workoutField.inputView = workoutPicker
         
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
-        toolBar.setItems([doneButton], animated: true)
-        toolBar.isUserInteractionEnabled = true
-        workoutField.inputAccessoryView = toolBar
+    
     }
     
     

@@ -114,9 +114,22 @@ class workoutViewController: UIViewController {
         task.resume()
     }
     
+    @objc func donePicker() {
+        reps.resignFirstResponder()
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       // Make done button
+       let toolBar = UIToolbar()
+       toolBar.sizeToFit()
+       let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
+       toolBar.setItems([doneButton], animated: true)
+       toolBar.isUserInteractionEnabled = true
+       reps.inputAccessoryView = toolBar
+
+        
         workoutNameLabel.text = nameText
 
         workoutNameLabel.layer.borderColor = UIColor.black.cgColor
