@@ -1206,12 +1206,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XPq-rW-JIL">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XPq-rW-JIL">
                                             <rect key="frame" x="25" y="10" width="364" height="130"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Bq-oh-2wY">
-                                                    <rect key="frame" x="21" y="48" width="100" height="34"/>
+                                                    <rect key="frame" x="21" y="48" width="131" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
@@ -1230,7 +1229,7 @@
                                                     <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </progressView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVm-CA-JjU">
-                                                    <rect key="frame" x="204" y="56" width="115" height="21"/>
+                                                    <rect key="frame" x="146" y="42" width="210" height="46"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
@@ -1238,9 +1237,14 @@
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                            <viewLayoutGuide key="safeArea" id="tRk-Rs-JVW"/>
                                         </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="XPq-rW-JIL" firstAttribute="leading" secondItem="SmF-tR-4Tj" secondAttribute="leading" constant="25" id="OMD-1l-RZr"/>
+                                        <constraint firstAttribute="trailing" secondItem="XPq-rW-JIL" secondAttribute="trailing" constant="25" id="Sws-vz-QZc"/>
+                                        <constraint firstItem="XPq-rW-JIL" firstAttribute="top" secondItem="SmF-tR-4Tj" secondAttribute="top" constant="10" id="UjF-ug-yxj"/>
+                                        <constraint firstAttribute="bottom" secondItem="XPq-rW-JIL" secondAttribute="bottom" constant="10" id="vhq-HD-Axj"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="amountLabel" destination="jVm-CA-JjU" id="m7L-Jm-G2y"/>
