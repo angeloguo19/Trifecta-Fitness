@@ -20,8 +20,15 @@ class nutritionViewController: UIViewController {
         searchTextField.resignFirstResponder()
     }
     
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        searchTextField.resignFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
         
         searchButton.layer.cornerRadius = 5
         searchButton.setImage(UIImage(named: "search"), for: .normal)

@@ -36,7 +36,7 @@ class CreateAccountViewController: UIViewController {
     }
     
     var serverCall: jsonCall = jsonCall(message: "",err:"")
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

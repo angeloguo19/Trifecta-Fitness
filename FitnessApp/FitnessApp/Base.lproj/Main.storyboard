@@ -108,6 +108,7 @@
                                         <constraint firstItem="OYv-Ua-8rC" firstAttribute="centerY" secondItem="6yG-jJ-K8h" secondAttribute="centerY" id="wuD-RI-bpK"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="recipeImage" destination="EXa-FT-oBd" id="wqa-Eg-M3D"/>
                                     <outlet property="recipeLabel" destination="OYv-Ua-8rC" id="f6b-AE-3nS"/>
@@ -277,7 +278,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Lks-Qd-Hf7" firstAttribute="top" secondItem="16d-9I-XpT" secondAttribute="bottom" constant="15" id="1Id-H4-RL2"/>
                                             <constraint firstItem="16d-9I-XpT" firstAttribute="top" secondItem="RS2-gu-H0l" secondAttribute="bottom" constant="18" id="1PK-cg-nGy"/>
@@ -1932,7 +1933,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kYk-XK-ZHA"/>
+        <segue reference="gaV-8g-1kr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Apple" width="50" height="50"/>

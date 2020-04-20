@@ -118,9 +118,17 @@ class workoutViewController: UIViewController {
         reps.resignFirstResponder()
         
     }
+    
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        reps.resignFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+        
        // Make done button
        let toolBar = UIToolbar()
        toolBar.sizeToFit()
