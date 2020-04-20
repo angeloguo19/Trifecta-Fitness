@@ -16,9 +16,14 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     let workoutPicker = UIPickerView()
     
-
     var workoutPickerData: [String] = [String]()
     var selectedWorkout: String?
+    var serverCall: jsonCall = jsonCall(message: "",err:"")
+    
+    struct jsonCall: Codable {
+        var message: String
+        var err: String
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +55,11 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         workoutField.inputAccessoryView = toolBar
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+    }
+    
     @objc func action() {
        view.endEditing(true)
     }
@@ -62,12 +72,9 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
     @IBAction func saveTap(_ sender: Any) {
 
-        //save by calling challenge and using inputed info
-//        username = userField.text!
-//        workout = workoutField.text!
-//        reps = Int(repsField.text!)!
+        //save by calling challenge and using inputed info but first check the inputs are good to go
         createChallenge()
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
         //throw error if fields are empty
     }
 
@@ -105,27 +112,37 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             print("Got network Data")
            // 4. DECODE THE RESULTING JSON
 
-          // let decoder = JSONDecoder()
+          let decoder = JSONDecoder()
 
 
-            /*
+            
            do {
                // decode the JSON into our array of todoItem's
                self.serverCall = try decoder.decode(jsonCall.self, from: jsonData)
 
                DispatchQueue.main.async {
                    //self.tableView.reloadData()
-                self.checkUsername()
+                self.checkValidUser()
                }
 
            } catch {
                print("JSON Decode error")
            }
-            */
+            
         }
 
         task.resume()
-
+    }
+    
+    func checkValidUser(){
+        if(serverCall.err == "An error occured"){
+            let alertController = UIAlertController(title: "User Not Found", message:
+                "This user does not exist, please input a valid user name", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+            self.present(alertController, animated: true, completion: nil)
+        }
+        else{        self.dismiss(animated: true, completion: nil)
+}
     }
 
     /*
