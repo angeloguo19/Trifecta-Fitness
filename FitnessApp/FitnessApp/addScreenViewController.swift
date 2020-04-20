@@ -55,10 +55,6 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         workoutField.inputAccessoryView = toolBar
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-    }
     
     @objc func action() {
        view.endEditing(true)
@@ -73,8 +69,17 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBAction func saveTap(_ sender: Any) {
 
         //save by calling challenge and using inputed info but first check the inputs are good to go
+        if (userField.text!.isEmpty || workoutField.text!.isEmpty || repsField.text!.isEmpty) {
+            let emptyAlert = UIAlertController(title: "Missing Data", message: "Please fill out all three sections before creating a new challenge.", preferredStyle: .alert)
+            
+            emptyAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            
+            self.present(emptyAlert, animated: true)
+            print("entered if statement")
+        }
+        else{
         createChallenge()
-        //self.dismiss(animated: true, completion: nil)
+        }
         //throw error if fields are empty
     }
 
@@ -84,7 +89,7 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
            //
         let mySession = URLSession(configuration: URLSessionConfiguration.default)
 
-        let url = URL(string: "http://152.3.69.115:8081/api/challenge/low10" + "/" + userField.text! + "/" + workoutField.text! + "/" + repsField.text!)!
+        let url = URL(string: "http://152.3.69.115:8081/api/challenge/low10" + "/" + userField.text! + "/" + workoutField.text!.replacingOccurrences(of: " ", with: "%20") + "/" + repsField.text!)!
 
            // 3. MAKE THE HTTPS REQUEST task
            //
