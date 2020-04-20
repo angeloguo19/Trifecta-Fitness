@@ -48,24 +48,6 @@ class LoginViewController: UIViewController {
         passwordField.resignFirstResponder()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("hi")
-        
-        let defaults = UserDefaults.standard
-        let tempUsername = defaults.string(forKey: "username")
-        if(tempUsername != nil){
-            print(tempUsername)
-             
-            self.performSegue(withIdentifier: "loginSegue", sender: self)
-            print("wtf")
-        }
-        else{
-         //print("yo")
-        }
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("hi")
