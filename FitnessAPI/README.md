@@ -62,6 +62,16 @@ Resets the leaderboard. This does not affect any user information. This is used 
    
 ## Return Values:
 Most messages will be responded to with a message stating if they were successful or not. The exceptions to this are errors where an empty message is sent as well as information replies. There the JSON will follow this structure:
+
+### General Responses
+Every response will have a message-err pair. If there was no error during the process, then the err value will be an empty string and the data will be contained in the message section. It will NOT be `nil`. If there is an error, there will be a non-empty string as the value of err and the message will be an empty string. 
+```javascript
+{
+   message: JSON,
+   err: String 
+}
+```
+
 ### Stats:
 ```javascript
 {  
@@ -69,7 +79,7 @@ Most messages will be responded to with a message stating if they were successfu
          workout: String,  
          amount: Int  
       },  
-   ] 
+   ], 
    
    Challenges: [{  
          opponent: String,  
