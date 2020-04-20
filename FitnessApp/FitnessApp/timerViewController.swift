@@ -204,11 +204,18 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         progressTextField.resignFirstResponder()
     }
 
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        progressTextField.resignFirstResponder()
+    }
+    
     // MARK: View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
                 
         permission()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
         
         // Make done button
         let toolBar = UIToolbar()
