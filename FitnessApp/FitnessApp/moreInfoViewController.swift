@@ -32,9 +32,9 @@ class moreInfoViewController: UIViewController {
     
         // UI for labels
         
-        firstLabel.text = "Find a spot where you can sit or lie comfortably."
-        secondLabel.text = "Close your eyes and breath naturally"
-        thirdLabel.text = "Focus your attention on your breath. Notice the way your body moves as you breath. If your mind wanders, forgive yourself and return your focus to your breath."
+        firstLabel.text = "1.   Find a spot where you can sit or lie \n      comfortably."
+        secondLabel.text = "2.   Close your eyes and breath naturally"
+        thirdLabel.text = "3.   Focus your attention on your breath. Notice \n      the way your body moves as you breath. If \n      your mind wanders, forgive yourself and \n      return your focus to your breath."
         fourthLabel.text = "To learn more about meditation and different meditation techniques, you can search online for information. For free guided meditation videos, check out YouTube."
     }
     

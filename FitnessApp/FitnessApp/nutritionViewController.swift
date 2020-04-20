@@ -17,6 +17,10 @@ class nutritionViewController: UIViewController {
     
     var properSearch: String = ""
     
+    @objc func donePicker() {
+        searchTextField.resignFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +28,15 @@ class nutritionViewController: UIViewController {
         searchButton.setImage(UIImage(named: "search"), for: .normal)
         backgroundImage.image = UIImage(named: "Nutrition")
         
+        // Make done button
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
+        toolBar.setItems([doneButton], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        searchTextField.inputAccessoryView = toolBar
+        
+        // UI for ViewController
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         

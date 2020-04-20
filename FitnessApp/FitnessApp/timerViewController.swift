@@ -201,6 +201,7 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     @objc func donePicker() {
         timerTextField.resignFirstResponder()
+        progressTextField.resignFirstResponder()
     }
 
     // MARK: View Did Load
@@ -216,6 +217,7 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         toolBar.setItems([doneButton], animated: true)
         toolBar.isUserInteractionEnabled = true
         timerTextField.inputAccessoryView = toolBar
+        progressTextField.inputAccessoryView = toolBar
         
         //Make dropdownlist
         timerTextField.inputView = timerList
