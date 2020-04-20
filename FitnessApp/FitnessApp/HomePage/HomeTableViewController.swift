@@ -182,16 +182,9 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset)
         if(scrollView.contentOffset.y > -88 && scrollView.contentOffset.y < 8) {
-            print(-scrollView.contentOffset.y/88)
             self.navigationController?.navigationBar.alpha = -scrollView.contentOffset.y/50
         }
-            //self.navigationController?.setNavigationBarHidden(true, animated: false)
-        //} else {
-            //self.navigationController?.setNavigationBarHidden(false, animated: false)
-        //}
-        
     }
     
 //    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
