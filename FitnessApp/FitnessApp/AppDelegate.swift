@@ -43,9 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             userDefaults.set(0, forKey: "Bicycle Kicks")
             
             //Youtube links
-            userDefaults.set("IODxDxX7oi4", forKey: "Push-UpsVideo")
-            userDefaults.set("jDwoBqPH0jk", forKey: "Sit-UpsVideo")
-            userDefaults.set("eGo4IYlbE5g", forKey: "Pull-UpsVideo")
+            userDefaults.set("IODxDxX7oi4", forKey: "Push UpsVideo")
+            userDefaults.set("jDwoBqPH0jk", forKey: "Sit UpsVideo")
+            userDefaults.set("eGo4IYlbE5g", forKey: "Pull UpsVideo")
             userDefaults.set("JZQA08SlJnM", forKey: "BurpeesVideo")
             userDefaults.set("aclHkVaku9U", forKey: "SquatsVideo")
             userDefaults.set("QOVaHwm-Q6U", forKey: "LungesVideo")
