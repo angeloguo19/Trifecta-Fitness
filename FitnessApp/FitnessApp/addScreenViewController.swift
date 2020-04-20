@@ -19,6 +19,7 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var workoutPickerData: [String] = [String]()
     var selectedWorkout: String?
     var serverCall: jsonCall = jsonCall(message: "",err:"")
+    var username = UserDefaults.standard.string(forKey: "username")!
     
     struct jsonCall: Codable {
         var message: String
@@ -39,7 +40,7 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
     //set up pickers
-        workoutPickerData = ["Push Ups","Sit Ups","Pull ups", "Squats","Burpees","Lunges","Bicep Curls","Calf Raises", "Bicycle Kicks"]
+        workoutPickerData = ["Bicep Curls","Bicycle Kicks","Burpees","Calf Raises","Lunges","Push Ups","Pull ups","Sit Ups", "Squats"]
         workoutPicker.delegate = self
         workoutPicker.dataSource = self
         
@@ -89,7 +90,7 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
            //
         let mySession = URLSession(configuration: URLSessionConfiguration.default)
 
-        let url = URL(string: "http://152.3.69.115:8081/api/challenge/low10" + "/" + userField.text! + "/" + workoutField.text!.replacingOccurrences(of: " ", with: "%20") + "/" + repsField.text!)!
+        let url = URL(string: "http://152.3.69.115:8081/api/challenge/" + username + "/" + userField.text! + "/" + workoutField.text!.replacingOccurrences(of: " ", with: "%20") + "/" + repsField.text!)!
 
            // 3. MAKE THE HTTPS REQUEST task
            //
