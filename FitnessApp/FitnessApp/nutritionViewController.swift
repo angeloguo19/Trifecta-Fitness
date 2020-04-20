@@ -11,7 +11,6 @@ import UIKit
 class nutritionViewController: UIViewController {
 
 
-    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     
@@ -26,7 +25,7 @@ class nutritionViewController: UIViewController {
         
         searchButton.layer.cornerRadius = 5
         searchButton.setImage(UIImage(named: "search"), for: .normal)
-        backgroundImage.image = UIImage(named: "Nutrition")
+
         
         // Make done button
         let toolBar = UIToolbar()
