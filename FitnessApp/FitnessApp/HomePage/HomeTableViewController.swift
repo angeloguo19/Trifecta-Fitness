@@ -163,6 +163,14 @@ class HomeTableViewController: UITableViewController {
         let backgroundView = UIView(frame: tableView.bounds)
         backgroundView.layer.insertSublayer(gradientLayer, at: 0)
         tableView.backgroundView = backgroundView
+        
+//        navigationController?.navigationBar.frame.size.height = (navigationController?.navigationBar.frame.size.height)!*1.5
+//        let gradientLayer2 = CAGradientLayer()
+//        gradientLayer2.frame = (navigationController?.navigationBar.bounds)!
+//        gradientLayer2.colors = [topGradient, topGradient]
+//        let backgroundView2 = UIView(frame: tableView.bounds)
+//        backgroundView2.layer.insertSublayer(gradientLayer2, at: 0)
+//        navigationController?.navigationBar.insertSubview(backgroundView2, at: 0)
         //print("hi")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -172,6 +180,28 @@ class HomeTableViewController: UITableViewController {
         
 
     }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset)
+        if(scrollView.contentOffset.y > -88 && scrollView.contentOffset.y < 8) {
+            print(-scrollView.contentOffset.y/88)
+            self.navigationController?.navigationBar.alpha = -scrollView.contentOffset.y/50
+        }
+            //self.navigationController?.setNavigationBarHidden(true, animated: false)
+        //} else {
+            //self.navigationController?.setNavigationBarHidden(false, animated: false)
+        //}
+        
+    }
+    
+//    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//            if(velocity.y > 0) {
+//            UIView.animate(withDuration: 1, delay: 0, options: UIView.AnimationOptions(), animations: {
+//                self.navigationController?.setNavigationBarHidden(true, animated: true)
+//                print("Hidden")
+//            }, completion: nil)
+//        }
+//    }
     
     
     func getAllData() {
