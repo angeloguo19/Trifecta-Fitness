@@ -16,6 +16,7 @@ class workoutViewController: UIViewController {
     @IBOutlet weak var leaderLabel: UILabel!
     
 
+    @IBOutlet weak var currentReps: UILabel!
     
     
     var nameText: String = ""
