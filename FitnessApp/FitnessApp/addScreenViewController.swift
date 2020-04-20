@@ -88,7 +88,7 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 print ("error: \(error!)")
 
                 DispatchQueue.main.async {
-                    let alert1 = UIAlertController(title: "Error", message: "Issues connecting with internet", preferredStyle: .alert)
+                    let alert1 = UIAlertController(title: "No Internet Connection", message: "Connect to internet and restart app", preferredStyle: .alert)
 
                     alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert1, animated: true)
