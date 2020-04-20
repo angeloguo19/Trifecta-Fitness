@@ -28,13 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if userDefaults.bool(forKey: "firstRun") == false{
             userDefaults.set(true, forKey: "firstRun")
 
-            let defaultWorkouts = ["Push-Ups", "Sit-Ups", "Pull-Ups", "Burpees", "Squats", "Lunges", "Bicep Curls", "Calf Raises", "Bicycle Kicks"]
+            let defaultWorkouts = ["Push Ups", "Sit Ups", "Pull Ups", "Burpees", "Squats", "Lunges", "Bicep Curls", "Calf Raises", "Bicycle Kicks"]
 
             userDefaults.set(defaultWorkouts, forKey: "WorkoutsArray")
 
-            userDefaults.set(0, forKey: "Push-Ups")
-            userDefaults.set(0, forKey: "Sit-Ups")
-            userDefaults.set(0, forKey: "Pull-Ups")
+            userDefaults.set(0, forKey: "Push Ups")
+            userDefaults.set(0, forKey: "Sit Ups")
+            userDefaults.set(0, forKey: "Pull Ups")
             userDefaults.set(0, forKey: "Burpees")
             userDefaults.set(0, forKey: "Squats")
             userDefaults.set(0, forKey: "Lunges")
