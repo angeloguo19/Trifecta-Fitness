@@ -8,22 +8,52 @@
 
 import UIKit
 
-class addScreenViewController: UIViewController {
+class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var userField: UITextField!
     @IBOutlet weak var workoutField: UITextField!
     @IBOutlet weak var repsField: UITextField!
+    
+    let workoutPicker = UIPickerView()
+    
 
-    var username: String = ""
-    var workout: String = ""
-    var reps: Int = 0
+    var workoutPickerData: [String] = [String]()
+    var selectedWorkout: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-
-
+    //color the background
+       let topGradient = CGColor(srgbRed: 255/255.0, green: 159.0/255.0, blue: 231.0/255.0, alpha: 1)
+       let bottomGradient = CGColor(srgbRed: 255/255.0, green: 179/255.0, blue: 71/255.0, alpha: 1)
+       let gradientView = CAGradientLayer()
+       gradientView.frame = view.layer.bounds
+       gradientView.colors = [topGradient, bottomGradient].reversed()
+       view.layer.insertSublayer(gradientView, at: 0)
+    //color the nav bar
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+    //set up pickers
+        workoutPickerData = ["Push Ups","Sit Ups","Pull ups", "Squats","Burpees","Lunges","Bicep Curls","Calf Raises", "Bicycle Kicks"]
+        workoutPicker.delegate = self
+        workoutPicker.dataSource = self
+        
+    //make dropdown
+        workoutField.inputView = workoutPicker
+        
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+        toolBar.setItems([doneButton], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        workoutField.inputAccessoryView = toolBar
     }
+    
+    @objc func action() {
+       view.endEditing(true)
+    }
+
 
     @IBAction func cancelTap(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -33,9 +63,9 @@ class addScreenViewController: UIViewController {
     @IBAction func saveTap(_ sender: Any) {
 
         //save by calling challenge and using inputed info
-        username = userField.text!
-        workout = workoutField.text!
-        reps = Int(repsField.text!)!
+//        username = userField.text!
+//        workout = workoutField.text!
+//        reps = Int(repsField.text!)!
         createChallenge()
         self.dismiss(animated: true, completion: nil)
         //throw error if fields are empty
@@ -107,5 +137,21 @@ class addScreenViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return workoutPickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return workoutPickerData[row]
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedWorkout = workoutPickerData[row]
+        workoutField.text = selectedWorkout
+    }
 
 }
