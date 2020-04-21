@@ -15,8 +15,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nutrition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IlD-Gq-aRJ">
+                                <rect key="frame" x="20" y="71" width="139" height="42"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of a food or recipe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6HW-6g-3y3">
-                                <rect key="frame" x="74" y="171" width="248" height="34"/>
+                                <rect key="frame" x="74" y="180" width="248" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="WFA-M2-Y1K"/>
                                     <constraint firstAttribute="width" constant="248" id="k04-Ua-Ola"/>
@@ -25,7 +31,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afV-vS-BWd">
-                                <rect key="frame" x="306" y="172" width="35" height="32"/>
+                                <rect key="frame" x="306" y="181" width="35" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Y18-DQ-OLZ"/>
@@ -43,8 +49,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="afV-vS-BWd" firstAttribute="leading" secondItem="6HW-6g-3y3" secondAttribute="trailing" constant="-16" id="28f-9T-2R0"/>
-                            <constraint firstItem="6HW-6g-3y3" firstAttribute="centerY" secondItem="ZpI-vO-kPa" secondAttribute="centerY" constant="-219.5" id="BDK-cH-Gzg"/>
+                            <constraint firstItem="6HW-6g-3y3" firstAttribute="centerY" secondItem="ZpI-vO-kPa" secondAttribute="centerY" constant="-210.5" id="BDK-cH-Gzg"/>
+                            <constraint firstItem="IlD-Gq-aRJ" firstAttribute="leading" secondItem="ZpI-vO-kPa" secondAttribute="leading" constant="20" id="Q26-wI-Ykb"/>
                             <constraint firstItem="6HW-6g-3y3" firstAttribute="centerX" secondItem="q47-FR-l94" secondAttribute="centerX" constant="-9" id="XUq-f9-ryJ"/>
+                            <constraint firstItem="IlD-Gq-aRJ" firstAttribute="top" secondItem="ZpI-vO-kPa" secondAttribute="top" constant="15" id="rQj-IG-5IC"/>
+                            <constraint firstItem="6HW-6g-3y3" firstAttribute="top" secondItem="IlD-Gq-aRJ" secondAttribute="bottom" constant="67" id="tsz-ke-8vT"/>
                             <constraint firstItem="afV-vS-BWd" firstAttribute="top" secondItem="6HW-6g-3y3" secondAttribute="bottom" constant="-33" id="wGG-TE-bmH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZpI-vO-kPa"/>

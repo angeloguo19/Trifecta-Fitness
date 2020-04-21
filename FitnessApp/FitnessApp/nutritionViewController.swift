@@ -8,7 +8,7 @@
 
 import UIKit
 
-class nutritionViewController: UIViewController {
+class nutritionViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBOutlet weak var searchTextField: UITextField!
@@ -20,8 +20,14 @@ class nutritionViewController: UIViewController {
         searchTextField.resignFirstResponder()
     }
     
+    
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         searchTextField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.resignFirstResponder()
+        return true
     }
     
     override func viewDidLoad() {
@@ -32,7 +38,9 @@ class nutritionViewController: UIViewController {
         
         searchButton.layer.cornerRadius = 5
         searchButton.setImage(UIImage(named: "search"), for: .normal)
-
+        
+        searchTextField.delegate = self
+        searchTextField.returnKeyType = .done
         
         // Make done button
         let toolBar = UIToolbar()
