@@ -470,19 +470,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5V2-Xq-Fzy">
-                                <rect key="frame" x="56" y="539" width="302" height="170"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="302" id="oLn-BF-J84"/>
-                                    <constraint firstAttribute="height" constant="170" id="tmI-zX-Hse"/>
-                                </constraints>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I7m-3m-Ipg">
                                 <rect key="frame" x="321" y="224" width="42" height="42"/>
                                 <constraints>
@@ -553,6 +540,19 @@
                                     <constraint firstAttribute="height" constant="60" id="SLN-Mu-5rn"/>
                                 </constraints>
                             </view>
+                            <wkWebView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5V2-Xq-Fzy">
+                                <rect key="frame" x="56" y="509" width="302" height="170"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="302" id="oLn-BF-J84"/>
+                                    <constraint firstAttribute="height" constant="170" id="tmI-zX-Hse"/>
+                                </constraints>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -569,7 +569,7 @@
                             <constraint firstItem="I7m-3m-Ipg" firstAttribute="leading" secondItem="uHc-J2-V3A" secondAttribute="trailing" constant="12" id="OOH-Oi-z5d"/>
                             <constraint firstItem="uHc-J2-V3A" firstAttribute="centerY" secondItem="SeN-FU-aPs" secondAttribute="centerY" id="Vn5-2a-8j2"/>
                             <constraint firstItem="RlO-QG-Tbd" firstAttribute="centerY" secondItem="6S2-Tg-V25" secondAttribute="centerY" id="VxY-4R-bOh"/>
-                            <constraint firstItem="Q72-iG-TKZ" firstAttribute="bottom" secondItem="5V2-Xq-Fzy" secondAttribute="bottom" constant="50" id="czp-3T-hwo"/>
+                            <constraint firstItem="Q72-iG-TKZ" firstAttribute="bottom" secondItem="5V2-Xq-Fzy" secondAttribute="bottom" constant="75" id="czp-3T-hwo"/>
                             <constraint firstItem="Wko-CO-mjQ" firstAttribute="top" secondItem="e2r-Y3-N08" secondAttribute="bottom" constant="12" id="djr-YB-mAv"/>
                             <constraint firstItem="Wko-CO-mjQ" firstAttribute="centerX" secondItem="Q72-iG-TKZ" secondAttribute="centerX" id="dnq-Fu-O0H"/>
                             <constraint firstItem="RlO-QG-Tbd" firstAttribute="leading" secondItem="6S2-Tg-V25" secondAttribute="trailing" constant="46" id="edM-3K-2sb"/>
@@ -1567,31 +1567,6 @@
             </objects>
             <point key="canvasLocation" x="4328.985507246377" y="-2608.2589285714284"/>
         </scene>
-        <!--Stats View Controller-->
-        <scene sceneID="P2u-eR-ZPx">
-            <objects>
-                <viewController id="urL-Vh-9z4" customClass="StatsViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="xWL-Uu-hjv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbl-W1-PJ1">
-                                <rect key="frame" x="186" y="334" width="38" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="iTR-fE-2Rs"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="flX-SA-e36"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z19-TR-wFz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2249.275362318841" y="-1904.4642857142856"/>
-        </scene>
         <!--Home-->
         <scene sceneID="zq9-AU-nLS">
             <objects>
@@ -1712,6 +1687,7 @@
                                     <outlet property="amountLabel" destination="INS-WN-syj" id="btA-SL-WNZ"/>
                                     <outlet property="mainCellLayer" destination="nIn-uH-REw" id="Xfl-sE-bTC"/>
                                     <outlet property="workoutLabel" destination="xUN-iY-2Ft" id="McT-Jc-zDa"/>
+                                    <segue destination="nnj-pD-1TH" kind="show" id="NWX-s7-7Te"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreChallengesTableViewCell" rowHeight="100" id="8Vf-Ih-vrg" customClass="moreChallengesTableViewCell" customModule="FitnessApp" customModuleProvider="target">
@@ -1765,6 +1741,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="mainCellLayer" destination="bnZ-m5-uAb" id="65T-Yo-af3"/>
+                                    <segue destination="TeL-SC-Q1E" kind="show" id="Yum-jM-T9F"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1792,8 +1769,6 @@
                     <connections>
                         <outlet property="logOutButton" destination="WT6-hx-dLZ" id="OsB-W7-EPk"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="segue1" id="ZUD-Qp-54e"/>
-                        <segue destination="urL-Vh-9z4" kind="show" identifier="segue2" id="oy2-zc-znJ"/>
-                        <segue destination="TeL-SC-Q1E" kind="show" identifier="segue3" id="Hr1-kP-fld"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvf-1u-Ax5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1958,5 +1933,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gaV-8g-1kr"/>
+        <segue reference="NWX-s7-7Te"/>
     </inferredMetricsTieBreakers>
 </document>

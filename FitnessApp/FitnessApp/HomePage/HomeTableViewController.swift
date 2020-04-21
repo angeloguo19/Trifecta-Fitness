@@ -473,7 +473,8 @@ class HomeTableViewController: UITableViewController {
             }
             else{
                 let myCurrentCell = tableView!.cellForRow(at: myRow!) as! workoutTableCell
-                let destVC = segue.destination as! StatsViewController
+                let destVC = segue.destination as! workoutViewController
+                destVC.nameText = myCurrentCell.workoutLabel.text!
                 print("two")
             }
             
@@ -485,23 +486,23 @@ class HomeTableViewController: UITableViewController {
         //destVC.temp = (myCurrentCell.temperature?.text)!
         
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var segue: String!
-        if indexPath.section == 0 {
-            if(indexPath.row<5){
-                segue = "segue1"
-            }
-            else{
-                segue = "segue3"
-            }
-        } else  {
-            segue = "segue2"
-        }
-    
-        
-        self.performSegue(withIdentifier: segue, sender: self)
-    }
-    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        var segue: String!
+//        if indexPath.section == 0 {
+//            if(indexPath.row<5){
+//                segue = "segue1"
+//            }
+//            else{
+//                segue = "segue3"
+//            }
+//        } else  {
+//            segue = "segue2"
+//        }
+//
+//
+//        self.performSegue(withIdentifier: segue, sender: self)
+//    }
+//
 
     
     func getData(){
