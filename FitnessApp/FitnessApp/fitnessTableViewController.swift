@@ -47,11 +47,11 @@ class fitnessTableViewController: UITableViewController {
     //let bottomGradient = CGColor(srgbRed: 253/255.0, green: 253/255.0, blue: 150/255.0, alpha: 1)
     let bottomGradient = CGColor(srgbRed: 255/255.0, green: 179/255.0, blue: 71/255.0, alpha: 1)
     //let bottomGradient = CGColor(srgbRed: 255/255.0, green: 159.0/255.0, blue: 231.0/255.0, alpha: 1)
-    
+        
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let yPos = scrollView.contentOffset.y
         let amount : Int
-        let cellSize = 130
+        let cellSize = 100
         let array = defaults.object(forKey: "WorkoutsArray") as? [String] ?? [String]()
         amount = array.count
         if(yPos > -70 && yPos <= 0) {
@@ -70,10 +70,7 @@ class fitnessTableViewController: UITableViewController {
            
         } else if (yPos > 0 && (yPos <= 35)) {
            tableView.headerView(forSection: 0)?.alpha = 0
-           tableView.headerView(forSection: 1)?.alpha = 1
-           
         } else if (yPos > 35) {
-           tableView.headerView(forSection: 1)?.alpha = 1
            tableView.headerView(forSection: 0)?.alpha = 0
            let index = Int(floor(Float(yPos - 35)/Float(cellSize)))
            let alphaX = Float(yPos - 35).truncatingRemainder(dividingBy: Float(cellSize))
@@ -99,6 +96,11 @@ class fitnessTableViewController: UITableViewController {
            }
             
 
+        } else {
+            tableView.headerView(forSection: 0)?.alpha = 1
+            for n in tableView.visibleCells {
+                n.alpha = 1
+            }
         }
     }
     
@@ -129,10 +131,7 @@ class fitnessTableViewController: UITableViewController {
          //view.textLabel?.textColor = UIColor.white
         header.textLabel?.textColor = UIColor.black
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//      super.viewWillAppear(animated)
-//
+
 //      //1
 //      guard let appDelegate =
 //        UIApplication.shared.delegate as? AppDelegate else {
@@ -176,7 +175,8 @@ class fitnessTableViewController: UITableViewController {
         let workout = workouts[indexPath.row]
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.clear
-        cell.mainCellLayer.layer.cornerRadius = cell.bounds.height/4
+        cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.bounds.height/4
+        print(cell.mainCellLayer.layer.cornerRadius)
         cell.mainCellLayer.clipsToBounds = true
         if cellGradient {
             let gradientLayer = CAGradientLayer()

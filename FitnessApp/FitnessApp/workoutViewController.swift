@@ -124,6 +124,11 @@ class workoutViewController: UIViewController {
         reps.resignFirstResponder()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        //navigationController?.setNavigationBarHidden(false, animated: true)
+        //navigationController?.navigationBar.alpha = 1
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -67,6 +67,7 @@ let tableView = UITableView.init(frame: CGRect.zero, style: .grouped)
 
 
 class HomeTableViewController: UITableViewController {
+        
     @IBAction func loginTapped(_ sender: Any) {
         let defaults = UserDefaults.standard
         defaults.set(nil, forKey: "username")
@@ -122,8 +123,7 @@ class HomeTableViewController: UITableViewController {
     @IBOutlet weak var logOutButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("hi")
+        
     }
     
     override func viewDidLoad() {
@@ -163,63 +163,46 @@ class HomeTableViewController: UITableViewController {
         let backgroundView = UIView(frame: tableView.bounds)
         backgroundView.layer.insertSublayer(gradientLayer, at: 0)
         tableView.backgroundView = backgroundView
-        
-//        navigationController?.navigationBar.frame.size.height = (navigationController?.navigationBar.frame.size.height)!*1.5
-//        let gradientLayer2 = CAGradientLayer()
-//        gradientLayer2.frame = (navigationController?.navigationBar.bounds)!
-//        gradientLayer2.colors = [topGradient, topGradient]
-//        let backgroundView2 = UIView(frame: tableView.bounds)
-//        backgroundView2.layer.insertSublayer(gradientLayer2, at: 0)
-//        navigationController?.navigationBar.insertSubview(backgroundView2, at: 0)
-        //print("hi")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
 
     }
-    
+        
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //print(tableView.bounds.origin)
         let yPos = scrollView.contentOffset.y
         let amount : Int
         let offset : Int
-        let offset2 : Int
         let cellSize = 100
         if(mainCall.message.Challenges.count>5){
             amount = 6
-            offset = 20
-            offset2 = 0
+            offset = 0
         }
         else{
             amount = mainCall.message.Challenges.count
             offset = 25
-            offset2 = 25
         }
         
         let wAmount = mainCall.message.Stats.count
         
         if(yPos > -70 && yPos <= 0) {
-            
             if(yPos > -44) {
                 tableView.headerView(forSection: 0)?.alpha = -yPos/44
+                logOutButton.alpha = 0
             } else {
                 tableView.headerView(forSection: 0)?.alpha = 1
-                self.navigationController?.navigationBar.alpha = 1 - (yPos + 70)/26
+                logOutButton.alpha = 1 - (yPos + 70)/26
             }
             
             tableView.headerView(forSection: 1)?.alpha = 1
             
         } else if (yPos > 0 && (yPos <= 35)) {
-            self.navigationController?.navigationBar.alpha = 0
+            logOutButton.alpha = 0
             tableView.headerView(forSection: 0)?.alpha = 0
             tableView.headerView(forSection: 1)?.alpha = 1
             
         } else if(yPos > 35) && (Int(yPos) <= (25 + cellSize*amount)) {
             tableView.headerView(forSection: 1)?.alpha = 1
             tableView.headerView(forSection: 0)?.alpha = 0
-            self.navigationController?.navigationBar.alpha = 0
+            logOutButton.alpha = 0
             let index = Int(floor(Float(yPos - 35)/Float(cellSize)))
             let alphaX = Float(yPos - 35).truncatingRemainder(dividingBy: Float(cellSize))
             let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
@@ -235,10 +218,10 @@ class HomeTableViewController: UITableViewController {
                     nextCell.alpha = 1
                 }
             }
-        } else if (Int(yPos) > (25 + cellSize*amount) && Int(yPos) <= offset2 + cellSize*(amount+1)) {
-            self.navigationController?.navigationBar.alpha = 0
+        } else if (Int(yPos) > (25 + cellSize*amount) && Int(yPos) <= offset + cellSize*(amount+1)) {
+            logOutButton.alpha = 0
             
-            let slope = ((25 + cellSize*amount) - (offset2 + 50 + cellSize*(amount)))
+            let slope = ((25 + cellSize*amount) - (offset + 50 + cellSize*(amount)))
             let alphaX = Float((25 + cellSize*amount) - Int(yPos))/Float(slope)
             tableView.headerView(forSection: 1)?.alpha = CGFloat(1 - alphaX)
             
@@ -252,13 +235,13 @@ class HomeTableViewController: UITableViewController {
             }
             cell2.alpha = 0
             
-        } else if (Int(yPos) > offset2 + cellSize*(amount + 1)) && (wAmount > 0) {
+        } else if (Int(yPos) > offset + cellSize*(amount + 1)) && (wAmount > 0) {
             tableView.headerView(forSection: 1)?.alpha = 0
-            self.navigationController?.navigationBar.alpha = 0
-            let index = Int(floor(Float((Int(yPos) - offset2))/Float(cellSize))) - (amount + 1)
-            let alphaX = Float(Int(yPos) - offset2).truncatingRemainder(dividingBy: Float(cellSize))
+            logOutButton.alpha = 0
+            let index = Int(floor(Float((Int(yPos) - offset))/Float(cellSize))) - (amount + 1)
+            let alphaX = Float(Int(yPos) - offset).truncatingRemainder(dividingBy: Float(cellSize))
             let cell = tableView.cellForRow(at: IndexPath(row: index, section: 1))
-            if(index > 0 && Int(alphaX) < offset2) {
+            if(index > 0 && Int(alphaX) < offset) {
                 let incomingCell = tableView.cellForRow(at: IndexPath(row: index - 1, section: 1))
                 incomingCell!.alpha = 0
             }
@@ -271,7 +254,11 @@ class HomeTableViewController: UITableViewController {
                 }
             }
         } else if(yPos <= -88) {
-            self.navigationController?.navigationBar.alpha = 1
+            logOutButton.alpha = 1
+            tableView.headerView(forSection: 0)?.alpha = 1
+            for n in tableView.visibleCells {
+                n.alpha = 1
+            }
             guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) else {
                 return
             }
@@ -370,7 +357,7 @@ class HomeTableViewController: UITableViewController {
                 //cell.amountLabel.text = String( mainCall.message.Challenges[indexPath.row].amount)
                 cell.workoutLabel.text = String( mainCall.message.Challenges[indexPath.row].amount)+" "+mainCall.message.Challenges[indexPath.row].workout
                 cell.challengeLabel.text = mainCall.message.Challenges[indexPath.row].opponent
-                cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.frame.height/4
+                cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.bounds.height/4
                 //cell.mainCellLayer.layer.borderWidth = 1
                 //cell.mainCellLayer.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
                 

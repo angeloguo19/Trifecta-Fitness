@@ -10,7 +10,7 @@
         <!--Nutrition View Controller-->
         <scene sceneID="cyG-Ki-R2b">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Cnt-lm-WI9" customClass="nutritionViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Cnt-lm-WI9" customClass="nutritionViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q47-FR-l94">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,13 +70,13 @@
         <!--Recipes Table View Controller-->
         <scene sceneID="tc4-bc-4LF">
             <objects>
-                <tableViewController modalPresentationStyle="fullScreen" id="Waa-Gw-9xY" customClass="recipesTableViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="Waa-Gw-9xY" customClass="recipesTableViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hqd-74-ohB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="90" id="FEx-tF-oT7" customClass="recipesTableViewCell" customModule="FitnessApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="90" id="FEx-tF-oT7" customClass="recipesTableViewCell" customModule="Trifecta" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FEx-tF-oT7" id="6yG-jJ-K8h">
@@ -138,7 +138,7 @@
         <!--Focus View Controller-->
         <scene sceneID="fss-lG-8na">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="KGH-qf-QoF" customClass="focusViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="KGH-qf-QoF" customClass="focusViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Leg-nG-GdV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -349,13 +349,13 @@
         <!--Fitness Table View Controller-->
         <scene sceneID="s5i-5m-RZW">
             <objects>
-                <tableViewController id="8L8-M5-foA" customClass="fitnessTableViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="DP3-HD-ZkJ">
+                <tableViewController id="8L8-M5-foA" customClass="fitnessTableViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="DP3-HD-ZkJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="fitnessCell" rowHeight="100" id="7Cy-dH-lQy" customClass="fitnessTableViewCell" customModule="FitnessApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="fitnessCell" rowHeight="100" id="7Cy-dH-lQy" customClass="fitnessTableViewCell" customModule="Trifecta" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Cy-dH-lQy" id="LzD-Mq-e3K">
@@ -423,7 +423,7 @@
         <!--Workout View Controller-->
         <scene sceneID="702-Nj-dGf">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="nnj-pD-1TH" customClass="workoutViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="nnj-pD-1TH" customClass="workoutViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ISa-31-YG0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -597,13 +597,13 @@
         <!--Leader Board Table View Controller-->
         <scene sceneID="7Js-5h-Sg9">
             <objects>
-                <tableViewController id="85k-NZ-UcM" customClass="LeaderBoardTableViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="85k-NZ-UcM" customClass="LeaderBoardTableViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="TfA-ox-lBj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="leaderBoardCell" rowHeight="100" id="aQt-MH-UZe" customClass="leaderBoardCell" customModule="FitnessApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="leaderBoardCell" rowHeight="100" id="aQt-MH-UZe" customClass="leaderBoardCell" customModule="Trifecta" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aQt-MH-UZe" id="SMc-DV-V1w">
@@ -653,7 +653,7 @@
         <!--Meditation View Controller-->
         <scene sceneID="foZ-Mg-auU">
             <objects>
-                <viewController id="Huc-2h-vG2" customClass="meditationViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Huc-2h-vG2" customClass="meditationViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X0i-MS-ZsC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -751,7 +751,7 @@
         <!--Timer View Controller-->
         <scene sceneID="bQ4-by-Igf">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Rcs-ph-8BH" customClass="timerViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Rcs-ph-8BH" customClass="timerViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TYQ-IO-2ym">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -926,7 +926,7 @@
         <!--More Info View Controller-->
         <scene sceneID="Wtr-jW-uR3">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="oVz-wa-uA4" customClass="moreInfoViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="oVz-wa-uA4" customClass="moreInfoViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cuk-uC-2JJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1100,7 +1100,7 @@
         <!--Create Account View Controller-->
         <scene sceneID="XaO-Z9-d1p">
             <objects>
-                <viewController wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="vsD-en-XZJ" customClass="CreateAccountViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" modalPresentationStyle="fullScreen" id="vsD-en-XZJ" customClass="CreateAccountViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2mI-ie-xio">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1115,7 +1115,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DU4-0W-Vih">
-                                <rect key="frame" x="19.666666666666671" y="274.66666666666669" width="100" height="27"/>
+                                <rect key="frame" x="19.666666666666686" y="274.66666666666669" width="100" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="lLu-tE-NLI"/>
                                 </constraints>
@@ -1132,7 +1132,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jP8-lv-EiZ">
-                                <rect key="frame" x="19.666666666666671" y="318.66666666666669" width="100" height="27"/>
+                                <rect key="frame" x="19.666666666666686" y="318.66666666666669" width="100" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="DNO-ep-WtL"/>
                                 </constraints>
@@ -1157,7 +1157,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCe-cJ-dff">
-                                <rect key="frame" x="19.666666666666671" y="362.66666666666669" width="100" height="27"/>
+                                <rect key="frame" x="19.666666666666686" y="362.66666666666669" width="100" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="9vP-fk-D2k"/>
                                 </constraints>
@@ -1174,7 +1174,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cp-k9-jmP">
-                                <rect key="frame" x="19.666666666666671" y="399.66666666666669" width="100" height="27"/>
+                                <rect key="frame" x="19.666666666666686" y="399.66666666666669" width="100" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="D1Y-5e-KNa"/>
                                 </constraints>
@@ -1183,7 +1183,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFV-3Z-sMy">
-                                <rect key="frame" x="19.666666666666671" y="421.66666666666669" width="100" height="27"/>
+                                <rect key="frame" x="19.666666666666686" y="421.66666666666669" width="100" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="ISX-0I-G5n"/>
                                 </constraints>
@@ -1243,7 +1243,7 @@
         <!--Login View Controller-->
         <scene sceneID="ePU-vq-EJb">
             <objects>
-                <viewController id="LAB-SM-csN" customClass="LoginViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LAB-SM-csN" customClass="LoginViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C3F-LQ-wZf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1322,7 +1322,7 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ChallengesViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ChallengesViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1342,43 +1342,43 @@
             </objects>
             <point key="canvasLocation" x="1497" y="-2979"/>
         </scene>
-        <!--Your Challenges-->
+        <!--Challenges Table View Controller-->
         <scene sceneID="ILH-zc-0ji">
             <objects>
-                <tableViewController id="TeL-SC-Q1E" customClass="challengesTableViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="TeL-SC-Q1E" customClass="challengesTableViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xra-mj-RST" customClass="emptyCell">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chalCell" rowHeight="150" id="0Dw-Rj-ZbO" customClass="challengesTableViewCell" customModule="FitnessApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="150"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chalCell" rowHeight="100" id="0Dw-Rj-ZbO" customClass="challengesTableViewCell" customModule="Trifecta" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Dw-Rj-ZbO" id="SmF-tR-4Tj">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XPq-rW-JIL">
-                                            <rect key="frame" x="25" y="10" width="364" height="130"/>
+                                            <rect key="frame" x="25" y="10" width="364" height="80"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Bq-oh-2wY">
-                                                    <rect key="frame" x="25" y="15" width="64" height="80"/>
+                                                    <rect key="frame" x="25" y="15" width="64" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="UEe-Q1-UWL">
-                                                    <rect key="frame" x="0.0" y="125.66666666666666" width="364" height="2"/>
+                                                    <rect key="frame" x="0.0" y="75.666666666666671" width="364" height="2"/>
                                                     <color key="progressTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </progressView>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Lfn-fv-5VK">
-                                                    <rect key="frame" x="0.0" y="115.66666666666667" width="364" height="2"/>
+                                                    <rect key="frame" x="0.0" y="65.666666666666671" width="364" height="2"/>
                                                     <color key="progressTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </progressView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jVm-CA-JjU">
-                                                    <rect key="frame" x="253.66666666666671" y="40" width="85.333333333333343" height="30"/>
+                                                    <rect key="frame" x="253.66666666666671" y="15" width="85.333333333333343" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1415,8 +1415,8 @@
                                     <outlet property="yourProgress" destination="Lfn-fv-5VK" id="ErH-BB-goJ"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emptyCell" rowHeight="150" id="v2T-Gj-3Bq" customClass="emptyCell" customModule="FitnessApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="178" width="414" height="150"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emptyCell" rowHeight="150" id="v2T-Gj-3Bq" customClass="emptyCell" customModule="Trifecta" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="128" width="414" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v2T-Gj-3Bq" id="Cua-wk-5s0">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
@@ -1429,13 +1429,22 @@
                             <outlet property="delegate" destination="TeL-SC-Q1E" id="uVT-Pn-eLf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Your Challenges" id="G3q-Pc-3VL">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="GKD-zt-srT">
-                            <connections>
-                                <segue destination="DTN-Td-Shv" kind="presentation" id="8YJ-TR-8jy"/>
-                            </connections>
+                    <navigationItem key="navigationItem" id="G3q-Pc-3VL">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="MoA-5s-hBE">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Cjv-1T-FFk">
+                                <rect key="frame" x="364" y="13" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <segue destination="DTN-Td-Shv" kind="show" id="1cS-1Q-Ihc"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="Cjv-1T-FFk" id="djg-la-Tzy"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l0p-pm-neV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1444,13 +1453,13 @@
         <!--Create a New Challenge-->
         <scene sceneID="Rnz-dW-WiU">
             <objects>
-                <viewController id="rLq-nf-MRc" customClass="addScreenViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rLq-nf-MRc" customClass="addScreenViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DrS-Nj-crK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a New Challenge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeC-SI-bTy">
-                                <rect key="frame" x="36" y="76" width="342" height="40"/>
+                                <rect key="frame" x="36" y="108" width="342" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0ye-IK-2Gi"/>
                                     <constraint firstAttribute="width" constant="342" id="Bsz-fI-HSt"/>
@@ -1460,7 +1469,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pL9-MZ-Peb">
-                                <rect key="frame" x="36" y="190" width="306" height="34"/>
+                                <rect key="frame" x="36" y="222" width="306" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="7ns-Pk-RZw"/>
                                     <constraint firstAttribute="width" constant="306" id="rf7-os-80L"/>
@@ -1469,7 +1478,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="workout" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kw1-o2-T2Q">
-                                <rect key="frame" x="215.66666666666663" y="291" width="132" height="34"/>
+                                <rect key="frame" x="215.66666666666663" y="323" width="132" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="132" id="VAY-gY-RHa"/>
                                     <constraint firstAttribute="height" constant="34" id="etc-2V-KMm"/>
@@ -1478,7 +1487,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who do you want to challenge?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsx-cd-BZ8">
-                                <rect key="frame" x="36" y="150" width="268" height="32"/>
+                                <rect key="frame" x="36" y="182" width="268" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="IHE-Zf-Enc"/>
                                     <constraint firstAttribute="width" constant="268" id="XOy-8i-kUb"/>
@@ -1491,7 +1500,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many reps?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WsV-gK-fra">
-                                <rect key="frame" x="36" y="251" width="145" height="32"/>
+                                <rect key="frame" x="36" y="283" width="145" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="145" id="NY0-6g-wLE"/>
                                     <constraint firstAttribute="height" constant="32" id="jaG-9C-uOU"/>
@@ -1504,7 +1513,7 @@
                                 </variation>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oXY-ah-eAO">
-                                <rect key="frame" x="36" y="291" width="68" height="34"/>
+                                <rect key="frame" x="36" y="323" width="68" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="WeM-OY-Kvw"/>
                                     <constraint firstAttribute="width" constant="68" id="tUz-dI-WR5"/>
@@ -1513,7 +1522,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which workout?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Txo-VH-UNP">
-                                <rect key="frame" x="209" y="251" width="145" height="32"/>
+                                <rect key="frame" x="209" y="283" width="145" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="145" id="AO7-bx-ASy"/>
                                     <constraint firstAttribute="height" constant="32" id="aix-pp-qcz"/>
@@ -1570,42 +1579,42 @@
         <!--Home-->
         <scene sceneID="zq9-AU-nLS">
             <objects>
-                <tableViewController id="yYI-69-P0l" userLabel="Home" customClass="HomeTableViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="JT7-Bu-uoL">
+                <tableViewController id="yYI-69-P0l" userLabel="Home" customClass="HomeTableViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="JT7-Bu-uoL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeCell" rowHeight="150" id="bCU-Ro-4d6" customClass="HomeTableViewCell" customModule="FitnessApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="150"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="homeCell" rowHeight="100" id="bCU-Ro-4d6" customClass="HomeTableViewCell" customModule="Trifecta" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bCU-Ro-4d6" id="XLc-4W-XS0">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" restorationIdentifier="displayLayer" translatesAutoresizingMaskIntoConstraints="NO" id="ifH-ig-56d">
-                                            <rect key="frame" x="25" y="10" width="364" height="130"/>
+                                            <rect key="frame" x="25" y="10" width="364" height="80"/>
                                             <subviews>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ita-gl-1Ob">
-                                                    <rect key="frame" x="0.0" y="125.66666666666666" width="364" height="2"/>
+                                                    <rect key="frame" x="0.0" y="75.666666666666671" width="364" height="2"/>
                                                     <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="progressTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </progressView>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="ulc-hx-tP3">
-                                                    <rect key="frame" x="0.0" y="116" width="364" height="2"/>
+                                                    <rect key="frame" x="0.0" y="66" width="364" height="2"/>
                                                     <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="progressTintColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </progressView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4T-Zw-3lh">
-                                                    <rect key="frame" x="25" y="15" width="78" height="80"/>
+                                                    <rect key="frame" x="25" y="15" width="78" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 Push Ups" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i55-kc-0MU">
-                                                    <rect key="frame" x="187.33333333333337" y="40" width="151.66666666666663" height="30"/>
+                                                    <rect key="frame" x="187.66666666666663" y="15" width="151.33333333333337" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1643,24 +1652,24 @@
                                     <outlet property="workoutLabel" destination="i55-kc-0MU" id="Tl4-4k-h0p"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="workCell" rowHeight="150" id="nbm-vU-sOW" customClass="workoutTableCell" customModule="FitnessApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="205.33333206176758" width="414" height="150"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="workCell" rowHeight="100" id="nbm-vU-sOW" customClass="workoutTableCell" customModule="Trifecta" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="155.33333206176758" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nbm-vU-sOW" id="B0I-PI-vyv">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" restorationIdentifier="displayLayer2" translatesAutoresizingMaskIntoConstraints="NO" id="nIn-uH-REw">
-                                            <rect key="frame" x="25" y="10" width="289" height="130"/>
+                                            <rect key="frame" x="25" y="10" width="289" height="80"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUN-iY-2Ft">
-                                                    <rect key="frame" x="25" y="25" width="78" height="80"/>
+                                                    <rect key="frame" x="25" y="25" width="78" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="INS-WN-syj">
-                                                    <rect key="frame" x="186" y="50" width="78" height="30"/>
+                                                    <rect key="frame" x="186" y="25" width="78" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1690,8 +1699,8 @@
                                     <segue destination="nnj-pD-1TH" kind="show" id="NWX-s7-7Te"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreChallengesTableViewCell" rowHeight="100" id="8Vf-Ih-vrg" customClass="moreChallengesTableViewCell" customModule="FitnessApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="355.33333206176758" width="414" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="moreChallengesTableViewCell" rowHeight="100" id="8Vf-Ih-vrg" customClass="moreChallengesTableViewCell" customModule="Trifecta" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="255.33333206176758" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Vf-Ih-vrg" id="qpi-7p-g9B">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -1710,7 +1719,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qj0-lp-6IL">
-                                                    <rect key="frame" x="289" y="13.000000000000004" width="60" height="54.333333333333343"/>
+                                                    <rect key="frame" x="294" y="10.000000000000004" width="60" height="60.000000000000014"/>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="uWb-OA-7gu"/>
@@ -1723,7 +1732,7 @@
                                                 <constraint firstItem="qj0-lp-6IL" firstAttribute="top" secondItem="bnZ-m5-uAb" secondAttribute="top" constant="10" id="E9M-va-1xC"/>
                                                 <constraint firstAttribute="bottom" secondItem="4Nw-b1-byi" secondAttribute="bottom" constant="10" id="Fcx-jV-1xK"/>
                                                 <constraint firstItem="4Nw-b1-byi" firstAttribute="top" secondItem="bnZ-m5-uAb" secondAttribute="top" constant="10" id="Feg-6M-hRI"/>
-                                                <constraint firstAttribute="trailing" secondItem="qj0-lp-6IL" secondAttribute="trailing" constant="15" id="KJe-3G-f9p"/>
+                                                <constraint firstAttribute="trailing" secondItem="qj0-lp-6IL" secondAttribute="trailing" constant="10" id="KJe-3G-f9p"/>
                                                 <constraint firstItem="4Nw-b1-byi" firstAttribute="centerY" secondItem="bnZ-m5-uAb" secondAttribute="centerY" id="hbW-nP-9dq"/>
                                                 <constraint firstAttribute="bottom" secondItem="qj0-lp-6IL" secondAttribute="bottom" constant="10" id="uW1-6E-88I"/>
                                                 <constraint firstItem="4Nw-b1-byi" firstAttribute="leading" secondItem="bnZ-m5-uAb" secondAttribute="leading" constant="25" id="znb-SI-wpj"/>
@@ -1879,8 +1888,9 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DTN-Td-Shv" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="ikd-0f-hjc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lJf-g1-vUi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1895,21 +1905,20 @@
         <!--Launch Screen View Controller-->
         <scene sceneID="ncF-mb-76v">
             <objects>
-                <viewController id="Dwu-tz-hsx" customClass="LaunchScreenViewController" customModule="FitnessApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Dwu-tz-hsx" customClass="LaunchScreenViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Thx-E9-akT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="ZnZ-jX-B0m">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="xbm-2o-fYa">
+                                <rect key="frame" x="-1543" y="0.0" width="3500" height="896"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ZnZ-jX-B0m" firstAttribute="leading" secondItem="did-bC-Uhb" secondAttribute="leading" id="BWO-Ru-PyR"/>
-                            <constraint firstAttribute="bottom" secondItem="ZnZ-jX-B0m" secondAttribute="bottom" id="YmE-mb-qYQ"/>
-                            <constraint firstItem="ZnZ-jX-B0m" firstAttribute="top" secondItem="Thx-E9-akT" secondAttribute="top" id="ZQB-p6-xp6"/>
-                            <constraint firstItem="did-bC-Uhb" firstAttribute="trailing" secondItem="ZnZ-jX-B0m" secondAttribute="trailing" id="a7i-VA-wRh"/>
+                            <constraint firstAttribute="bottom" secondItem="xbm-2o-fYa" secondAttribute="bottom" id="DOC-pk-1BR"/>
+                            <constraint firstItem="xbm-2o-fYa" firstAttribute="top" secondItem="Thx-E9-akT" secondAttribute="top" id="b58-9c-2sm"/>
+                            <constraint firstItem="xbm-2o-fYa" firstAttribute="centerX" secondItem="Thx-E9-akT" secondAttribute="centerX" id="h83-4v-WtX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="did-bC-Uhb"/>
                     </view>
@@ -1927,12 +1936,13 @@
         <image name="Apple" width="50" height="50"/>
         <image name="Fitness" width="50" height="50"/>
         <image name="Home" width="50" height="50"/>
-        <image name="LaunchScreen" width="1125" height="2436"/>
+        <image name="LaunchScreen" width="3500" height="2436"/>
         <image name="Meditation" width="50" height="50"/>
         <image name="arrow.right" catalog="system" width="64" height="48"/>
+        <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gaV-8g-1kr"/>
+        <segue reference="kYk-XK-ZHA"/>
         <segue reference="NWX-s7-7Te"/>
     </inferredMetricsTieBreakers>
 </document>
