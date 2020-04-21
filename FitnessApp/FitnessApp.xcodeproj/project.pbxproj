@@ -49,7 +49,7 @@
 		BE9C55172445841300A0C679 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		BEAA5881244CE4D1006869B4 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		BEAA5885244CFBB0006869B4 /* LeaderBoardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderBoardTableViewController.swift; sourceTree = "<group>"; };
-		BEBEA5CD243018D100119720 /* FitnessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEBEA5CD243018D100119720 /* Trifecta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trifecta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBEA5D0243018D100119720 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEBEA5D2243018D100119720 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BEBEA5D4243018D100119720 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		BEBEA5CE243018D100119720 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BEBEA5CD243018D100119720 /* FitnessApp.app */,
+				BEBEA5CD243018D100119720 /* Trifecta.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,7 +181,7 @@
 			);
 			name = FitnessApp;
 			productName = FitnessApp;
-			productReference = BEBEA5CD243018D100119720 /* FitnessApp.app */;
+			productReference = BEBEA5CD243018D100119720 /* Trifecta.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -429,7 +429,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CS290.FitnessApp.Oliver;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Trifecta;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -448,7 +448,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CS290.FitnessApp.Oliver;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Trifecta;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

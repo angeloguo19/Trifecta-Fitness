@@ -182,8 +182,99 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if(scrollView.contentOffset.y > -88 && scrollView.contentOffset.y < 8) {
-            self.navigationController?.navigationBar.alpha = -scrollView.contentOffset.y/50
+        let yPos = scrollView.contentOffset.y
+        let amount : Int
+        let offset : Int
+        let offset2 : Int
+        if(mainCall.message.Challenges.count>5){
+            amount = 6
+            offset = 20
+            offset2 = 0
+        }
+        else{
+            amount = mainCall.message.Challenges.count
+            offset = 25
+            offset2 = 25
+        }
+        
+        let wAmount = mainCall.message.Stats.count
+        
+        if(yPos > -88 && yPos <= 0) {
+            
+            if(yPos > -44) {
+                tableView.headerView(forSection: 0)?.alpha = -yPos/44
+            } else {
+                tableView.headerView(forSection: 0)?.alpha = 1
+                self.navigationController?.navigationBar.alpha = 1 - (yPos + 88)/44
+            }
+            
+            tableView.headerView(forSection: 1)?.alpha = 1
+            
+        } else if (yPos > 0 && (yPos <= 35)) {
+            self.navigationController?.navigationBar.alpha = 0
+            tableView.headerView(forSection: 0)?.alpha = 0
+            tableView.headerView(forSection: 1)?.alpha = 1
+            
+        } else if(yPos > 35) && (Int(yPos) <= (25 + 100*amount)) {
+            tableView.headerView(forSection: 1)?.alpha = 1
+            tableView.headerView(forSection: 0)?.alpha = 0
+            self.navigationController?.navigationBar.alpha = 0
+            let index = Int(floor((yPos - 35)/100))
+            let alphaX = (yPos - 35).truncatingRemainder(dividingBy: 100)
+            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
+            if(index > 0 && alphaX < 35) {
+                let incomingCell = tableView.cellForRow(at: IndexPath(row: index - 1, section: 0))
+                incomingCell!.alpha = 0
+            }
+            cell!.alpha = 1 - (alphaX)/35
+            var nextCell : UITableViewCell
+            if(index < amount - 1) {
+                for n in (index + 1)...amount - 1 {
+                    nextCell = tableView.cellForRow(at: IndexPath(row: n, section: 0))!
+                    nextCell.alpha = 1
+                }
+            }
+        } else if (Int(yPos) > (25 + 100*amount) && Int(yPos) <= offset2 + 100*(amount+1)) {
+            self.navigationController?.navigationBar.alpha = 0
+            
+            let slope = ((25 + 100*amount) - (offset2 + 50 + 100*(amount)))
+            let alphaX = Float((25 + 100*amount) - Int(yPos))/Float(slope)
+            tableView.headerView(forSection: 1)?.alpha = CGFloat(1 - alphaX)
+            
+            guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) else {
+                return
+            }
+            cell.alpha = 1
+            
+            guard let cell2 = tableView.cellForRow(at: IndexPath(row: amount - 1, section: 0)) else {
+                return
+            }
+            cell2.alpha = 0
+            
+        } else if (Int(yPos) > offset2 + 100*(amount + 1)) && (wAmount > 0) {
+            tableView.headerView(forSection: 1)?.alpha = 0
+            self.navigationController?.navigationBar.alpha = 0
+            let index = Int(floor(Float((Int(yPos) - offset2))/100)) - (amount + 1)
+            let alphaX = Float(Int(yPos) - offset2).truncatingRemainder(dividingBy: 100)
+            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 1))
+            if(index > 0 && Int(alphaX) < offset2) {
+                let incomingCell = tableView.cellForRow(at: IndexPath(row: index - 1, section: 1))
+                incomingCell!.alpha = 0
+            }
+            cell!.alpha = CGFloat(1 - (alphaX)/35)
+            var nextCell : UITableViewCell
+            if(index < wAmount - 1) {
+                for n in (index + 1)...wAmount - 1 {
+                    nextCell = tableView.cellForRow(at: IndexPath(row: n, section: 1))!
+                    nextCell.alpha = 1
+                }
+            }
+        } else if(yPos <= -88) {
+            self.navigationController?.navigationBar.alpha = 1
+            guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) else {
+                return
+            }
+            cell.alpha = 1
         }
     }
     
