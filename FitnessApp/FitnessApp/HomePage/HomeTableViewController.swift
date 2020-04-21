@@ -123,13 +123,13 @@ class HomeTableViewController: UITableViewController {
     @IBOutlet weak var logOutButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        getAllData()
+
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.view.backgroundColor = backgroundColor
-        getAllData()
         //self.navigationController?.navigationBar.barTintColor = UIColor(red: 156.0/255, green: 236.0/255, blue: 255.0/255, alpha: 1)
         logOutButton.layer.cornerRadius = logOutButton.frame.height/4
         logOutButton.layer.borderWidth = 0

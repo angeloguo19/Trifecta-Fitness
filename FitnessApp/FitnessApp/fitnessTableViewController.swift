@@ -13,7 +13,6 @@ class fitnessTableViewCell: UITableViewCell {
     
     @IBOutlet weak var mainCellLayer: UIView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var statLabel: UILabel!
     
     var progress: Int = 0
     var leaderboard: String = ""
@@ -186,7 +185,7 @@ class fitnessTableViewController: UITableViewController {
         }
         cell.mainCellLayer.backgroundColor = cellColor
         cell.nameLabel.text = workout
-        cell.statLabel.text = String(defaults.integer(forKey: workout))
+        //cell.statLabel.text = String(defaults.integer(forKey: workout))
         
         return cell
     }

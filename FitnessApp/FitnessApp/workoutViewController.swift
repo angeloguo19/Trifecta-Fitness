@@ -42,11 +42,24 @@ class workoutViewController: UIViewController {
         var username: String
         var amount: Int
     }
-   
+    
+    struct statsCall: Codable{
+        var message: statMessage
+    }
+    struct statMessage: Codable{
+        var Stats: [StatsStruct]
+    }
+    struct StatsStruct: Codable{
+        var workout: String
+        var amount: Int
+    }
+    
     
     
     var serverCall: jsonCall = jsonCall(message: "",err:"")
     var leaderBoardCall: leaderBoard = leaderBoard(message: Message(Workouts: []))
+    var statCall: statsCall = statsCall(message: statMessage(Stats:[]))
+
     //var mainCall: jsonCall = jsonCall(message: Message(Stats:[],Challenges:[]))
     @IBOutlet weak var workoutNameLabel: UILabel!
     
@@ -116,7 +129,10 @@ class workoutViewController: UIViewController {
 
                // actually make the http task run.
         task.resume()
-        self .viewDidLoad()
+        
+        //callLeaderboard()
+        //getAllData()
+        self.viewDidLoad()
     }
     
     @objc func donePicker() {
@@ -147,12 +163,13 @@ class workoutViewController: UIViewController {
        toolBar.isUserInteractionEnabled = true
        reps.inputAccessoryView = toolBar
 
-        currentReps.text = String(defaults.integer(forKey: nameText))
+        //currentReps.text = String(defaults.integer(forKey: nameText))
         workoutNameLabel.text = nameText
 
         workoutNameLabel.layer.borderColor = UIColor.black.cgColor
         workoutNameLabel.layer.borderWidth = 1
         let videoKey = nameText + "Video"
+        print(videoKey)
         let video = defaults.string(forKey: videoKey)!
         let link = "https://www.youtube.com/embed/" + video
         let myURL = URL(string: link)
@@ -182,6 +199,8 @@ class workoutViewController: UIViewController {
         currentLeaderView.layer.masksToBounds = true
         
         callLeaderboard()
+        
+        getAllData()
     }
     
     func callLeaderboard() {
@@ -242,9 +261,71 @@ class workoutViewController: UIViewController {
         
         let destVC = segue.destination as! LeaderBoardTableViewController
         destVC.nameText = self.nameText
-        
     
     
     }
 
+    func getAllData() {
+        
+        // 2. BEGIN NETWORKING code
+        //
+                let mySession = URLSession(configuration: URLSessionConfiguration.default)
+                
+                let defaults = UserDefaults.standard
+                let tempUsername = defaults.string(forKey: "username")
+                    
+                let url = URL(string: "http://152.3.69.115:8081/api/stats/" + tempUsername!)!
+
+        // 3. MAKE THE HTTPS REQUEST task
+        //
+                let task = mySession.dataTask(with: url) { data, response, error in
+
+                    // ensure there is no error for this HTTP response
+                    guard error == nil else {
+                        print ("error: \(error!)")
+                        
+                        DispatchQueue.main.async {
+                            let alert1 = UIAlertController(title: "Error", message: "Issues connecting with internet", preferredStyle: .alert) //.actionSheet
+                            alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            self.present(alert1, animated: true)
+                        }
+                        return
+                    }
+
+                    // ensure there is data returned from this HTTP response
+                    guard let jsonData = data else {
+                        print("No data")
+                        return
+                    }
+                    
+                    print("Got the data from network")
+        // 4. DECODE THE RESULTING JSON
+                    //print(String(bytes: jsonData, encoding:  .utf8))
+                    let decoder = JSONDecoder()
+                    //print(String(data: jsonData, encoding: .utf8))
+                    do {
+                        // decode the JSON into our array of todoItem's
+                        self.statCall = try decoder.decode(statsCall.self, from: jsonData)
+                                
+                        DispatchQueue.main.async {
+                            self.reloadData()
+                        }
+                        
+                    } catch {
+                        print("JSON Decode error")
+                    }
+                }
+
+            // actually make the http task run.
+            task.resume()
+        
+    }
+    
+    func reloadData(){
+        for stat in statCall.message.Stats{
+            if(stat.workout == nameText){
+                currentReps.text = String(stat.amount)
+            }
+        }
+    }
 }

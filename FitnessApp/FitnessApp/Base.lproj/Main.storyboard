@@ -374,21 +374,10 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="stat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbS-wQ-9Dg">
-                                                    <rect key="frame" x="248" y="16" width="88" height="49"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=regular">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                    </variation>
-                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="vbS-wQ-9Dg" secondAttribute="trailing" constant="28" id="0EM-rV-5JP"/>
                                                 <constraint firstItem="tW8-ov-8Mk" firstAttribute="leading" secondItem="3rn-h2-ydD" secondAttribute="leading" constant="15" id="5iN-bc-T22"/>
-                                                <constraint firstItem="vbS-wQ-9Dg" firstAttribute="centerY" secondItem="tW8-ov-8Mk" secondAttribute="centerY" id="Fw1-ZV-cG1"/>
                                                 <constraint firstItem="tW8-ov-8Mk" firstAttribute="top" secondItem="3rn-h2-ydD" secondAttribute="top" constant="25" id="Rez-Kj-X4w"/>
                                                 <constraint firstAttribute="bottom" secondItem="tW8-ov-8Mk" secondAttribute="bottom" constant="25" id="j0f-DL-Wyz"/>
                                             </constraints>
@@ -404,7 +393,6 @@
                                 <connections>
                                     <outlet property="mainCellLayer" destination="3rn-h2-ydD" id="Y1Y-OX-r4b"/>
                                     <outlet property="nameLabel" destination="tW8-ov-8Mk" id="gcv-uP-Ax2"/>
-                                    <outlet property="statLabel" destination="vbS-wQ-9Dg" id="J7Y-Ja-lHM"/>
                                     <segue destination="nnj-pD-1TH" kind="show" id="YKy-rg-iwa"/>
                                 </connections>
                             </tableViewCell>
@@ -460,7 +448,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L8V-GF-w0q">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L8V-GF-w0q">
                                 <rect key="frame" x="175" y="226.66666666666666" width="74" height="36.999999999999972"/>
                                 <color key="backgroundColor" red="0.99081638843185083" green="1" blue="0.96483763060877747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1943,6 +1931,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kYk-XK-ZHA"/>
-        <segue reference="NWX-s7-7Te"/>
+        <segue reference="YKy-rg-iwa"/>
     </inferredMetricsTieBreakers>
 </document>
