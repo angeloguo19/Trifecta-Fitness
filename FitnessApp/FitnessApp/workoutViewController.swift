@@ -44,6 +44,7 @@ class workoutViewController: UIViewController {
     }
    
     
+    
     var serverCall: jsonCall = jsonCall(message: "",err:"")
     var leaderBoardCall: leaderBoard = leaderBoard(message: Message(Workouts: []))
     //var mainCall: jsonCall = jsonCall(message: Message(Stats:[],Challenges:[]))

@@ -47,7 +47,61 @@ class fitnessTableViewController: UITableViewController {
     //let bottomGradient = CGColor(srgbRed: 253/255.0, green: 253/255.0, blue: 150/255.0, alpha: 1)
     let bottomGradient = CGColor(srgbRed: 255/255.0, green: 179/255.0, blue: 71/255.0, alpha: 1)
     //let bottomGradient = CGColor(srgbRed: 255/255.0, green: 159.0/255.0, blue: 231.0/255.0, alpha: 1)
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let yPos = scrollView.contentOffset.y
+        let amount : Int
+        let cellSize = 130
+        let array = defaults.object(forKey: "WorkoutsArray") as? [String] ?? [String]()
+        amount = array.count
+        if(yPos > -70 && yPos <= 0) {
+           
+           if(yPos > -44) {
+               tableView.headerView(forSection: 0)?.alpha = -yPos/44
+           } else {
+               tableView.headerView(forSection: 0)?.alpha = 1
+           }
+           
+           tableView.headerView(forSection: 1)?.alpha = 1
+            guard let nextCell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) else {
+                return
+            }
+            nextCell.alpha = 1
+           
+        } else if (yPos > 0 && (yPos <= 35)) {
+           tableView.headerView(forSection: 0)?.alpha = 0
+           tableView.headerView(forSection: 1)?.alpha = 1
+           
+        } else if (yPos > 35) {
+           tableView.headerView(forSection: 1)?.alpha = 1
+           tableView.headerView(forSection: 0)?.alpha = 0
+           let index = Int(floor(Float(yPos - 35)/Float(cellSize)))
+           let alphaX = Float(yPos - 35).truncatingRemainder(dividingBy: Float(cellSize))
+           let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
+            
+             //print("YPos: \(yPos), AlphaX: \(alphaX), Index: \(index), AlphaToSet: \(CGFloat(1 - (alphaX)/35))")
 
+            cell!.alpha = CGFloat(1 - (alphaX)/35)
+            if(index < amount - 1) {
+                for n in (index + 1)...(index + tableView.visibleCells.count - 1) {
+                    guard let nextCell = tableView.cellForRow(at: IndexPath(row: n, section: 0)) else {
+                        return
+                    }
+                    nextCell.alpha = 1
+                }
+            }
+            
+           if(index > 0 && alphaX < 35) {
+                guard let incomingCell = tableView.cellForRow(at: IndexPath(row: index - 1, section: 0)) else {
+                    return
+                }
+                incomingCell.alpha = 0
+           }
+            
+
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -119,7 +173,6 @@ class fitnessTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fitnessCell", for: indexPath) as! fitnessTableViewCell
         
         let workouts = defaults.object(forKey: "WorkoutsArray") as? [String] ?? [String]()
-        print(workouts)
         let workout = workouts[indexPath.row]
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.clear
