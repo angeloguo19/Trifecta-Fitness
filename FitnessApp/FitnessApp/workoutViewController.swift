@@ -113,6 +113,7 @@ class workoutViewController: UIViewController {
 
                // actually make the http task run.
         task.resume()
+        self .viewDidLoad()
     }
     
     @objc func donePicker() {
@@ -143,7 +144,7 @@ class workoutViewController: UIViewController {
        toolBar.isUserInteractionEnabled = true
        reps.inputAccessoryView = toolBar
 
-        
+        currentReps.text = String(defaults.integer(forKey: nameText))
         workoutNameLabel.text = nameText
 
         workoutNameLabel.layer.borderColor = UIColor.black.cgColor
