@@ -118,17 +118,19 @@ class HomeTableViewController: UITableViewController {
     let bottomGradient = CGColor(srgbRed: 128.0/255, green: 250.0/255, blue: 255/255, alpha: 1)
 
     var mainCall: jsonCall = jsonCall(message: Message(Stats:[],Challenges:[]))
-    
+    var oldPos: CGFloat = -88
 
     @IBOutlet weak var logOutButton: UIButton!
     
-    override func viewWillAppear(_ animated: Bool) {
-        getAllData()
-
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
     }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getAllData()
         //self.view.backgroundColor = backgroundColor
         //self.navigationController?.navigationBar.barTintColor = UIColor(red: 156.0/255, green: 236.0/255, blue: 255.0/255, alpha: 1)
         logOutButton.layer.cornerRadius = logOutButton.frame.height/4
@@ -167,11 +169,12 @@ class HomeTableViewController: UITableViewController {
     }
         
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //print(tableView.bounds.origin)
+        print("OldPos: \(oldPos)")
         let yPos = scrollView.contentOffset.y
         let amount : Int
         let offset : Int
         let cellSize = 100
+        print("yPos: \(yPos)")
         if(mainCall.message.Challenges.count>3){
             amount = 4
             offset = 0
@@ -180,7 +183,8 @@ class HomeTableViewController: UITableViewController {
             amount = mainCall.message.Challenges.count
             offset = 25
         }
-        
+        print("Section Limit: \(25 + cellSize*amount)")
+
         let wAmount = mainCall.message.Stats.count
         
         if(yPos > -70 && yPos <= 0) {
@@ -205,18 +209,25 @@ class HomeTableViewController: UITableViewController {
             logOutButton.alpha = 0
             let index = Int(floor(Float(yPos - 35)/Float(cellSize)))
             let alphaX = Float(yPos - 35).truncatingRemainder(dividingBy: Float(cellSize))
-            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
-            if(index > 0 && alphaX < 35) {
-                let incomingCell = tableView.cellForRow(at: IndexPath(row: index - 1, section: 0))
-                incomingCell!.alpha = 0
+            guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) else {
+                print("Avoided error")
+                return
             }
-            cell!.alpha = CGFloat(1 - (alphaX)/35)
+            cell.alpha = CGFloat(1 - (alphaX)/35)
+            
             var nextCell : UITableViewCell
             if(index < amount - 1) {
                 for n in (index + 1)...amount - 1 {
                     nextCell = tableView.cellForRow(at: IndexPath(row: n, section: 0))!
                     nextCell.alpha = 1
                 }
+            }
+            if(index > 0 && alphaX < 35) {
+                guard let incomingCell = tableView.cellForRow(at: IndexPath(row: index - 1, section: 0)) else {
+                    print("Avoided Error Over here")
+                    return
+                }
+                incomingCell.alpha = 0
             }
         } else if (Int(yPos) > (25 + cellSize*amount) && Int(yPos) <= offset + cellSize*(amount+1)) {
             logOutButton.alpha = 0
@@ -240,18 +251,23 @@ class HomeTableViewController: UITableViewController {
             logOutButton.alpha = 0
             let index = Int(floor(Float((Int(yPos) - offset))/Float(cellSize))) - (amount + 1)
             let alphaX = Float(Int(yPos) - offset).truncatingRemainder(dividingBy: Float(cellSize))
-            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 1))
-            if(index > 0 && Int(alphaX) < offset) {
-                let incomingCell = tableView.cellForRow(at: IndexPath(row: index - 1, section: 1))
-                incomingCell!.alpha = 0
+            guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 1)) else {
+                return
             }
-            cell!.alpha = CGFloat(1 - (alphaX)/35)
+
+            cell.alpha = CGFloat(1 - (alphaX)/35)
             var nextCell : UITableViewCell
             if(index < wAmount - 1) {
                 for n in (index + 1)...wAmount - 1 {
                     nextCell = tableView.cellForRow(at: IndexPath(row: n, section: 1))!
                     nextCell.alpha = 1
                 }
+            }
+            if(index > 0 && Int(alphaX) < 35) {
+                guard let incomingCell = tableView.cellForRow(at: IndexPath(row: index - 1, section: 1)) else {
+                    return
+                }
+                incomingCell.alpha = 0
             }
         } else if(yPos <= -88) {
             logOutButton.alpha = 1
@@ -442,6 +458,7 @@ class HomeTableViewController: UITableViewController {
         return 75
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        oldPos = tableView.contentOffset.y
         if(segue.identifier=="loginSegue"){
             let destVC = segue.destination as! LoginViewController
             
