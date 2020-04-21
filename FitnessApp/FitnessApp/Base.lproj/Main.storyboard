@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dwu-tz-hsx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dwu-tz-hsx">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1115,7 +1115,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DU4-0W-Vih">
-                                <rect key="frame" x="19.666666666666686" y="274.66666666666669" width="100" height="27"/>
+                                <rect key="frame" x="19.666666666666671" y="274.66666666666669" width="100" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="lLu-tE-NLI"/>
                                 </constraints>
@@ -1132,7 +1132,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jP8-lv-EiZ">
-                                <rect key="frame" x="19.666666666666686" y="318.66666666666669" width="100" height="27"/>
+                                <rect key="frame" x="19.666666666666671" y="318.66666666666669" width="100" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="DNO-ep-WtL"/>
                                 </constraints>
@@ -1157,7 +1157,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCe-cJ-dff">
-                                <rect key="frame" x="19.666666666666686" y="362.66666666666669" width="100" height="27"/>
+                                <rect key="frame" x="19.666666666666671" y="362.66666666666669" width="100" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="9vP-fk-D2k"/>
                                 </constraints>
@@ -1174,7 +1174,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Cp-k9-jmP">
-                                <rect key="frame" x="19.666666666666686" y="399.66666666666669" width="100" height="27"/>
+                                <rect key="frame" x="19.666666666666671" y="399.66666666666669" width="100" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="D1Y-5e-KNa"/>
                                 </constraints>
@@ -1183,7 +1183,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFV-3Z-sMy">
-                                <rect key="frame" x="19.666666666666686" y="421.66666666666669" width="100" height="27"/>
+                                <rect key="frame" x="19.666666666666671" y="421.66666666666669" width="100" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="ISX-0I-G5n"/>
                                 </constraints>
@@ -1346,13 +1346,13 @@
         <scene sceneID="ILH-zc-0ji">
             <objects>
                 <tableViewController id="TeL-SC-Q1E" customClass="challengesTableViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Xra-mj-RST" customClass="emptyCell">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Xra-mj-RST" customClass="emptyCell">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chalCell" rowHeight="100" id="0Dw-Rj-ZbO" customClass="challengesTableViewCell" customModule="Trifecta" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Dw-Rj-ZbO" id="SmF-tR-4Tj">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -1416,7 +1416,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="emptyCell" rowHeight="150" id="v2T-Gj-3Bq" customClass="emptyCell" customModule="Trifecta" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="128" width="414" height="150"/>
+                                <rect key="frame" x="0.0" y="155.33333206176758" width="414" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="v2T-Gj-3Bq" id="Cua-wk-5s0">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
@@ -1719,7 +1719,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qj0-lp-6IL">
-                                                    <rect key="frame" x="294" y="10.000000000000004" width="60" height="60.000000000000014"/>
+                                                    <rect key="frame" x="294" y="13.000000000000004" width="60" height="54.333333333333343"/>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="uWb-OA-7gu"/>

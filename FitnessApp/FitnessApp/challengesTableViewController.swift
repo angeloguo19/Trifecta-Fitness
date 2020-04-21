@@ -151,7 +151,9 @@ class challengesTableViewController: UITableViewController {
         
         let mySession = URLSession(configuration: URLSessionConfiguration.default)
         
-        let url = URL(string:   "http://152.3.69.115:8081/api/stats/low10")!
+        let defaults = UserDefaults.standard
+        let tempUsername = defaults.string(forKey: "username")
+        let url = URL(string:   "http://152.3.69.115:8081/api/stats/" + tempUsername!)!
         
         //HTTPS Request
         let task = mySession.dataTask(with: url) {data, response, error in

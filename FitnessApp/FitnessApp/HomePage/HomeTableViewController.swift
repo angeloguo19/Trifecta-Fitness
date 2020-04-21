@@ -271,8 +271,11 @@ class HomeTableViewController: UITableViewController {
         // 2. BEGIN NETWORKING code
         //
                 let mySession = URLSession(configuration: URLSessionConfiguration.default)
-
-                let url = URL(string: "http://152.3.69.115:8081/api/stats/low10")!
+                
+                let defaults = UserDefaults.standard
+                let tempUsername = defaults.string(forKey: "username")
+                    
+                let url = URL(string: "http://152.3.69.115:8081/api/stats/" + tempUsername!)!
 
         // 3. MAKE THE HTTPS REQUEST task
         //
@@ -321,17 +324,18 @@ class HomeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0) {
-            if(mainCall.message.Challenges.count>5){
+            if(mainCall.message.Challenges.count>=5){
                 return 6
             }
             else{
-                return mainCall.message.Challenges.count
+                return mainCall.message.Challenges.count + 1
 
             }
         } else {
             return mainCall.message.Stats.count
         }
     }
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -347,7 +351,7 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //print("Checking for data from \(mainCall)")
         if(indexPath.section == 0) {
-            if(indexPath.row<5){
+            if((indexPath.row<5 && mainCall.message.Challenges.count>=5) || mainCall.message.Challenges.count != 0 && (indexPath.row<mainCall.message.Challenges.count && mainCall.message.Challenges.count<5)){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeTableViewCell
                 cell.progressView.progress = Float(mainCall.message.Challenges[indexPath.row].you) / Float(mainCall.message.Challenges[indexPath.row].amount)
                 cell.opProgressView.progress = Float(mainCall.message.Challenges[indexPath.row].them) / Float(mainCall.message.Challenges[indexPath.row].amount)
@@ -445,9 +449,9 @@ class HomeTableViewController: UITableViewController {
         else{
             let myRow = tableView!.indexPathForSelectedRow
             
-            
+        
             if(myRow?.section==0){
-                if(myRow!.row<5){
+                if((myRow!.row<5 && mainCall.message.Challenges.count>=5) || mainCall.message.Challenges.count != 0 && (myRow!.row<mainCall.message.Challenges.count && mainCall.message.Challenges.count<5)){
                     let myCurrentCell = tableView!.cellForRow(at: myRow!) as! HomeTableViewCell
                     let destVC = segue.destination as! ChallengesViewController
                     print("one")
