@@ -69,7 +69,10 @@ class workoutViewController: UIViewController {
         
         let mySession = URLSession(configuration: URLSessionConfiguration.default)
         
-        let url = URL(string: "http://152.3.69.115:8081/api/update/" + username + "/" + nameText + "/" + reps.text!)!
+        
+        let replaced = nameText.replacingOccurrences(of: " ", with: "%20")
+
+        let url = URL(string: "http://152.3.69.115:8081/api/update/" + username + "/" + replaced + "/" + reps.text!)!
 
            // 3. MAKE THE HTTPS REQUEST task
            //
