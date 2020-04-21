@@ -221,8 +221,6 @@ class challengesTableViewController: UITableViewController {
             cell.theirProgress.transform = transform
             
             cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.bounds.height/4
-            print(cell.mainCellLayer.layer.cornerRadius)
-            
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
                         cell.backgroundColor = UIColor.clear
                         cell.mainCellLayer.layer.masksToBounds = true
