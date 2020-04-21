@@ -53,7 +53,6 @@
                             <constraint firstItem="IlD-Gq-aRJ" firstAttribute="leading" secondItem="ZpI-vO-kPa" secondAttribute="leading" constant="20" id="Q26-wI-Ykb"/>
                             <constraint firstItem="6HW-6g-3y3" firstAttribute="centerX" secondItem="q47-FR-l94" secondAttribute="centerX" constant="-9" id="XUq-f9-ryJ"/>
                             <constraint firstItem="IlD-Gq-aRJ" firstAttribute="top" secondItem="ZpI-vO-kPa" secondAttribute="top" constant="15" id="rQj-IG-5IC"/>
-                            <constraint firstItem="6HW-6g-3y3" firstAttribute="top" secondItem="IlD-Gq-aRJ" secondAttribute="bottom" constant="67" id="tsz-ke-8vT"/>
                             <constraint firstItem="afV-vS-BWd" firstAttribute="top" secondItem="6HW-6g-3y3" secondAttribute="bottom" constant="-33" id="wGG-TE-bmH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZpI-vO-kPa"/>
