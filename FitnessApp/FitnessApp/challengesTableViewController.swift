@@ -92,8 +92,16 @@ class challengesTableViewController: UITableViewController {
         }
     }
     
+    var hasAppeared: Bool = false
+    
     override func viewWillAppear(_ animated: Bool) {
-        print("Im back")
+        if(hasAppeared) {
+            getAllData(animated: false)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        hasAppeared = true
     }
     
     @IBOutlet weak var addButton: UIButton!
