@@ -92,7 +92,7 @@ class meditationViewController: UIViewController {
         // Make Line Graph
         var lineChartEntry = [ChartDataEntry]()
         for i in 0...6 {
-            lineChartEntry.append(ChartDataEntry.init(x: Double(i), y: Double(pastWeekTimes[i])))
+            lineChartEntry.append(ChartDataEntry.init(x: Double(i+1), y: Double(pastWeekTimes[i])))
         }
         let values = LineChartDataSet(entries: lineChartEntry, label: "Time Spent Meditating")
         values.colors = [NSUIColor.blue]
