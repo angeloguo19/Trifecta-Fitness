@@ -169,10 +169,14 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
         else{
             
-            self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: {
+                self.parentController!.getAllData(animated: false)
+            })
         }
     }
 
+    var parentController: challengesTableViewController?
+    
     /*
     // MARK: - Navigation
 

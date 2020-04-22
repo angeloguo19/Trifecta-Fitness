@@ -92,6 +92,10 @@ class challengesTableViewController: UITableViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("Im back")
+    }
+    
     @IBOutlet weak var addButton: UIButton!
     var hasData: Bool = false
     override func viewDidLoad() {
@@ -239,6 +243,13 @@ class challengesTableViewController: UITableViewController {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nav = segue.destination as! UINavigationController
+        let dest = nav.topViewController as! addScreenViewController
+        dest.parentController = self
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
 
     /*
     // Override to support conditional editing of the table view.
