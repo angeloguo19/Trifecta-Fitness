@@ -8,6 +8,6 @@ The main feature allows users to challenge their friends. An example of a challe
 #### API
 I created a custom API for my team to use. It allows for the creation of various user accounts that contain the statistical data for each user as well as the information for challenges between users. The API creates a leaderboard that updates when a player adds to their progress. The API returns success messages, leaderboard data, and user data. 
 #### UI/UX
-I created a theme for the application. I wanted the app to have a smooth, modern look. I made every clickable surface a similar color so that a user could easily navigate through controllers and the api calls I used. I added animations between transistions to add flair to the design. 
+I created a theme for the application. I wanted the app to have a smooth, modern look. I made every clickable surface a similar color so that a user could easily navigate through controllers and the api calls I used. I added animations between transistions to add flair to the design. I worked on every view controller and assisted my partners in their designs. 
 #### Architecture
 I increased the efficiency and speed of the app by creating modules that could be copy and pasted into other view controllers with minor tweaks. I also reduced the number of API calls the application used by passing information through segways whenever applicable. To increase speed, one API call can fill various tables with information and can be used for a variety of purposes. 
