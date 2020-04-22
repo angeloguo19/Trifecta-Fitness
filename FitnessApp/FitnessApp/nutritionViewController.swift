@@ -8,39 +8,8 @@
 
 import UIKit
 
-extension UIImageView {
-    func loads(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
-}
 
 class nutritionViewController: UIViewController, UITextFieldDelegate {
-
-/*
-    var everything: [Information] =
-    
-    struct Information: Codable {
-        title: String
-        image: String
-        servings: Int
-        readyInMinutes: Int
-        var extendedIngredients: [Ingredients]
-        var instructions: String
-    }
-    struct Ingredients: Codable {
-        var originalString: String
-    }
-    */
-    
-    
     
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
@@ -82,8 +51,6 @@ class nutritionViewController: UIViewController, UITextFieldDelegate {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        //let topGradient = CGColor(srgbRed: 95/255.0, green: 198/255.0, blue: 202/255.0, alpha: 1)
-        //let bottomGradient = CGColor(srgbRed: 249/255.0, green: 184/255.0, blue: 170/255.0, alpha: 1)
         let topGradient = CGColor(srgbRed: 110.0/255, green: 225.0/255, blue: 245/255, alpha: 1)
         let bottomGradient = CGColor(srgbRed: 240/255, green: 240/255, blue: 245/255, alpha: 1)
         let gradientView = CAGradientLayer()
@@ -102,6 +69,36 @@ class nutritionViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    
+    /*
+    extension UIImageView {
+        func loads(url: URL) {
+            DispatchQueue.global().async { [weak self] in
+                if let data = try? Data(contentsOf: url) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            self?.image = image
+                        }
+                    }
+                }
+            }
+        }
+    }
+     
+     var everything: [Information] = [Information(title: "", image: "", servings: 0, readyInMinutes: 0, extendedIngredients: [], instructions: "")]
+     
+     struct Information: Codable {
+     var title: String
+     var image: String
+     var servings: Int
+     var readyInMinutes: Int
+     var extendedIngredients: [Ingredients]
+     var instructions: String
+     }
+     struct Ingredients: Codable {
+     var originalString: String
+     }
+     
     func getmoreData() {
         
         // 2. BEGIN NETWORKING code
@@ -131,11 +128,11 @@ class nutritionViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             print("Got the data from network")
-        /*
+        
         // 4. DECODE THE RESULTING JSON
             let decoder = JSONDecoder()
             do {
-                self.totalInstructions = try decoder.decode([Information].self, from: jsonData)
+                self.everything = try decoder.decode([Information].self, from: jsonData)
                         
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -146,15 +143,7 @@ class nutritionViewController: UIViewController, UITextFieldDelegate {
         }
         task.resume()
     }
-             */}}
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ */
+    
 
 }

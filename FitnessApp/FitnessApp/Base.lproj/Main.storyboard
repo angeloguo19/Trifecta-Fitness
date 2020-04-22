@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dwu-tz-hsx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dwu-tz-hsx">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +22,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the name of a food or recipe" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6HW-6g-3y3">
-                                <rect key="frame" x="74" y="180" width="248" height="34"/>
+                                <rect key="frame" x="74" y="223" width="248" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="WFA-M2-Y1K"/>
                                     <constraint firstAttribute="width" constant="248" id="k04-Ua-Ola"/>
@@ -31,7 +31,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afV-vS-BWd">
-                                <rect key="frame" x="306" y="181" width="35" height="32"/>
+                                <rect key="frame" x="306" y="224" width="35" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Y18-DQ-OLZ"/>
@@ -49,7 +49,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="afV-vS-BWd" firstAttribute="leading" secondItem="6HW-6g-3y3" secondAttribute="trailing" constant="-16" id="28f-9T-2R0"/>
-                            <constraint firstItem="6HW-6g-3y3" firstAttribute="centerY" secondItem="ZpI-vO-kPa" secondAttribute="centerY" constant="-210.5" id="BDK-cH-Gzg"/>
+                            <constraint firstItem="6HW-6g-3y3" firstAttribute="centerY" secondItem="ZpI-vO-kPa" secondAttribute="centerY" constant="-167.5" id="BDK-cH-Gzg"/>
                             <constraint firstItem="IlD-Gq-aRJ" firstAttribute="leading" secondItem="ZpI-vO-kPa" secondAttribute="leading" constant="20" id="Q26-wI-Ykb"/>
                             <constraint firstItem="6HW-6g-3y3" firstAttribute="centerX" secondItem="q47-FR-l94" secondAttribute="centerX" constant="-9" id="XUq-f9-ryJ"/>
                             <constraint firstItem="IlD-Gq-aRJ" firstAttribute="top" secondItem="ZpI-vO-kPa" secondAttribute="top" constant="15" id="rQj-IG-5IC"/>
@@ -71,27 +71,27 @@
         <scene sceneID="tc4-bc-4LF">
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="Waa-Gw-9xY" customClass="recipesTableViewController" customModule="Trifecta" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hqd-74-ohB">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hqd-74-ohB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="90" id="FEx-tF-oT7" customClass="recipesTableViewCell" customModule="Trifecta" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="90"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="100" id="FEx-tF-oT7" customClass="recipesTableViewCell" customModule="Trifecta" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FEx-tF-oT7" id="6yG-jJ-K8h">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EXa-FT-oBd">
-                                            <rect key="frame" x="307" y="0.0" width="107" height="90"/>
+                                            <rect key="frame" x="307" y="5" width="107" height="90"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="90" id="2qE-HP-tDJ"/>
                                                 <constraint firstAttribute="width" constant="107" id="iRi-fi-46R"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYv-Ua-8rC">
-                                            <rect key="frame" x="20" y="11" width="285" height="68"/>
+                                            <rect key="frame" x="14" y="16" width="285" height="68"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="68" id="5EL-2d-Saw"/>
                                                 <constraint firstAttribute="width" constant="285" id="vfE-eq-j4m"/>
@@ -108,12 +108,12 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="EXa-FT-oBd" secondAttribute="trailing" id="0Tr-tq-S2g"/>
-                                        <constraint firstItem="EXa-FT-oBd" firstAttribute="centerY" secondItem="6yG-jJ-K8h" secondAttribute="centerY" id="WaJ-e4-tyY"/>
-                                        <constraint firstItem="EXa-FT-oBd" firstAttribute="leading" secondItem="OYv-Ua-8rC" secondAttribute="trailing" constant="2" id="evr-4M-x3q"/>
-                                        <constraint firstItem="OYv-Ua-8rC" firstAttribute="centerX" secondItem="6yG-jJ-K8h" secondAttribute="centerX" constant="-44.5" id="nwh-Fx-a5U"/>
-                                        <constraint firstItem="OYv-Ua-8rC" firstAttribute="leading" secondItem="6yG-jJ-K8h" secondAttribute="leading" constant="20" id="v70-Tw-Mq6"/>
-                                        <constraint firstItem="OYv-Ua-8rC" firstAttribute="centerY" secondItem="6yG-jJ-K8h" secondAttribute="centerY" id="wuD-RI-bpK"/>
+                                        <constraint firstAttribute="trailing" secondItem="EXa-FT-oBd" secondAttribute="trailing" id="7cn-fb-7Ys"/>
+                                        <constraint firstItem="EXa-FT-oBd" firstAttribute="centerY" secondItem="6yG-jJ-K8h" secondAttribute="centerY" id="NLM-7x-ck4"/>
+                                        <constraint firstItem="EXa-FT-oBd" firstAttribute="leading" secondItem="OYv-Ua-8rC" secondAttribute="trailing" constant="8" id="WYE-e2-fVZ"/>
+                                        <constraint firstItem="OYv-Ua-8rC" firstAttribute="centerY" secondItem="6yG-jJ-K8h" secondAttribute="centerY" id="a1n-fi-QAA"/>
+                                        <constraint firstItem="OYv-Ua-8rC" firstAttribute="centerX" secondItem="6yG-jJ-K8h" secondAttribute="centerX" constant="-50.5" id="bbG-Qg-PpN"/>
+                                        <constraint firstItem="OYv-Ua-8rC" firstAttribute="leading" secondItem="6yG-jJ-K8h" secondAttribute="leading" constant="14" id="dMH-ym-XCF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1935,7 +1935,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="xbm-2o-fYa">
-                                <rect key="frame" x="-3293" y="0.0" width="7000" height="896"/>
+                                <rect key="frame" x="-1543" y="0.0" width="3500" height="896"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1956,17 +1956,17 @@
             <point key="canvasLocation" x="-3004" y="-461"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="gaV-8g-1kr"/>
+        <segue reference="YKy-rg-iwa"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Apple" width="50" height="50"/>
         <image name="Fitness" width="50" height="50"/>
         <image name="Home" width="50" height="50"/>
         <image name="LaunchScreen" width="3500" height="2436"/>
         <image name="Meditation" width="50" height="50"/>
-        <image name="arrow.right" catalog="system" width="64" height="48"/>
-        <image name="plus" catalog="system" width="64" height="56"/>
+        <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="gaV-8g-1kr"/>
-        <segue reference="NWX-s7-7Te"/>
-    </inferredMetricsTieBreakers>
 </document>

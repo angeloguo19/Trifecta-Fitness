@@ -24,6 +24,7 @@ extension UIImageView {
 
 class recipesTableViewCell: UITableViewCell {
     
+ 
     @IBOutlet weak var recipeLabel: UILabel!
     @IBOutlet weak var recipeImage: UIImageView!
     
@@ -70,9 +71,6 @@ class recipesTableViewController: UITableViewController {
         var instructions: String
     }
     struct Ingredients: Codable {
-        //var amount: Double
-        //var unit: String
-        //var originalName: String
         var originalString: String
     }
     
@@ -237,11 +235,11 @@ class recipesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! recipesTableViewCell
+        
         /*
-        // Make cell appearance
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.clear
-        cell.mainCellLayer.layer.cornerRadius = cell.bounds.height/4
+        cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.bounds.height/4
         cell.mainCellLayer.clipsToBounds = true
         if cellGradient {
             let gradientLayer = CAGradientLayer()
@@ -255,8 +253,9 @@ class recipesTableViewController: UITableViewController {
         // Assign cell values
         temp = "https://spoonacular.com/recipeImages/" +  totalRecipes.results[indexPath.row].image
         urls = URL(string: temp)
-        cell.recipeImage.load(url: urls!)
-
+        if urls != nil {
+            cell.recipeImage.load(url: urls!)
+        }
         cell.recipeLabel.text = totalRecipes.results[indexPath.row].title
         cell.waitTime = totalRecipes.results[indexPath.row].readyInMinutes
         cell.totalServings = totalRecipes.results[indexPath.row].servings
@@ -274,7 +273,9 @@ class recipesTableViewController: UITableViewController {
         destVC.nameText = (myCurrCell.recipeLabel!.text)!
         destVC.waitNum = (myCurrCell.waitTime)
         destVC.servingsNum = (myCurrCell.totalServings)
-        destVC.foodImage = (myCurrCell.recipeImage.image!)
+        if myCurrCell.recipeImage.image != nil{
+            destVC.foodImage = (myCurrCell.recipeImage.image!)
+        }
         destVC.allInstructions = totalInstructions[myRow!.row].instructions
         
         var allingredients: String = ""
