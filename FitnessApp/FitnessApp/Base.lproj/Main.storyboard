@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dwu-tz-hsx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dwu-tz-hsx">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -679,7 +679,7 @@
                                     <segue destination="oVz-wa-uA4" kind="show" id="NUp-p4-Epn"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phn-TR-a1i" customClass="LineChartView" customModule="Charts">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phn-TR-a1i" customClass="BarChartView" customModule="Charts">
                                 <rect key="frame" x="60" y="351" width="294" height="328"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -727,7 +727,7 @@
                     <navigationItem key="navigationItem" id="sOL-I8-wYy"/>
                     <connections>
                         <outlet property="averagetimeLabel" destination="l37-Yi-sZT" id="WfJ-bV-v5j"/>
-                        <outlet property="chartView" destination="phn-TR-a1i" id="72h-8f-7gE"/>
+                        <outlet property="chartView" destination="phn-TR-a1i" id="lxf-gI-Je1"/>
                         <outlet property="moreInfoButton" destination="Tqb-06-6et" id="Mom-l4-C9u"/>
                         <outlet property="newSessionButton" destination="OuG-Y2-d6n" id="vdJ-jf-rzI"/>
                     </connections>
@@ -835,7 +835,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maually Update Meditation Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5W-T6-pak">
-                                <rect key="frame" x="25" y="95" width="365" height="35"/>
+                                <rect key="frame" x="24.666666666666657" y="95" width="365" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="365" id="ZHk-4c-sbo"/>
                                     <constraint firstAttribute="height" constant="35" id="uCt-wt-IBM"/>
@@ -1892,17 +1892,17 @@
             <point key="canvasLocation" x="-3004" y="-461"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="kYk-XK-ZHA"/>
-        <segue reference="NWX-s7-7Te"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Apple" width="50" height="50"/>
         <image name="Fitness" width="50" height="50"/>
         <image name="Home" width="50" height="50"/>
         <image name="LaunchScreen" width="3500" height="2436"/>
         <image name="Meditation" width="50" height="50"/>
-        <image name="arrow.right" catalog="system" width="128" height="98"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="arrow.right" catalog="system" width="64" height="48"/>
+        <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="kYk-XK-ZHA"/>
+        <segue reference="NWX-s7-7Te"/>
+    </inferredMetricsTieBreakers>
 </document>
