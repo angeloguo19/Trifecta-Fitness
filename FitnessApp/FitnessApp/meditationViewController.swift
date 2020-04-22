@@ -108,9 +108,10 @@ class meditationViewController: UIViewController {
         //BarChartDataEntry(value)
     
     }
-    func setChart(values: [Double]) {
+    func setChart(labels: [String], values: [Double]) {
         chartView.noDataText = "You need to provide data for the chart."
         let formato:BarChartFormatter = BarChartFormatter()
+        formato.setDays(Days: labels)
         let xAxis = XAxis()
         var dataEntries: [BarChartDataEntry] = []
         for i in 0..<values.count {
@@ -127,7 +128,11 @@ class meditationViewController: UIViewController {
     }
     
     public class BarChartFormatter: NSObject, IAxisValueFormatter {
-        var days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
+        var days = [String]()
+        
+        public func setDays(Days: [String]) {
+            days = Days
+        }
         
         public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
             return(days[Int(value)])
@@ -139,8 +144,8 @@ class meditationViewController: UIViewController {
 
         
         let unitsSold:[Double] = [5, 15, 10, 30, 60, 10, 20]
-                
-        setChart(values: unitsSold)
+        let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
+        setChart(labels: days, values: unitsSold)
         
         // UI for ViewController
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
