@@ -5,59 +5,93 @@
 //  Created by codeplus on 4/11/20.
 //  Copyright © 2020 Duke University. All rights reserved.
 //
+struct jsonCall: Codable{
+    var message: Message
+    var err: String?
+}
+struct Message: Codable{
+    var Stats: [StatsStruct]
+    var Challenges: [ChallengesStruct]
+}
+struct StatsStruct: Codable{
+    var workout: String
+    var amount: Int
+}
+struct ChallengesStruct: Codable{
+    var opponent: String
+    var workout: String
+    var amount: Int //should be int
+    var you: Int //should be int
+    var them: Int
+    var completed: Bool
+    //var first: String
+}
 
 import UIKit
 import CoreData
 
 class LoginViewController: UIViewController {
     
-    struct jsonCall: Codable{
-        var err: String?
-    }
-    
-    var serverCall: jsonCall = jsonCall(err:"")
+    var serverCall: jsonCall = jsonCall(message: Message(Stats: [], Challenges: []), err: nil)
     @IBOutlet weak var loginButton: UIButton!
     
     var username = ""
-    var gotData: Bool = false
+    var canTap: Bool = true
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBAction func loginTapped(_ sender: Any) {
-        
-        if(usernameField.text == nil || usernameField.text!.isEmpty || hasWhiteSpace(str: usernameField.text!)){
-            let alertController = UIAlertController(title: "Incorrect Password or Username", message:
-                "Please enter your username or create a new account", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
-            self.present(alertController, animated: true, completion: nil)
-
+        if(canTap) {
+            canTap = !canTap
+            if(usernameField.text == nil || usernameField.text!.isEmpty || hasWhiteSpace(str: usernameField.text!)){
+                let alertController = UIAlertController(title: "Incorrect Password or Username", message:
+                    "Please enter your username or create a new account", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+                self.present(alertController, animated: true, completion: nil)
+            }
+            else{
+                checkLogin()
+            }
         }
-        else{
-            checkLogin()
-        }
-
-
     }
     @IBAction func createTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "createAccSegue", sender: self)
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let tab = segue.destination as! UITabBarController
+        let nav = tab.viewControllers?[0] as! UINavigationController
+        let dest = nav.topViewController as! HomeTableViewController
+        dest.mainCall = serverCall
+        dest.hasData = true
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         usernameField.resignFirstResponder()
         passwordField.resignFirstResponder()
     }
     
+    let cellColor = UIColor(red: 239/255.0, green: 245/255.0, blue: 214/255.0, alpha: 1)
+    let topGradient = CGColor(srgbRed: 106/255.0, green: 194/255.0, blue: 164/255, alpha: 1)
+    let bottomGradient = CGColor(srgbRed: 192/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hi")
        // print(username)
         //getData()
+        loginButton.layer.cornerRadius = loginButton.bounds.height/4
+        loginButton.backgroundColor = cellColor
         usernameField.delegate = self
         passwordField.delegate = self
         // Do any additional setup after loading the view.
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.layer.bounds
+        gradientLayer.colors = [topGradient,bottomGradient]
+        //gradientLayer.startPoint = CGPoint(x: 0,y: 0)
+        //gradientLayer.endPoint = CGPoint(x: 1,y: 1)
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        //[0].colors = [bottomRightGradient, bottomLeftGradient]
     }
     
     
@@ -148,7 +182,7 @@ class LoginViewController: UIViewController {
     }
        
     func checkUsername(){
-        gotData = true
+        canTap = true
         if(serverCall.err == nil){
             print("Valid Username")
             let defaults = UserDefaults.standard
@@ -162,11 +196,10 @@ class LoginViewController: UIViewController {
             let alertController = UIAlertController(title: "Incorrect Password or Username", message:
                 "Try entering your information again, or create a new account", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
-            gotData = false
             self.present(alertController, animated: true, completion: nil)
         }
     }
-    
+        
     func hasWhiteSpace(str:String) -> Bool{
         
        let character: Character = " "
@@ -176,7 +209,6 @@ class LoginViewController: UIViewController {
            return false
        }
     }
-
 
 
 

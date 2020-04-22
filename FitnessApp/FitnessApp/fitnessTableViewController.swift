@@ -44,7 +44,7 @@ class fitnessTableViewController: UITableViewController {
 
     let topGradient = CGColor(srgbRed: 185/255.0, green: 239/255.0, blue: 213/255.0, alpha: 1)
     //let bottomGradient = CGColor(srgbRed: 253/255.0, green: 253/255.0, blue: 150/255.0, alpha: 1)
-    let bottomGradient = CGColor(srgbRed: 255/255.0, green: 179/255.0, blue: 71/255.0, alpha: 1)
+    let bottomGradient = CGColor(srgbRed: 243/255.0, green: 193/255.0, blue: 85/255.0, alpha: 1)
     //let bottomGradient = CGColor(srgbRed: 255/255.0, green: 159.0/255.0, blue: 231.0/255.0, alpha: 1)
         
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -35,30 +35,6 @@ class challengesTableViewController: UITableViewController {
     
     
     // MARK: - Response
-    struct jsonCall: Codable {
-         var message: Message
-    }
-
-    // MARK: - Message
-    struct Message: Codable {
-        var Stats: [Stat]
-        var Challenges: [Challenge]
-
-    }
-
-    // MARK: - Challenge
-    struct Challenge: Codable {
-        var opponent, workout: String
-        var amount, you, them: Int
-        var completed: Bool
-        //var first: String
-    }
-
-    // MARK: - Stat
-    struct Stat: Codable {
-        var workout: String
-        var amount: Int
-    }
     
     let cellGradient = false
     let topCellColor = CGColor(srgbRed: 150/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
@@ -89,15 +65,47 @@ class challengesTableViewController: UITableViewController {
         return 75
     }
     
+    func animateTable() {
+        let cells = tableView.visibleCells
+        let tableWidth = tableView.bounds.size.width
+        let duration = 0.75
+        let delay = 0.25
+        let damping:CGFloat = 0.75
+        let transformation = CGAffineTransform(translationX: tableWidth, y: 0)
+
+        let header1 = tableView.headerView(forSection: 0)!
+        header1.transform = transformation
+        for cell in cells {
+            cell.transform = transformation
+        }
+        
+        var index = 0
+        UIView.animate(withDuration: TimeInterval(duration), delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: [], animations: {
+            header1.transform = CGAffineTransform.identity
+        }, completion: nil)
+        
+        for cell in cells {
+            UIView.animate(withDuration: TimeInterval(duration), delay: delay*Double(index), usingSpringWithDamping: damping, initialSpringVelocity: 0, options: [], animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            index += 1
+        }
+    }
     
     @IBOutlet weak var addButton: UIButton!
-    
+    var hasData: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         //tableView.rowHeight = 150
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        getAllData()
+        if(!hasData) {
+            getAllData(animated: true)
+        } else {
+            tableView.reloadData {
+                self.animateTable()
+            }
+        }
         
         addButton.layer.cornerRadius = addButton.bounds.height/2
         addButton.backgroundColor = cellColor
@@ -137,7 +145,7 @@ class challengesTableViewController: UITableViewController {
     
    
     
-    func getAllData() {
+    func getAllData(animated: Bool) {
         // Start Networking
         
         let mySession = URLSession(configuration: URLSessionConfiguration.default)

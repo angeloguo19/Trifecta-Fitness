@@ -91,27 +91,7 @@ class HomeTableViewController: UITableViewController {
     var username = ""
     
     var debugging = false
-    
-    struct jsonCall: Codable{
-        var message: Message
-    }
-    struct Message: Codable{
-        var Stats: [StatsStruct]
-        var Challenges: [ChallengesStruct]
-    }
-    struct StatsStruct: Codable{
-        var workout: String
-        var amount: Int
-    }
-    struct ChallengesStruct: Codable{
-        var opponent: String
-        var workout: String
-        var amount: Int //should be int
-        var you: Int //should be int
-        var them: Int
-        var completed: Bool
-        //var first: String
-    }
+
     //var mainCall: jsonCall
     
     let cellGradient = false
@@ -175,7 +155,15 @@ class HomeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getAllData(animated: true)
+        //getAllData(animated: true)
+        if(!hasData) {
+            getAllData(animated: true)
+        } else {
+            tableView.reloadData {
+                self.animateTable()
+            }
+        }
+
 
         //self.view.backgroundColor = backgroundColor
         //self.navigationController?.navigationBar.barTintColor = UIColor(red: 156.0/255, green: 236.0/255, blue: 255.0/255, alpha: 1)
@@ -516,37 +504,22 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 75
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier=="loginSegue"){
-            let destVC = segue.destination as! LoginViewController
-            
+        let myRow = tableView!.indexPathForSelectedRow
+
+        if(myRow?.section==0){
+            let destVC = segue.destination as! challengesTableViewController
+            destVC.userInfo = mainCall
+            destVC.hasData = true
         }
         else{
-            let myRow = tableView!.indexPathForSelectedRow
-            
-        
-            if(myRow?.section==0){
-                if((myRow!.row<3 && mainCall.message.Challenges.count>=3) || mainCall.message.Challenges.count != 0 && (myRow!.row<mainCall.message.Challenges.count && mainCall.message.Challenges.count<3)){
-                    let myCurrentCell = tableView!.cellForRow(at: myRow!) as! HomeTableViewCell
-                    let destVC = segue.destination as! ChallengesViewController
-                    print("one")
-                }
-                else{
-                    let myCurrentCell = tableView!.cellForRow(at: myRow!) as! moreChallengesTableViewCell
-                    let destVC = segue.destination as! challengesTableViewController
-                    print("two")
-                }
-            }
-            else{
-                let myCurrentCell = tableView!.cellForRow(at: myRow!) as! workoutTableCell
-                let destVC = segue.destination as! workoutViewController
-                destVC.nameText = myCurrentCell.workoutLabel.text!
-                print("two")
-            }
-            
+            let myCurrentCell = tableView!.cellForRow(at: myRow!) as! workoutTableCell
+            let destVC = segue.destination as! workoutViewController
+            destVC.nameText = myCurrentCell.workoutLabel.text!
+            print("two")
         }
-        
-        
+                    
         //destVC.place = (myCurrentCell.places?.text)!
         //destVC.weatherPic = (myCurrentCell.weatherIcon?.image)!
         //destVC.temp = (myCurrentCell.temperature?.text)!
