@@ -46,13 +46,7 @@ class meditationViewController: UIViewController {
             let result = try context.fetch(request)
             sessions = result as! [NSManagedObject]
             for session in sessions {
-                //total += (session.value(forKey: "time") as! Int)
-                context.delete(session)
-                do {
-                    try context.save()
-                } catch let error as NSError {
-                    print("Could not save. \(error), \(error.userInfo)")
-                }
+                total += (session.value(forKey: "time") as! Int)
             }
             average = String(Int(round(Double(total)/7.0)))
         } catch let error as NSError {
@@ -61,7 +55,7 @@ class meditationViewController: UIViewController {
         averagetimeLabel.text = average + " mins/day"
     
         // MARK: Core Data Call
-        /*
+        
         // Get NSDate for past 7 days
         let calendar = Calendar(identifier: .gregorian)
         let units: Set<Calendar.Component> = [.year, .month, .day]
@@ -111,7 +105,7 @@ class meditationViewController: UIViewController {
         actualdays.reverse()
         pastWeekTimes.reverse()
         setChart(labels: actualdays, values: pastWeekTimes)
-        */
+        
     
     }
     

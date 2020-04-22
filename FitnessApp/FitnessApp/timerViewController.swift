@@ -118,8 +118,8 @@ class timerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             if changed == 0 {
                 let entity = NSEntityDescription.entity(forEntityName: "Session", in: context)!
                 let newSession = NSManagedObject(entity: entity, insertInto: context)
-                
-                newSession.setValue(date, forKey: "date")
+                let day = Calendar.current.date(byAdding: .day, value: -1, to: date as Date)!
+                newSession.setValue(day, forKey: "date")
                 newSession.setValue(addedTime, forKey: "time")
                 
                 do {
