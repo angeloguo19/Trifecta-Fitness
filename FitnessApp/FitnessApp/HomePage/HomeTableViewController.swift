@@ -127,16 +127,56 @@ class HomeTableViewController: UITableViewController {
 
     @IBOutlet weak var logOutButton: UIButton!
     
+    var hasAppeared: Bool = false
+    var hasData: Bool = false
     override func viewWillAppear(_ animated: Bool) {
-        getAllData()
-        
-        print("Appeared")
+        if(hasAppeared) {getAllData(animated: false)}
+        //print("Appeared")
     }
 
+    func animateTable() {
+        let cells = tableView.visibleCells
+        let tableHeight = tableView.bounds.size.height
+        let duration = 0.75
+        let delay = 0.25
+        let damping:CGFloat = 0.75
+        let first = tableView.numberOfRows(inSection: 0)
+        let transformation = CGAffineTransform(translationX: 0, y: tableHeight)
 
+        let header1 = tableView.headerView(forSection: 0)!
+        let header2 = tableView.headerView(forSection: 1)!
+        header1.transform = transformation
+        header2.transform = transformation
+        for cell in cells {
+            cell.transform = transformation
+        }
+        
+        var index = 0
+        UIView.animate(withDuration: TimeInterval(duration), delay: 0, usingSpringWithDamping: damping, initialSpringVelocity: 0, options: [], animations: {
+            header1.transform = CGAffineTransform.identity
+        }, completion: nil)
+        
+        for cell in cells {
+            if(index == first - 1) {
+                UIView.animate(withDuration: TimeInterval(duration), delay: delay*Double(index), usingSpringWithDamping: damping, initialSpringVelocity: 0, options: [], animations: {
+                    header2.transform = CGAffineTransform.identity
+                }, completion: nil)
+            }
+            UIView.animate(withDuration: TimeInterval(duration), delay: delay*Double(index), usingSpringWithDamping: damping, initialSpringVelocity: 0, options: [], animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+            index += 1
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        hasAppeared = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //getAllData()
+        getAllData(animated: true)
+
         //self.view.backgroundColor = backgroundColor
         //self.navigationController?.navigationBar.barTintColor = UIColor(red: 156.0/255, green: 236.0/255, blue: 255.0/255, alpha: 1)
         logOutButton.layer.cornerRadius = logOutButton.frame.height/4
@@ -294,7 +334,7 @@ class HomeTableViewController: UITableViewController {
         }
     }
     
-    func getAllData() {
+    func getAllData(animated: Bool) {
         
         // 2. BEGIN NETWORKING code
         //
@@ -335,11 +375,15 @@ class HomeTableViewController: UITableViewController {
                     do {
                         // decode the JSON into our array of todoItem's
                         self.mainCall = try decoder.decode(jsonCall.self, from: jsonData)
-                                
+                        self.hasData = true
                         DispatchQueue.main.async {
                             self.tableView.reloadData {
                                 self.tableView.layoutIfNeeded()
-                                self.updateView()
+                                if(animated) {
+                                    self.animateTable()
+                                } else {
+                                    self.updateView()
+                                }
                             }
                         }
                         
@@ -358,9 +402,10 @@ class HomeTableViewController: UITableViewController {
             if(mainCall.message.Challenges.count>=3){
                 return 4
             }
-            else{
+            else if(hasData){
                 return mainCall.message.Challenges.count + 1
-
+            } else {
+                return 0
             }
         } else {
             return mainCall.message.Stats.count
@@ -371,11 +416,10 @@ class HomeTableViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        if debugging{
-            return sectionSizes.count
-        }
-        else{
+        if (hasData) {
             return 2 //Challenges + workout
+        } else {
+            return 0
         }
     }
     
@@ -409,7 +453,7 @@ class HomeTableViewController: UITableViewController {
                 }
                 return cell
             }
-            else{
+            else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "moreChallengesTableViewCell", for: indexPath) as! moreChallengesTableViewCell
                 
                 cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.frame.height/4

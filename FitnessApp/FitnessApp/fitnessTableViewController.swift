@@ -175,7 +175,6 @@ class fitnessTableViewController: UITableViewController {
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.clear
         cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.bounds.height/4
-        print(cell.mainCellLayer.layer.cornerRadius)
         cell.mainCellLayer.clipsToBounds = true
         if cellGradient {
             let gradientLayer = CAGradientLayer()
