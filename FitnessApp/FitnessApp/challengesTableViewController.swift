@@ -12,9 +12,12 @@ import CoreData
 class challengesTableViewCell: UITableViewCell {
     @IBOutlet weak var mainCellLayer: UIView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var workoutLabel: UILabel!
     @IBOutlet weak var yourProgress: UIProgressView!
     @IBOutlet weak var theirProgress: UIProgressView!
+    @IBOutlet weak var youAmount: UILabel!
+    @IBOutlet weak var themAmount: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,19 +30,6 @@ class challengesTableViewCell: UITableViewCell {
         //Configure view for selected state
     }
 }
-
-class emptyCell: UITableViewCell {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization Code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        //Configure view for selected state
-    }
-}
-
 
 class challengesTableViewController: UITableViewController {
     
@@ -85,7 +75,8 @@ class challengesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-       //header.textLabel?.text = sectionTitles[section]
+        
+        header.textLabel?.text = "Your Challenges"
         header.tintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         //header.textLabel?.font = UIFont(name: "Georgia", size: 35)
         //view.textLabel?.textColor = UIColor.white
@@ -154,7 +145,7 @@ class challengesTableViewController: UITableViewController {
         let defaults = UserDefaults.standard
         let tempUsername = defaults.string(forKey: "username")
         let url = URL(string:   "http://152.3.69.115:8081/api/stats/" + tempUsername!)!
-        
+        print("Getting Data")
         //HTTPS Request
         let task = mySession.dataTask(with: url) {data, response, error in
             
@@ -192,7 +183,7 @@ class challengesTableViewController: UITableViewController {
             }
             
         }
-        
+        print("Resuming")
         task.resume()
     }
 
@@ -205,45 +196,39 @@ class challengesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return userInfo.message.Challenges.count + 1
+        return userInfo.message.Challenges.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if(indexPath.row < userInfo.message.Challenges.count) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "chalCell", for: indexPath) as! challengesTableViewCell
-            // Configure the cell...
-            cell.nameLabel.text = userInfo.message.Challenges[indexPath.row].opponent
-            cell.amountLabel.text = String(userInfo.message.Challenges[indexPath.row].amount)+" "+userInfo.message.Challenges[indexPath.row].workout
-            
-            cell.yourProgress.progress = Float(userInfo.message.Challenges[indexPath.row].you) / Float(userInfo.message.Challenges[indexPath.row].amount)
-            cell.theirProgress.progress = Float(userInfo.message.Challenges[indexPath.row].them) / Float(userInfo.message.Challenges[indexPath.row].amount)
-            let transform : CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 5.0)
-            cell.yourProgress.transform = transform
-            cell.theirProgress.transform = transform
-            
-            cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.bounds.height/4
-            cell.selectionStyle = UITableViewCell.SelectionStyle.none
-                        cell.backgroundColor = UIColor.clear
-                        cell.mainCellLayer.layer.masksToBounds = true
-                        if cellGradient {
-                            let gradientLayer = CAGradientLayer()
-                            gradientLayer.frame = cell.mainCellLayer.bounds
-                            gradientLayer.colors = [topCellColor, bottomCellColor]
-                            cell.mainCellLayer.layer.insertSublayer(gradientLayer, at: 0)
-                        } else {
-                            cell.mainCellLayer.backgroundColor = cellColor
-                        }
-             
-            return cell
-        } else {
-            print(userInfo.message.Challenges.count)
-            print(indexPath.row)
-            let cell = tableView.dequeueReusableCell(withIdentifier: "emptyCell", for: indexPath) as! emptyCell
-            cell.contentView.frame.size.height = 50
-            cell.backgroundColor = UIColor.clear
-            return cell
-        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chalCell", for: indexPath) as! challengesTableViewCell
+        // Configure the cell...
+        cell.amountLabel.text = String(userInfo.message.Challenges[indexPath.row].amount)
+        cell.nameLabel.text = userInfo.message.Challenges[indexPath.row].opponent
+        cell.workoutLabel.text = userInfo.message.Challenges[indexPath.row].workout
+        cell.youAmount.text = String( userInfo.message.Challenges[indexPath.row].you)
+        cell.themAmount.text = String(userInfo.message.Challenges[indexPath.row].them)
+        cell.yourProgress.progress = Float(userInfo.message.Challenges[indexPath.row].you) / Float(userInfo.message.Challenges[indexPath.row].amount)
+        cell.theirProgress.progress = Float(userInfo.message.Challenges[indexPath.row].them) / Float(userInfo.message.Challenges[indexPath.row].amount)
+        let transform : CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 5.0)
+        cell.yourProgress.transform = transform
+        cell.theirProgress.transform = transform
+        
+        cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.bounds.height/4
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+                    cell.backgroundColor = UIColor.clear
+                    cell.mainCellLayer.layer.masksToBounds = true
+                    if cellGradient {
+                        let gradientLayer = CAGradientLayer()
+                        gradientLayer.frame = cell.mainCellLayer.bounds
+                        gradientLayer.colors = [topCellColor, bottomCellColor]
+                        cell.mainCellLayer.layer.insertSublayer(gradientLayer, at: 0)
+                    } else {
+                        cell.mainCellLayer.backgroundColor = cellColor
+                    }
+         
+        return cell
     }
     
 

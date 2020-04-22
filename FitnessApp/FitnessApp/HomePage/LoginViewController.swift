@@ -16,9 +16,11 @@ class LoginViewController: UIViewController {
     }
     
     var serverCall: jsonCall = jsonCall(err:"")
+    @IBOutlet weak var loginButton: UIButton!
     
     var username = ""
-
+    var gotData: Bool = false
+    
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBAction func loginTapped(_ sender: Any) {
@@ -93,7 +95,6 @@ class LoginViewController: UIViewController {
     }
     
     func checkLogin() {
-           
            // 2. BEGIN NETWORKING code
            //
                    let mySession = URLSession(configuration: URLSessionConfiguration.default)
@@ -147,6 +148,7 @@ class LoginViewController: UIViewController {
     }
        
     func checkUsername(){
+        gotData = true
         if(serverCall.err == nil){
             print("Valid Username")
             let defaults = UserDefaults.standard
@@ -154,20 +156,14 @@ class LoginViewController: UIViewController {
             self.performSegue(withIdentifier: "loginSegue", sender: self)
 
         }
-        else if(serverCall.err == "An error occured"){
+        else {
             print("Username doesn't exist")
             
             let alertController = UIAlertController(title: "Incorrect Password or Username", message:
                 "Try entering your information again, or create a new account", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
-
+            gotData = false
             self.present(alertController, animated: true, completion: nil)
-        }
-        else{
-            print("Shouldn't occur")
-            //self.performSegue(withIdentifier: "loginSegue", sender: self)
-
-            
         }
     }
     

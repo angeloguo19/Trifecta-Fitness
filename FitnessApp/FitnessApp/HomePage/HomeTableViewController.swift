@@ -434,7 +434,7 @@ class HomeTableViewController: UITableViewController {
                 cell.progressView.transform = transform
                 cell.opProgressView.transform = transform
                 //cell.amountLabel.text = String( mainCall.message.Challenges[indexPath.row].amount)
-                cell.workoutLabel.text = String( mainCall.message.Challenges[indexPath.row].amount)+" "+mainCall.message.Challenges[indexPath.row].workout
+                cell.workoutLabel.text = mainCall.message.Challenges[indexPath.row].workout
                 cell.challengeLabel.text = mainCall.message.Challenges[indexPath.row].opponent
                 cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.bounds.height/4
                 //cell.mainCellLayer.layer.borderWidth = 1
