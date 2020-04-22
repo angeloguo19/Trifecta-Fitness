@@ -11,3 +11,8 @@ I created a custom API for my team to use. It allows for the creation of various
 I created a theme for the application. I wanted the app to have a smooth, modern look. I made every clickable surface a similar color so that a user could easily navigate through controllers and the api calls I used. I added animations between transistions to add flair to the design. I worked on every view controller and assisted my partners in their designs. 
 #### Architecture
 I increased the efficiency and speed of the app by creating modules that could be copy and pasted into other view controllers with minor tweaks. I also reduced the number of API calls the application used by passing information through segways whenever applicable. To increase speed, one API call can fill various tables with information and can be used for a variety of purposes. 
+
+### Angelo Guo
+#### Workout Tab
+I implemented the UserDefaults which stores user's data for each workout statistic. In the workouts tab, I added functionality for the user to update their progress by adding the number of reps they've completed. This updates UserDefaults and also calls Oliver's API to update the user's information file.
+I also added video tutorials for each workout, which are stored in UserDefaults. These are then loaded in each workout view controller through a Youtube request and displayed in a web view. 
