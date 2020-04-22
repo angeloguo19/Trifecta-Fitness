@@ -59,8 +59,10 @@ class meditationViewController: UIViewController {
                 let tempdate: NSDate = session.value(forKey: "date") as! NSDate
                 if tempdate == date {
                     total += (session.value(forKey: "time") as! Int)
+                    
                 }
             }
+            total += 70
             average = String(Int(round(Double(total)/7.0)))
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
