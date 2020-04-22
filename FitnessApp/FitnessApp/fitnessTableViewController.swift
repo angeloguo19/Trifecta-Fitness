@@ -199,6 +199,10 @@ class fitnessTableViewController: UITableViewController {
         
         destVC.nameText = (myCurrCell.nameLabel!.text)!
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
        
 
     /*
