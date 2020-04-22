@@ -7,7 +7,9 @@ With gyms closed due to the coronavirus pandemic, staying active is harder now t
 [Presentation](https://duke.zoom.us/rec/play/v8Uodeiuqzo3GdKW4wSDB_N6W9W9KPqshihLq_MKmk_kUiRXZAelZuAVZntibyBb9ArOilrGI94PEns?continueMode=true)
 
 ## Architecture
-
+- Charts cocoapod: Used to create the Meditation Graph
+- Spoonacular Recipe Api: Used to search for different recipes
+- Custom Api: Made to store/retrieve user workout data and allow users to challenge each other
 
 ## Contributions
 ### Oliver Rodas
