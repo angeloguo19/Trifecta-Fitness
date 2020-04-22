@@ -172,8 +172,8 @@ class HomeTableViewController: UITableViewController {
         let amount : Int
         let offset : Int
         let cellSize = 100
-        if(mainCall.message.Challenges.count>3){
-            amount = 4
+        if(mainCall.message.Challenges.count>5){
+            amount = 6
             offset = 0
         }
         else{
@@ -324,8 +324,8 @@ class HomeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0) {
-            if(mainCall.message.Challenges.count>=3){
-                return 4
+            if(mainCall.message.Challenges.count>=5){
+                return 6
             }
             else{
                 return mainCall.message.Challenges.count + 1
@@ -351,7 +351,7 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //print("Checking for data from \(mainCall)")
         if(indexPath.section == 0) {
-            if((indexPath.row<3 && mainCall.message.Challenges.count>=3) || mainCall.message.Challenges.count != 0 && (indexPath.row<mainCall.message.Challenges.count && mainCall.message.Challenges.count<3)){
+            if((indexPath.row<5 && mainCall.message.Challenges.count>=5) || mainCall.message.Challenges.count != 0 && (indexPath.row<mainCall.message.Challenges.count && mainCall.message.Challenges.count<5)){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeTableViewCell
                 cell.progressView.progress = Float(mainCall.message.Challenges[indexPath.row].you) / Float(mainCall.message.Challenges[indexPath.row].amount)
                 cell.opProgressView.progress = Float(mainCall.message.Challenges[indexPath.row].them) / Float(mainCall.message.Challenges[indexPath.row].amount)
@@ -451,7 +451,7 @@ class HomeTableViewController: UITableViewController {
             
         
             if(myRow?.section==0){
-                if((myRow!.row<3 && mainCall.message.Challenges.count>=3) || mainCall.message.Challenges.count != 0 && (myRow!.row<mainCall.message.Challenges.count && mainCall.message.Challenges.count<3)){
+                if((myRow!.row<5 && mainCall.message.Challenges.count>=5) || mainCall.message.Challenges.count != 0 && (myRow!.row<mainCall.message.Challenges.count && mainCall.message.Challenges.count<5)){
                     let myCurrentCell = tableView!.cellForRow(at: myRow!) as! HomeTableViewCell
                     let destVC = segue.destination as! ChallengesViewController
                     print("one")
