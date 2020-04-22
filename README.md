@@ -1,6 +1,4 @@
-Vance Final Project
-
-#**Fitness App**
+#Trifecta Fitness and Health
 
 Our goal is to make a social stay-at-home fitness app where users can track their workout data to compare and compete with friends. By making fitness in isolation a more social activity, it becomes easier to workout at home. 
 
