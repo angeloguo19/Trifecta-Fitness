@@ -28,12 +28,21 @@ class meditationViewController: UIViewController {
     
     
     var average: String = ""
-    var pastWeekTimes: [Double] = [0,0,0,0,0,0,0]
+    // MARK: garbage temp code
+    var pastWeekTimes: [Double] = [0,5,12,15,10,18,10]
     var days = [NSDate]()
     var actualdays = [String]()
+    var xs = [String]()
+    var ys = [Double]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // MARK: Move bak ater Get NSDate for past 7 days
+        let calendar = Calendar(identifier: .gregorian)
+        let units: Set<Calendar.Component> = [.year, .month, .day]
+        let components = calendar.dateComponents(units, from: Date())
+        let date: NSDate = calendar.date(from: components)! as NSDate
         
         // Calculate average meditation time for past 7 days
         var sessions: [NSManagedObject] = []
@@ -46,7 +55,11 @@ class meditationViewController: UIViewController {
             let result = try context.fetch(request)
             sessions = result as! [NSManagedObject]
             for session in sessions {
-                total += (session.value(forKey: "time") as! Int)
+                // MARK: garbage temp code
+                let tempdate: NSDate = session.value(forKey: "date") as! NSDate
+                if tempdate == date {
+                    total += (session.value(forKey: "time") as! Int)
+                }
             }
             average = String(Int(round(Double(total)/7.0)))
         } catch let error as NSError {
@@ -56,11 +69,7 @@ class meditationViewController: UIViewController {
     
         // MARK: Core Data Call
         
-        // Get NSDate for past 7 days
-        let calendar = Calendar(identifier: .gregorian)
-        let units: Set<Calendar.Component> = [.year, .month, .day]
-        let components = calendar.dateComponents(units, from: Date())
-        let date: NSDate = calendar.date(from: components)! as NSDate
+        
         
         days.append(date)
         actualdays.append(change(date.dayOfTheWeek()!))
@@ -83,8 +92,9 @@ class meditationViewController: UIViewController {
                 let temptime = result.value(forKey: "time") as! Int
                 var isIn: Int = 0
                 for n in 0 ... 6 {
-                    if tempdate == days[n] {
-                        pastWeekTimes[n] = Double(temptime)
+                    if tempdate == date {
+                        //MARK: Change above to this after - days[n] and below
+                        pastWeekTimes[0] = Double(temptime)
                         isIn = 1
                     }
                 }
@@ -102,10 +112,11 @@ class meditationViewController: UIViewController {
         }
 
         // Make Bar Graph
-        actualdays.reverse()
-        pastWeekTimes.reverse()
-        setChart(labels: actualdays, values: pastWeekTimes)
-        
+        xs = actualdays
+        ys = pastWeekTimes
+        xs.reverse()
+        ys.reverse()
+        setChart(labels: xs, values: ys)
     
     }
     

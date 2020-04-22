@@ -91,8 +91,10 @@ class recipesTableViewController: UITableViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        let topGradient = CGColor(srgbRed: 95/255.0, green: 198/255.0, blue: 202/255.0, alpha: 1)
-        let bottomGradient = CGColor(srgbRed: 249/255.0, green: 184/255.0, blue: 170/255.0, alpha: 1)
+        //let topGradient = CGColor(srgbRed: 95/255.0, green: 198/255.0, blue: 202/255.0, alpha: 1)
+        //let bottomGradient = CGColor(srgbRed: 249/255.0, green: 184/255.0, blue: 170/255.0, alpha: 1)
+        let topGradient = CGColor(srgbRed: 110.0/255, green: 225.0/255, blue: 245/255, alpha: 1)
+        let bottomGradient = CGColor(srgbRed: 240/255, green: 240/255, blue: 245/255, alpha: 1)
         let gradientView = CAGradientLayer()
         gradientView.frame = tableView.layer.bounds
         gradientView.colors = [topGradient, bottomGradient].reversed()
@@ -109,7 +111,7 @@ class recipesTableViewController: UITableViewController {
         
         //hard code 25 results at end
         var url: URL = URL(string: "http://www.google.com")!
-        let link: String = "https://api.spoonacular.com/recipes/search?query=" + search + "&number=1&instructionsRequired=true&apiKey=3779cda1cd174fa1b8677bd02ba7ba90"
+        let link: String = "https://api.spoonacular.com/recipes/search?query=" + search + "&number=5&instructionsRequired=true&apiKey=3779cda1cd174fa1b8677bd02ba7ba90"
         if URL(string: link) == nil {
             let alert3 = UIAlertController(title: "Search Error", message: "Please make sure that the recipe name entered contains letters only", preferredStyle: .alert)
             alert3.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

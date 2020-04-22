@@ -40,7 +40,14 @@ class CreateAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // UI for ViewController
+        let topGradient = CGColor(srgbRed: 106/255.0, green: 194/255.0, blue: 164/255, alpha: 1)
+        let bottomGradient = CGColor(srgbRed: 192/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.layer.bounds
+        gradientLayer.colors = [topGradient,bottomGradient]
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        
     }
     
     //http://152.3.69.115:8081/api/new/username
