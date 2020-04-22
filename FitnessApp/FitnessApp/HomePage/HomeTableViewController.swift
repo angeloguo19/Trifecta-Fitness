@@ -65,6 +65,12 @@ class moreChallengesTableViewCell: UITableViewCell{
 
 let tableView = UITableView.init(frame: CGRect.zero, style: .grouped)
 
+extension UITableView {
+    func reloadData(completion:@escaping ()->()) {
+        UIView.animate(withDuration: 0, animations: { self.reloadData() })
+            { _ in completion() }
+    }
+}
 
 class HomeTableViewController: UITableViewController {
         
@@ -118,18 +124,20 @@ class HomeTableViewController: UITableViewController {
     let bottomGradient = CGColor(srgbRed: 128.0/255, green: 250.0/255, blue: 255/255, alpha: 1)
 
     var mainCall: jsonCall = jsonCall(message: Message(Stats:[],Challenges:[]))
-    
 
     @IBOutlet weak var logOutButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
+        getAllData()
         
+        print("Appeared")
     }
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        //getAllData()
         //self.view.backgroundColor = backgroundColor
-        getAllData()
         //self.navigationController?.navigationBar.barTintColor = UIColor(red: 156.0/255, green: 236.0/255, blue: 255.0/255, alpha: 1)
         logOutButton.layer.cornerRadius = logOutButton.frame.height/4
         logOutButton.layer.borderWidth = 0
@@ -167,20 +175,28 @@ class HomeTableViewController: UITableViewController {
     }
         
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //print(tableView.bounds.origin)
-        let yPos = scrollView.contentOffset.y
+        updateView()
+    }
+    
+    func updateView() {
+        let yPos = tableView.contentOffset.y
         let amount : Int
         let offset : Int
+        let offset2 : Int
         let cellSize = 100
-        if(mainCall.message.Challenges.count>5){
-            amount = 6
-            offset = 0
+        print("yPos: \(yPos)")
+        if(mainCall.message.Challenges.count>3){
+            amount = 4
+            offset = 25
+            offset2 = 50
         }
         else{
-            amount = mainCall.message.Challenges.count
+            amount = mainCall.message.Challenges.count + 1
             offset = 25
+            offset2 = 50
         }
-        
+        print("Section Limit: \(25 + cellSize*amount)")
+
         let wAmount = mainCall.message.Stats.count
         
         if(yPos > -70 && yPos <= 0) {
@@ -199,18 +215,18 @@ class HomeTableViewController: UITableViewController {
             tableView.headerView(forSection: 0)?.alpha = 0
             tableView.headerView(forSection: 1)?.alpha = 1
             
-        } else if(yPos > 35) && (Int(yPos) <= (25 + cellSize*amount)) {
+        } else if(yPos > 35) && (Int(yPos) <= (offset2 + cellSize*amount)) {
             tableView.headerView(forSection: 1)?.alpha = 1
             tableView.headerView(forSection: 0)?.alpha = 0
             logOutButton.alpha = 0
             let index = Int(floor(Float(yPos - 35)/Float(cellSize)))
             let alphaX = Float(yPos - 35).truncatingRemainder(dividingBy: Float(cellSize))
-            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
-            if(index > 0 && alphaX < 35) {
-                let incomingCell = tableView.cellForRow(at: IndexPath(row: index - 1, section: 0))
-                incomingCell!.alpha = 0
+            guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) else {
+                print("Avoided error")
+                return
             }
-            cell!.alpha = CGFloat(1 - (alphaX)/35)
+            cell.alpha = CGFloat(1 - (alphaX)/35)
+            
             var nextCell : UITableViewCell
             if(index < amount - 1) {
                 for n in (index + 1)...amount - 1 {
@@ -218,13 +234,20 @@ class HomeTableViewController: UITableViewController {
                     nextCell.alpha = 1
                 }
             }
-        } else if (Int(yPos) > (25 + cellSize*amount) && Int(yPos) <= offset + cellSize*(amount+1)) {
+            if(index > 0 && alphaX < 35) {
+                guard let incomingCell = tableView.cellForRow(at: IndexPath(row: index - 1, section: 0)) else {
+                    print("Avoided Error Over here")
+                    return
+                }
+                incomingCell.alpha = 0
+            }
+        } else if (Int(yPos) > (offset2 + cellSize*amount) && Int(yPos) <= offset + offset2 + cellSize*amount) {
             logOutButton.alpha = 0
             
-            let slope = ((25 + cellSize*amount) - (offset + 50 + cellSize*(amount)))
-            let alphaX = Float((25 + cellSize*amount) - Int(yPos))/Float(slope)
+            let slope = ((offset2 + cellSize*amount) - (offset + offset2 + cellSize*amount))
+            let alphaX = Float((offset2 + cellSize*amount) - Int(yPos))/Float(slope)
             tableView.headerView(forSection: 1)?.alpha = CGFloat(1 - alphaX)
-            
+            print(alphaX)
             guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) else {
                 return
             }
@@ -235,23 +258,28 @@ class HomeTableViewController: UITableViewController {
             }
             cell2.alpha = 0
             
-        } else if (Int(yPos) > offset + cellSize*(amount + 1)) && (wAmount > 0) {
+        } else if (Int(yPos) > offset + offset2 + cellSize*amount) && (wAmount > 0) {
             tableView.headerView(forSection: 1)?.alpha = 0
             logOutButton.alpha = 0
             let index = Int(floor(Float((Int(yPos) - offset))/Float(cellSize))) - (amount + 1)
             let alphaX = Float(Int(yPos) - offset).truncatingRemainder(dividingBy: Float(cellSize))
-            let cell = tableView.cellForRow(at: IndexPath(row: index, section: 1))
-            if(index > 0 && Int(alphaX) < offset) {
-                let incomingCell = tableView.cellForRow(at: IndexPath(row: index - 1, section: 1))
-                incomingCell!.alpha = 0
+            guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 1)) else {
+                return
             }
-            cell!.alpha = CGFloat(1 - (alphaX)/35)
+
+            cell.alpha = CGFloat(1 - (alphaX)/35)
             var nextCell : UITableViewCell
             if(index < wAmount - 1) {
                 for n in (index + 1)...wAmount - 1 {
                     nextCell = tableView.cellForRow(at: IndexPath(row: n, section: 1))!
                     nextCell.alpha = 1
                 }
+            }
+            if(index > 0 && Int(alphaX) < 35) {
+                guard let incomingCell = tableView.cellForRow(at: IndexPath(row: index - 1, section: 1)) else {
+                    return
+                }
+                incomingCell.alpha = 0
             }
         } else if(yPos <= -88) {
             logOutButton.alpha = 1
@@ -309,7 +337,10 @@ class HomeTableViewController: UITableViewController {
                         self.mainCall = try decoder.decode(jsonCall.self, from: jsonData)
                                 
                         DispatchQueue.main.async {
-                            self.tableView.reloadData()
+                            self.tableView.reloadData {
+                                self.tableView.layoutIfNeeded()
+                                self.updateView()
+                            }
                         }
                         
                     } catch {
@@ -324,8 +355,8 @@ class HomeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0) {
-            if(mainCall.message.Challenges.count>=5){
-                return 6
+            if(mainCall.message.Challenges.count>=3){
+                return 4
             }
             else{
                 return mainCall.message.Challenges.count + 1
@@ -351,7 +382,7 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //print("Checking for data from \(mainCall)")
         if(indexPath.section == 0) {
-            if((indexPath.row<5 && mainCall.message.Challenges.count>=5) || mainCall.message.Challenges.count != 0 && (indexPath.row<mainCall.message.Challenges.count && mainCall.message.Challenges.count<5)){
+            if((indexPath.row<3 && mainCall.message.Challenges.count>=3) || mainCall.message.Challenges.count != 0 && (indexPath.row<mainCall.message.Challenges.count && mainCall.message.Challenges.count<3)){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeTableViewCell
                 cell.progressView.progress = Float(mainCall.message.Challenges[indexPath.row].you) / Float(mainCall.message.Challenges[indexPath.row].amount)
                 cell.opProgressView.progress = Float(mainCall.message.Challenges[indexPath.row].them) / Float(mainCall.message.Challenges[indexPath.row].amount)
@@ -451,7 +482,7 @@ class HomeTableViewController: UITableViewController {
             
         
             if(myRow?.section==0){
-                if((myRow!.row<5 && mainCall.message.Challenges.count>=5) || mainCall.message.Challenges.count != 0 && (myRow!.row<mainCall.message.Challenges.count && mainCall.message.Challenges.count<5)){
+                if((myRow!.row<3 && mainCall.message.Challenges.count>=3) || mainCall.message.Challenges.count != 0 && (myRow!.row<mainCall.message.Challenges.count && mainCall.message.Challenges.count<3)){
                     let myCurrentCell = tableView!.cellForRow(at: myRow!) as! HomeTableViewCell
                     let destVC = segue.destination as! ChallengesViewController
                     print("one")

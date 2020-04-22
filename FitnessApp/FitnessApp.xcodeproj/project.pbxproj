@@ -24,7 +24,6 @@
 		BEBEA5D1243018D100119720 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D0243018D100119720 /* AppDelegate.swift */; };
 		BEBEA5D3243018D100119720 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D2243018D100119720 /* SceneDelegate.swift */; };
 		BEBEA5D5243018D100119720 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D4243018D100119720 /* ViewController.swift */; };
-		BEBEA5D8243018D100119720 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBEA5D6243018D100119720 /* Main.storyboard */; };
 		BEBEA5DB243018D100119720 /* FitnessApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEBEA5D9243018D100119720 /* FitnessApp.xcdatamodeld */; };
 		BEBEA5DD243018D100119720 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEBEA5DC243018D100119720 /* Assets.xcassets */; };
 		BEBEA5E0243018D100119720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBEA5DE243018D100119720 /* LaunchScreen.storyboard */; };
@@ -32,6 +31,7 @@
 		BEE7816F24422CB700234A68 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE7816E24422CB700234A68 /* StatsViewController.swift */; };
 		BEE781802442B2DD00234A68 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE7817F2442B2DD00234A68 /* LoginViewController.swift */; };
 		D813C730244B83AB005273D7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC1571E2447F53000949862 /* WebKit.framework */; };
+		D856CC65244FC7FF00CBCCE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D856CC63244FC7FE00CBCCE6 /* Main.storyboard */; };
 		D8A9C73F244E4E8B00D57E5C /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A9C73E244E4E8B00D57E5C /* LaunchScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +53,6 @@
 		BEBEA5D0243018D100119720 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BEBEA5D2243018D100119720 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BEBEA5D4243018D100119720 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BEBEA5D7243018D100119720 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BEBEA5DA243018D100119720 /* FitnessApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FitnessApp.xcdatamodel; sourceTree = "<group>"; };
 		BEBEA5DC243018D100119720 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BEBEA5DF243018D100119720 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		D813C72A244B839E005273D7 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D813C732244B83E3005273D7 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D813C741244B88F1005273D7 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D856CC64244FC7FE00CBCCE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8A9C73E244E4E8B00D57E5C /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		F2AAA5CEF1DF1E70ACE09BA3 /* libPods-FitnessApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FitnessApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -130,7 +130,7 @@
 				BEBEA5D0243018D100119720 /* AppDelegate.swift */,
 				BEBEA5D2243018D100119720 /* SceneDelegate.swift */,
 				BEBEA5D4243018D100119720 /* ViewController.swift */,
-				BEBEA5D6243018D100119720 /* Main.storyboard */,
+				D856CC63244FC7FE00CBCCE6 /* Main.storyboard */,
 				BEE7816E24422CB700234A68 /* StatsViewController.swift */,
 				BEE7816C24422BEA00234A68 /* ChallengesViewController.swift */,
 				BB4E1F45244B6C6C00C31F7F /* challengesTableViewController.swift */,
@@ -222,9 +222,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D856CC65244FC7FF00CBCCE6 /* Main.storyboard in Resources */,
 				BEBEA5E0243018D100119720 /* LaunchScreen.storyboard in Resources */,
 				BEBEA5DD243018D100119720 /* Assets.xcassets in Resources */,
-				BEBEA5D8243018D100119720 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,20 +283,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BEBEA5D6243018D100119720 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BEBEA5D7243018D100119720 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BEBEA5DE243018D100119720 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BEBEA5DF243018D100119720 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D856CC63244FC7FE00CBCCE6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D856CC64244FC7FE00CBCCE6 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -422,13 +422,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6633UA367R;
 				INFOPLIST_FILE = FitnessApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS290.FitnessApp;
+				PRODUCT_BUNDLE_IDENTIFIER = CS290.FitnessApp.Oliver;
 				PRODUCT_NAME = Trifecta;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -441,13 +441,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6633UA367R;
 				INFOPLIST_FILE = FitnessApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CS290.FitnessApp;
+				PRODUCT_BUNDLE_IDENTIFIER = CS290.FitnessApp.Oliver;
 				PRODUCT_NAME = Trifecta;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
