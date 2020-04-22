@@ -3,10 +3,10 @@
 With gyms closed due to the coronavirus pandemic, staying active is harder now than ever. We were inspired to create an app to help people stay fit at home. Trifecta makes fitness a social activity by allowing users to challenge their friends to competitions and compare workout stats. Mental health is encouraged through our meditation feature where users can record their meditiation sessions on the app. Users can also make healthy meals they find in our recipies tab.
 
 
-##Video 
+## Video 
 [Presentation](https://duke.zoom.us/rec/play/v8Uodeiuqzo3GdKW4wSDB_N6W9W9KPqshihLq_MKmk_kUiRXZAelZuAVZntibyBb9ArOilrGI94PEns?continueMode=true)
 
-#Architecture
+## Architecture
 
 
 ## Contributions
