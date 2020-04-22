@@ -36,26 +36,57 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     var username = ""
-    var canTap: Bool = true
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBAction func loginTapped(_ sender: Any) {
-        if(canTap) {
-            canTap = !canTap
+        //if(canTap) {
+          //  canTap = !canTap
+            createSpinnerView()
             if(usernameField.text == nil || usernameField.text!.isEmpty || hasWhiteSpace(str: usernameField.text!)){
+                removeSpinnerView()
                 let alertController = UIAlertController(title: "Incorrect Password or Username", message:
                     "Please enter your username or create a new account", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
                 self.present(alertController, animated: true, completion: nil)
             }
             else{
+                dismissKeyboard()
                 checkLogin()
             }
-        }
+        //}
     }
+    
     @IBAction func createTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "createAccSegue", sender: self)
+    }
+    
+    class SpinnerViewController: UIViewController {
+        var spinner = UIActivityIndicatorView(style: .large)
+        
+        override func viewDidLoad() {
+            spinner.translatesAutoresizingMaskIntoConstraints = false
+            spinner.startAnimating()
+            view.addSubview(spinner)
+            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+        }
+    }
+    
+    func createSpinnerView() {
+        spinner = SpinnerViewController()
+        
+        addChild(spinner!)
+        spinner!.view.frame = view.frame
+        view.addSubview(spinner!.view)
+        spinner!.didMove(toParent: self)
+    }
+    
+    func removeSpinnerView() {
+        self.spinner!.willMove(toParent: nil)
+        self.spinner!.view.removeFromSuperview()
+        self.spinner!.removeFromParent()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,6 +106,8 @@ class LoginViewController: UIViewController {
     let topGradient = CGColor(srgbRed: 106/255.0, green: 194/255.0, blue: 164/255, alpha: 1)
     let bottomGradient = CGColor(srgbRed: 192/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
     
+    var spinner: UIViewController?
+
     override func viewDidLoad() {
         super.viewDidLoad()
        // print(username)
@@ -93,9 +126,7 @@ class LoginViewController: UIViewController {
         view.layer.insertSublayer(gradientLayer, at: 0)
         //[0].colors = [bottomRightGradient, bottomLeftGradient]
     }
-    
-    
-    
+        
     func storeData(){
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "Login", in: context)
@@ -182,7 +213,7 @@ class LoginViewController: UIViewController {
     }
        
     func checkUsername(){
-        canTap = true
+        removeSpinnerView()
         if(serverCall.err == nil){
             print("Valid Username")
             let defaults = UserDefaults.standard
@@ -210,7 +241,9 @@ class LoginViewController: UIViewController {
        }
     }
 
-
+    func dismissKeyboard() {
+        usernameField.resignFirstResponder()
+    }
 
     /*
     // MARK: - Navigation

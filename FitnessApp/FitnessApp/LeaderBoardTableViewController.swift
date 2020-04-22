@@ -12,6 +12,7 @@ class leaderBoardCell: UITableViewCell{
     
     @IBOutlet weak var lbMainView: UIView!
     
+    @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,35 +30,30 @@ class LeaderBoardTableViewController: UITableViewController {
     
     var nameText: String = ""
     var workoutList: workoutStruct = workoutStruct(workout: "", Data: [])
-    
-    struct leaderBoard: Codable{
-             var message: Message
-      }
-      struct Message: Codable{
-          var Workouts: [workoutStruct]
-      }
-      struct workoutStruct: Codable{
-          var workout: String
-          var Data: [people]
-      }
-      struct people: Codable{
-          var username: String
-          var amount: Int
-      }
-        
          
-      var leaderBoardCall: leaderBoard = leaderBoard(message: Message(Workouts: []))
-      
+    var leaderBoardCall: leaderBoard = leaderBoard(message: LeaderboardMessage(Workouts: []))
+    
+    let topGradient = CGColor(srgbRed: 185/255.0, green: 239/255.0, blue: 213/255.0, alpha: 1)
+    //let bottomGradient = CGColor(srgbRed: 253/255.0, green: 253/255.0, blue: 150/255.0, alpha: 1)
+    let bottomGradient = CGColor(srgbRed: 243/255.0, green: 193/255.0, blue: 85/255.0, alpha: 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        callLeaderboard()
+        //callLeaderboard()
         //print(nameText)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        let gradientView = CAGradientLayer()
+        gradientView.colors = [topGradient, bottomGradient]
+        gradientView.frame = tableView.layer.bounds
+        let backgroundView = UIView(frame: tableView.layer.bounds)
+        backgroundView.layer.insertSublayer(gradientView, at: 0)
+        tableView.backgroundView = backgroundView
+        
     }
 
     // MARK: - Table view data source
@@ -73,7 +69,7 @@ class LeaderBoardTableViewController: UITableViewController {
         cell.lbMainView.layer.cornerRadius = cell.lbMainView.frame.height/4
         //cell.mainCellLayer.layer.borderWidth = 1
         //cell.mainCellLayer.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
-        
+        cell.amountLabel.text = String(workoutList.Data[indexPath.row].amount)
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.backgroundColor = UIColor.clear
         cell.lbMainView.layer.masksToBounds = true
@@ -104,7 +100,7 @@ class LeaderBoardTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.text = nameText + " LeaderBoard"
+        header.textLabel?.text = nameText
         header.tintColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         //header.textLabel?.font = UIFont(name: "Georgia", size: 35)
         //view.textLabel?.textColor = UIColor.white

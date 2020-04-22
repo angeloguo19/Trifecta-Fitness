@@ -10,6 +10,22 @@ import UIKit
 import CoreData
 import WebKit
 
+struct leaderBoard: Codable{
+    var message: LeaderboardMessage
+}
+struct LeaderboardMessage: Codable{
+    var Workouts: [workoutStruct]
+}
+struct workoutStruct: Codable{
+    var workout: String
+    var Data: [people]
+}
+struct people: Codable{
+    var username: String
+    var amount: Int
+}
+    
+
 class workoutViewController: UIViewController {
     
     @IBOutlet weak var currentLeaderView: UIView!
@@ -22,31 +38,9 @@ class workoutViewController: UIViewController {
     var nameText: String = ""
     
     var username = ""
-    
-    struct jsonCall: Codable{
-        var message: String
-        var err: String?
-    }
-    
-    struct leaderBoard: Codable{
-        var message: Message
-    }
-    struct Message: Codable{
-        var Workouts: [workoutStruct]
-    }
-    struct workoutStruct: Codable{
-        var workout: String
-        var Data: [people]
-    }
-    struct people: Codable{
-        var username: String
-        var amount: Int
-    }
-   
-    
-    
-    var serverCall: jsonCall = jsonCall(message: "",err:"")
-    var leaderBoardCall: leaderBoard = leaderBoard(message: Message(Workouts: []))
+
+    var serverCall: jsonCall = jsonCall(message: nil ,err: nil)
+    var leaderBoardCall: leaderBoard = leaderBoard(message: LeaderboardMessage(Workouts: []))
     //var mainCall: jsonCall = jsonCall(message: Message(Stats:[],Challenges:[]))
     @IBOutlet weak var workoutNameLabel: UILabel!
     
@@ -91,32 +85,16 @@ class workoutViewController: UIViewController {
             }
 
                        // ensure there is data returned from this HTTP response
-            guard let jsonData = data else {
+            guard data != nil else {
                 print("No data")
                 return
             }
-                       
-                       //print("Got the data from network")
-           // 4. DECODE THE RESULTING JSON
-           //
-           let decoder = JSONDecoder()
-           //print(String(data: jsonData, encoding: .utf8))
-           do {
-               // decode the JSON into our array of todoItem's
-               self.serverCall = try decoder.decode(jsonCall.self, from: jsonData)
-                       
-               DispatchQueue.main.async {
-                   //self.tableView.reloadData()
-               }
-               
-           } catch {
-               print("JSON Decode error")
-           }
+            
+            self.callLeaderboard()
+            
         }
-
                // actually make the http task run.
         task.resume()
-        self .viewDidLoad()
     }
     
     @objc func donePicker() {
@@ -133,9 +111,21 @@ class workoutViewController: UIViewController {
         //navigationController?.navigationBar.alpha = 1
     }
     
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var leaderBoardButton: UIButton!
+    let cellColor = UIColor(red: 239/255.0, green: 245/255.0, blue: 214/255.0, alpha: 1)
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        addButton.backgroundColor = cellColor
+        addButton.layer.cornerRadius = addButton.layer.bounds.height/2
+        leaderBoardButton.layer.cornerRadius = leaderBoardButton.layer.bounds.height/4
+        leaderBoardButton.backgroundColor = cellColor
+        
+        tutorialVid.isOpaque = false
+        tutorialVid.backgroundColor = UIColor.clear
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
         
@@ -147,7 +137,7 @@ class workoutViewController: UIViewController {
        toolBar.isUserInteractionEnabled = true
        reps.inputAccessoryView = toolBar
 
-        currentReps.text = String(defaults.integer(forKey: nameText))
+        //currentReps.text = String(defaults.integer(forKey: nameText))
         workoutNameLabel.text = nameText
 
         workoutNameLabel.layer.borderColor = UIColor.black.cgColor
@@ -178,7 +168,7 @@ class workoutViewController: UIViewController {
         
         currentLeaderView.layer.cornerRadius = currentLeaderView.frame.height/4
         
-        currentLeaderView.backgroundColor = UIColor(red: 239/255.0, green: 245/255.0, blue: 214/255.0, alpha: 1)
+        currentLeaderView.backgroundColor = UIColor.clear //cellColor
         currentLeaderView.layer.masksToBounds = true
         
         callLeaderboard()
@@ -228,23 +218,34 @@ class workoutViewController: UIViewController {
     }
     
     func updateLeader(){
-        
+        print("Updating")
         for wkout in leaderBoardCall.message.Workouts{
             if wkout.workout == nameText{
                 leaderLabel.text = "Current Leader: " + wkout.Data[0].username
 
-                print(wkout.Data[0].username)
+                workoutLeaderboard = wkout
+                //print(wkout.Data[0].username)
+                
+                let username = UserDefaults.standard.string(forKey: "username")
+                for name in wkout.Data {
+                    print(name)
+                    if(name.username == username) {
+                        currentReps.text = String(name.amount)
+                    }
+                }
             }
         }
     }
+    
+    var workoutLeaderboard: workoutStruct?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let destVC = segue.destination as! LeaderBoardTableViewController
         destVC.nameText = self.nameText
+        destVC.workoutList = workoutLeaderboard!
         
     
     
     }
-
 }

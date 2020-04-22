@@ -91,8 +91,8 @@ class recipesTableViewController: UITableViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        let topGradient = CGColor(srgbRed: 110.0/255, green: 225.0/255, blue: 245/255, alpha: 1)
-        let bottomGradient = CGColor(srgbRed: 240/255, green: 240/255, blue: 245/255, alpha: 1)
+        let topGradient = CGColor(srgbRed: 95/255.0, green: 198/255.0, blue: 202/255.0, alpha: 1)
+        let bottomGradient = CGColor(srgbRed: 249/255.0, green: 184/255.0, blue: 170/255.0, alpha: 1)
         let gradientView = CAGradientLayer()
         gradientView.frame = tableView.layer.bounds
         gradientView.colors = [topGradient, bottomGradient].reversed()

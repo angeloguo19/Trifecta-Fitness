@@ -77,7 +77,7 @@ class HomeTableViewController: UITableViewController {
     @IBAction func loginTapped(_ sender: Any) {
         let defaults = UserDefaults.standard
         defaults.set(nil, forKey: "username")
-        //dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
         //self.performSegue(withIdentifier: "loginSegue", sender: self)
 
     }
@@ -326,6 +326,9 @@ class HomeTableViewController: UITableViewController {
         
         // 2. BEGIN NETWORKING code
         //
+        if(animated) {
+                    createSpinnerView()
+        }
                 let mySession = URLSession(configuration: URLSessionConfiguration.default)
                 
                 let defaults = UserDefaults.standard
@@ -368,6 +371,7 @@ class HomeTableViewController: UITableViewController {
                             self.tableView.reloadData {
                                 self.tableView.layoutIfNeeded()
                                 if(animated) {
+                                    self.removeSpinnerView()
                                     self.animateTable()
                                 } else {
                                     self.updateView()
@@ -506,23 +510,18 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if( segue.identifier == "logOut") {
-            
-        } else {
-            let myRow = tableView!.indexPathForSelectedRow
+        let myRow = tableView!.indexPathForSelectedRow
 
-            if(myRow?.section==0){
-                let destVC = segue.destination as! challengesTableViewController
-                destVC.userInfo = mainCall
-                destVC.hasData = true
-            }
-            else{
-                let myCurrentCell = tableView!.cellForRow(at: myRow!) as! workoutTableCell
-                let destVC = segue.destination as! workoutViewController
-                destVC.nameText = myCurrentCell.workoutLabel.text!
-                print("two")
-            }
+        if(myRow?.section==0){
+            let destVC = segue.destination as! challengesTableViewController
+            destVC.userInfo = mainCall
+            destVC.hasData = true
+        }
+        else{
+            let myCurrentCell = tableView!.cellForRow(at: myRow!) as! workoutTableCell
+            let destVC = segue.destination as! workoutViewController
+            destVC.nameText = myCurrentCell.workoutLabel.text!
+            print("two")
         }
                     
         //destVC.place = (myCurrentCell.places?.text)!
@@ -566,5 +565,35 @@ class HomeTableViewController: UITableViewController {
         }
     }
     
+    var spinner: UIViewController?
+    
+    class SpinnerViewController: UIViewController {
+        var spinner = UIActivityIndicatorView(style: .large)
+        
+        override func viewDidLoad() {
+            spinner.translatesAutoresizingMaskIntoConstraints = false
+            spinner.startAnimating()
+            view.addSubview(spinner)
+            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+        }
+    }
+    
+    func createSpinnerView() {
+        spinner = SpinnerViewController()
+        
+        addChild(spinner!)
+        spinner!.view.frame = view.frame
+        spinner!.view.transform = CGAffineTransform(translationX: 0, y: -(navigationController?.navigationBar.bounds.height)! - 50)
+        view.addSubview(spinner!.view)
+        spinner!.didMove(toParent: self)
+    }
+    
+    func removeSpinnerView() {
+        self.spinner!.willMove(toParent: nil)
+        self.spinner!.view.removeFromSuperview()
+        self.spinner!.removeFromParent()
+    }
 
 }
