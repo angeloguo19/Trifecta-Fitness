@@ -109,7 +109,7 @@ class recipesTableViewController: UITableViewController {
         
         //hard code 25 results at end
         var url: URL = URL(string: "http://www.google.com")!
-        let link: String = "https://api.spoonacular.com/recipes/search?query=" + search + "&number=5&instructionsRequired=true&apiKey=3779cda1cd174fa1b8677bd02ba7ba90"
+        let link: String = "https://api.spoonacular.com/recipes/search?query=" + search + "&number=10&instructionsRequired=true&apiKey=3779cda1cd174fa1b8677bd02ba7ba90"
         if URL(string: link) == nil {
             let alert3 = UIAlertController(title: "Search Error", message: "Please make sure that the recipe name entered contains letters only", preferredStyle: .alert)
             alert3.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
