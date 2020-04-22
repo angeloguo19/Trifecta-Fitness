@@ -26,7 +26,9 @@ class meditationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        let unitsSold:[Double] = [5, 15, 10, 30, 60, 10, 20]
+        let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
+        setChart(labels: days, values: unitsSold)
         // Calculate average meditation time for past 7 days
         var sessions: [NSManagedObject] = []
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -125,6 +127,8 @@ class meditationViewController: UIViewController {
         let chartDataSet = BarChartDataSet(dataEntries)
         let chartData = BarChartData(dataSet: chartDataSet)
         chartView.data = chartData
+        chartView.legend.enabled = false
+        chartView.animate(yAxisDuration: 1)
     }
     
     public class BarChartFormatter: NSObject, IAxisValueFormatter {
@@ -142,10 +146,6 @@ class meditationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        let unitsSold:[Double] = [5, 15, 10, 30, 60, 10, 20]
-        let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
-        setChart(labels: days, values: unitsSold)
         
         // UI for ViewController
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
