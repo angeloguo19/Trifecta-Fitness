@@ -10,6 +10,13 @@ import UIKit
 import CoreData
 import Charts
 
+extension NSDate {
+    func dayOfTheWeek() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: self as Date)
+    }
+}
 
 class meditationViewController: UIViewController {
 
@@ -21,14 +28,13 @@ class meditationViewController: UIViewController {
     
     
     var average: String = ""
-    var pastWeekTimes: [Int] = [25,15,60,5,30,15,0]
-    var days = [String]()
+    var pastWeekTimes: [Double] = [0,0,0,0,0,0,0]
+    var days = [NSDate]()
+    var actualdays = [String]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let unitsSold:[Double] = [5, 15, 10, 30, 60, 10, 20]
-        let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
-        setChart(labels: days, values: unitsSold)
+        
         // Calculate average meditation time for past 7 days
         var sessions: [NSManagedObject] = []
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -51,65 +57,83 @@ class meditationViewController: UIViewController {
         // MARK: Core Data Call
         
         // Get NSDate for past 7 days
-//        let calendar = Calendar(identifier: .gregorian)
-//        let units: Set<Calendar.Component> = [.year, .month, .day]
-//        let components = calendar.dateComponents(units, from: Date())
-//        let date: NSDate = calendar.date(from: components)! as NSDate
-//        days.append(date)
-//        for i in 1 ... 6 {
-//            let day = Calendar.current.date(byAdding: .day, value: -i, to: date as Date)!
-//            days.append(day as NSDate)
-//        }
-//
-//        // Retrieve Session entity's and update pastWeekTimes array
-//        var results: [NSManagedObject] = []
-//        let requests = NSFetchRequest<NSFetchRequestResult>(entityName: "Session")
-//        requests.returnsObjectsAsFaults = false
-//        do {
-//            let fetchResult = try context.fetch(requests)
-//            results = fetchResult as! [NSManagedObject]
-//            for result in results {
-//                let tempdate: NSDate = result.value(forKey: "date") as! NSDate
-//                let temptime = result.value(forKey: "time") as! Int
-//                var isIn: Int = 0
-//                for n in 0 ... 6 {
-//                    if tempdate == days[n] {
-//                        pastWeekTimes[n] = temptime
-//                        isIn = 1
-//                    }
-//                }
-//                if isIn == 0 {
-//                    context.delete(result)
-//                    do {
-//                        try context.save()
-//                    } catch let error as NSError {
-//                        print("Could not save. \(error), \(error.userInfo)")
-//                    }
-//                }
-//            }
-//        } catch let error as NSError {
-//            print("Could not fetch. \(error), \(error.userInfo)")
-//        }
-//
-//        // Make Line Graph
-//        var lineChartEntry = [ChartDataEntry]()
-//        for i in 0...6 {
-//            lineChartEntry.append(ChartDataEntry.init(x: Double(i+1), y: Double(pastWeekTimes[i])))
-//        }
-//        let values = LineChartDataSet(entries: lineChartEntry, label: "Time Spent Meditating")
-//        values.colors = [NSUIColor.blue]
-//        let data = LineChartData()
-//        data.addDataSet(values)
-//        chartView.data = data
-//        // Customize Line Graph
-//        chartView.xAxis.labelPosition = .bottom
-//        chartView.leftAxis.axisMinimum = 0.0
-//        chartView.rightAxis.enabled = false
-//        //chartView.chartDescription?.text = "Meditation time over past week"
-    
-        //BarChartDataEntry(value)
+        let calendar = Calendar(identifier: .gregorian)
+        let units: Set<Calendar.Component> = [.year, .month, .day]
+        let components = calendar.dateComponents(units, from: Date())
+        let date: NSDate = calendar.date(from: components)! as NSDate
+        
+        days.append(date)
+        actualdays.append(change(date.dayOfTheWeek()!))
+        
+        for i in 1 ... 6 {
+            let day = Calendar.current.date(byAdding: .day, value: -i, to: date as Date)!
+            days.append(day as NSDate)
+            actualdays.append(change((day as NSDate).dayOfTheWeek()!))
+        }
+
+        // Retrieve Session entity's and update pastWeekTimes array
+        var results: [NSManagedObject] = []
+        let requests = NSFetchRequest<NSFetchRequestResult>(entityName: "Session")
+        requests.returnsObjectsAsFaults = false
+        do {
+            let fetchResult = try context.fetch(requests)
+            results = fetchResult as! [NSManagedObject]
+            for result in results {
+                let tempdate: NSDate = result.value(forKey: "date") as! NSDate
+                let temptime = result.value(forKey: "time") as! Int
+                var isIn: Int = 0
+                for n in 0 ... 6 {
+                    if tempdate == days[n] {
+                        pastWeekTimes[n] = Double(temptime)
+                        isIn = 1
+                    }
+                }
+                if isIn == 0 {
+                    context.delete(result)
+                    do {
+                        try context.save()
+                    } catch let error as NSError {
+                        print("Could not save. \(error), \(error.userInfo)")
+                    }
+                }
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+
+        // Make Bar Graph
+        actualdays.reverse()
+        pastWeekTimes.reverse()
+        setChart(labels: actualdays, values: pastWeekTimes)
+        
     
     }
+    
+    func change(_ today:String) -> String {
+        if today == "Sunday" {
+            return "Sun"
+        }
+        if today == "Monday" {
+            return "Mon"
+        }
+        if today == "Tuesday" {
+            return "Tues"
+        }
+        if today == "Wednesday" {
+            return "Wed"
+        }
+        if today == "Thursday" {
+            return "Thurs"
+        }
+        if today == "Friday" {
+            return "Fri"
+        }
+        if today == "Saturday" {
+            return "Sat"
+        }
+        return today
+    }
+    
     func setChart(labels: [String], values: [Double]) {
         chartView.noDataText = "You need to provide data for the chart."
         let formato:BarChartFormatter = BarChartFormatter()
@@ -129,6 +153,9 @@ class meditationViewController: UIViewController {
         chartView.data = chartData
         chartView.legend.enabled = false
         chartView.animate(yAxisDuration: 1)
+        chartView.leftAxis.axisMinimum = 0.0
+        chartView.rightAxis.enabled = false
+
     }
     
     public class BarChartFormatter: NSObject, IAxisValueFormatter {
