@@ -6,7 +6,7 @@
 //  Copyright © 2020 Duke University. All rights reserved.
 //
 struct jsonCall: Codable{
-    var message: Message
+    var message: Message?
     var err: String?
 }
 struct Message: Codable{

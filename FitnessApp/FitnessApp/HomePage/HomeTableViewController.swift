@@ -77,7 +77,7 @@ class HomeTableViewController: UITableViewController {
     @IBAction func loginTapped(_ sender: Any) {
         let defaults = UserDefaults.standard
         defaults.set(nil, forKey: "username")
-        dismiss(animated: true, completion: nil)
+        //dismiss(animated: true, completion: nil)
         //self.performSegue(withIdentifier: "loginSegue", sender: self)
 
     }
@@ -212,20 +212,20 @@ class HomeTableViewController: UITableViewController {
         let offset : Int
         let offset2 : Int
         let cellSize = 100
-        print("yPos: \(yPos)")
-        if(mainCall.message.Challenges.count>3){
+        //print("yPos: \(yPos)")
+        if(mainCall.message!.Challenges.count>3){
             amount = 4
             offset = 25
             offset2 = 50
         }
         else{
-            amount = mainCall.message.Challenges.count + 1
+            amount = mainCall.message!.Challenges.count + 1
             offset = 25
             offset2 = 50
         }
-        print("Section Limit: \(25 + cellSize*amount)")
+        //print("Section Limit: \(25 + cellSize*amount)")
 
-        let wAmount = mainCall.message.Stats.count
+        let wAmount = mainCall.message!.Stats.count
         
         if(yPos > -70 && yPos <= 0) {
             if(yPos > -44) {
@@ -387,16 +387,16 @@ class HomeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0) {
-            if(mainCall.message.Challenges.count>=3){
+            if(mainCall.message!.Challenges.count>=3){
                 return 4
             }
             else if(hasData){
-                return mainCall.message.Challenges.count + 1
+                return mainCall.message!.Challenges.count + 1
             } else {
                 return 0
             }
         } else {
-            return mainCall.message.Stats.count
+            return mainCall.message!.Stats.count
         }
     }
     
@@ -414,16 +414,16 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //print("Checking for data from \(mainCall)")
         if(indexPath.section == 0) {
-            if((indexPath.row<3 && mainCall.message.Challenges.count>=3) || mainCall.message.Challenges.count != 0 && (indexPath.row<mainCall.message.Challenges.count && mainCall.message.Challenges.count<3)){
+            if((indexPath.row<3 && mainCall.message!.Challenges.count>=3) || mainCall.message!.Challenges.count != 0 && (indexPath.row<mainCall.message!.Challenges.count && mainCall.message!.Challenges.count<3)){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "homeCell", for: indexPath) as! HomeTableViewCell
-                cell.progressView.progress = Float(mainCall.message.Challenges[indexPath.row].you) / Float(mainCall.message.Challenges[indexPath.row].amount)
-                cell.opProgressView.progress = Float(mainCall.message.Challenges[indexPath.row].them) / Float(mainCall.message.Challenges[indexPath.row].amount)
+                cell.progressView.progress = Float(mainCall.message!.Challenges[indexPath.row].you) / Float(mainCall.message!.Challenges[indexPath.row].amount)
+                cell.opProgressView.progress = Float(mainCall.message!.Challenges[indexPath.row].them) / Float(mainCall.message!.Challenges[indexPath.row].amount)
                 let transform : CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 5.0)
                 cell.progressView.transform = transform
                 cell.opProgressView.transform = transform
                 //cell.amountLabel.text = String( mainCall.message.Challenges[indexPath.row].amount)
-                cell.workoutLabel.text = mainCall.message.Challenges[indexPath.row].workout
-                cell.challengeLabel.text = mainCall.message.Challenges[indexPath.row].opponent
+                cell.workoutLabel.text = mainCall.message!.Challenges[indexPath.row].workout
+                cell.challengeLabel.text = mainCall.message!.Challenges[indexPath.row].opponent
                 cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.bounds.height/4
                 //cell.mainCellLayer.layer.borderWidth = 1
                 //cell.mainCellLayer.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
@@ -461,8 +461,8 @@ class HomeTableViewController: UITableViewController {
             }
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "workCell", for: indexPath) as! workoutTableCell
-            cell.amountLabel.text = String(mainCall.message.Stats[indexPath.row].amount)
-            cell.workoutLabel.text = mainCall.message.Stats[indexPath.row].workout
+            cell.amountLabel.text = String(mainCall.message!.Stats[indexPath.row].amount)
+            cell.workoutLabel.text = mainCall.message!.Stats[indexPath.row].workout
             cell.mainCellLayer.layer.cornerRadius = cell.mainCellLayer.frame.height/4
             //cell.mainCellLayer.layer.borderWidth = 1
             //cell.mainCellLayer.layer.borderColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
@@ -506,18 +506,23 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let myRow = tableView!.indexPathForSelectedRow
+        
+        if( segue.identifier == "logOut") {
+            
+        } else {
+            let myRow = tableView!.indexPathForSelectedRow
 
-        if(myRow?.section==0){
-            let destVC = segue.destination as! challengesTableViewController
-            destVC.userInfo = mainCall
-            destVC.hasData = true
-        }
-        else{
-            let myCurrentCell = tableView!.cellForRow(at: myRow!) as! workoutTableCell
-            let destVC = segue.destination as! workoutViewController
-            destVC.nameText = myCurrentCell.workoutLabel.text!
-            print("two")
+            if(myRow?.section==0){
+                let destVC = segue.destination as! challengesTableViewController
+                destVC.userInfo = mainCall
+                destVC.hasData = true
+            }
+            else{
+                let myCurrentCell = tableView!.cellForRow(at: myRow!) as! workoutTableCell
+                let destVC = segue.destination as! workoutViewController
+                destVC.nameText = myCurrentCell.workoutLabel.text!
+                print("two")
+            }
         }
                     
         //destVC.place = (myCurrentCell.places?.text)!

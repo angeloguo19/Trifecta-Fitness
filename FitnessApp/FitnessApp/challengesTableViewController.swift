@@ -204,7 +204,7 @@ class challengesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return userInfo.message.Challenges.count
+        return userInfo.message!.Challenges.count
     }
 
     
@@ -212,13 +212,13 @@ class challengesTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "chalCell", for: indexPath) as! challengesTableViewCell
         // Configure the cell...
-        cell.amountLabel.text = String(userInfo.message.Challenges[indexPath.row].amount)
-        cell.nameLabel.text = userInfo.message.Challenges[indexPath.row].opponent
-        cell.workoutLabel.text = userInfo.message.Challenges[indexPath.row].workout
-        cell.youAmount.text = String( userInfo.message.Challenges[indexPath.row].you)
-        cell.themAmount.text = String(userInfo.message.Challenges[indexPath.row].them)
-        cell.yourProgress.progress = Float(userInfo.message.Challenges[indexPath.row].you) / Float(userInfo.message.Challenges[indexPath.row].amount)
-        cell.theirProgress.progress = Float(userInfo.message.Challenges[indexPath.row].them) / Float(userInfo.message.Challenges[indexPath.row].amount)
+        cell.amountLabel.text = String(userInfo.message!.Challenges[indexPath.row].amount)
+        cell.nameLabel.text = userInfo.message!.Challenges[indexPath.row].opponent
+        cell.workoutLabel.text = userInfo.message!.Challenges[indexPath.row].workout
+        cell.youAmount.text = String( userInfo.message!.Challenges[indexPath.row].you)
+        cell.themAmount.text = String(userInfo.message!.Challenges[indexPath.row].them)
+        cell.yourProgress.progress = Float(userInfo.message!.Challenges[indexPath.row].you) / Float(userInfo.message!.Challenges[indexPath.row].amount)
+        cell.theirProgress.progress = Float(userInfo.message!.Challenges[indexPath.row].them) / Float(userInfo.message!.Challenges[indexPath.row].amount)
         let transform : CGAffineTransform = CGAffineTransform(scaleX: 1.0, y: 5.0)
         cell.yourProgress.transform = transform
         cell.theirProgress.transform = transform

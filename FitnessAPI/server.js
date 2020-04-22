@@ -390,7 +390,7 @@ router.route('/stats/:username')
 		fs.access(req.params.username + ".txt", fs.constants.F_OK, (err) => {
   			if (err) {
   				console.log(req.params.username + " data not found");
-  				res.json(throwError());
+  				res.json({message: null, err: "User Does Not Exist"});
   				return;
   			} 
 
