@@ -16,3 +16,16 @@ I increased the efficiency and speed of the app by creating modules that could b
 #### Workout Tab
 I implemented the UserDefaults which stores user's data for each workout statistic. In the workouts tab, I added functionality for the user to update their progress by adding the number of reps they've completed. This updates UserDefaults and also calls Oliver's API to update the user's information file.
 I also added video tutorials for each workout, which are stored in UserDefaults. These are then loaded in each workout view controller through a Youtube request and displayed in a web view. 
+
+### Loten Lhatsang
+#### Homepage, login, and leaderboards
+Worked on account creation, logging in, and home page view controllers. Interacted with server calls through sending and receiving data that is updated and displayed. For login and creating a new account, userdefault was used to save the username onto the app. This username would be used to fetch and update data of challenges and stats for the corresponding user. App properly checks to see if username exists when logging in and creating a new user to ensure functionality for users. Also worked on the leaderboard view controller and pieces of UI.
+
+### Sergio Wallace
+StoryBoard - Created the basic storyboard layout that people added onto
+UI/UX - Help change ui colors for different view controllers
+Meditation Tab - Created a timer that sounds a notification when timer finishes. Made timer use start, pause, and reset button. Alert that can automatically update data. Made meditation data use core data to store and retrieve data. Used a Charts cocoapod to display a bar chart with meditation data.
+Nutrition Tab - Found spoonacular api that can give recipe data. Uses 2 api calls to get data. Passed data to another view controller to display the data more succinctly. Made alerts so that user puts in correct info into search field
+
+### Amr Bedawi
+Created and coded the your challenges view controllers and the add a new challenge view controller.
