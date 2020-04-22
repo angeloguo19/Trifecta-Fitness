@@ -90,11 +90,15 @@ class LoginViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let tab = segue.destination as! UITabBarController
-        let nav = tab.viewControllers?[0] as! UINavigationController
-        let dest = nav.topViewController as! HomeTableViewController
-        dest.mainCall = serverCall
-        dest.hasData = true
+        if (segue.identifier == "createAccSegue") {
+        }
+        else{
+            let tab = segue.destination as! UITabBarController
+            let nav = tab.viewControllers?[0] as! UINavigationController
+            let dest = nav.topViewController as! HomeTableViewController
+            dest.mainCall = serverCall
+            dest.hasData = true
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
