@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+
+
 class workoutTableCell: UITableViewCell {
 
     @IBOutlet weak var amountLabel: UILabel!
@@ -65,6 +67,12 @@ class moreChallengesTableViewCell: UITableViewCell{
 
 let tableView = UITableView.init(frame: CGRect.zero, style: .grouped)
 
+extension UITableView {
+    func reloadData(completion:@escaping ()->()) {
+        UIView.animate(withDuration: 0, animations: { self.reloadData() })
+            { _ in completion() }
+    }
+}
 
 class HomeTableViewController: UITableViewController {
         
@@ -118,16 +126,16 @@ class HomeTableViewController: UITableViewController {
     let bottomGradient = CGColor(srgbRed: 128.0/255, green: 250.0/255, blue: 255/255, alpha: 1)
 
     var mainCall: jsonCall = jsonCall(message: Message(Stats:[],Challenges:[]))
-    var oldPos: CGFloat = -88
 
     @IBOutlet weak var logOutButton: UIButton!
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.tableView.reloadData()
+    override func viewWillAppear(_ animated: Bool) {
+        getAllData()
+        
+        print("Appeared")
     }
-    
 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         getAllData()
@@ -169,19 +177,25 @@ class HomeTableViewController: UITableViewController {
     }
         
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("OldPos: \(oldPos)")
-        let yPos = scrollView.contentOffset.y
+        updateView()
+    }
+    
+    func updateView() {
+        let yPos = tableView.contentOffset.y
         let amount : Int
         let offset : Int
+        let offset2 : Int
         let cellSize = 100
         print("yPos: \(yPos)")
         if(mainCall.message.Challenges.count>3){
             amount = 4
-            offset = 0
+            offset = 25
+            offset2 = 50
         }
         else{
-            amount = mainCall.message.Challenges.count
+            amount = mainCall.message.Challenges.count + 1
             offset = 25
+            offset2 = 50
         }
         print("Section Limit: \(25 + cellSize*amount)")
 
@@ -203,7 +217,7 @@ class HomeTableViewController: UITableViewController {
             tableView.headerView(forSection: 0)?.alpha = 0
             tableView.headerView(forSection: 1)?.alpha = 1
             
-        } else if(yPos > 35) && (Int(yPos) <= (25 + cellSize*amount)) {
+        } else if(yPos > 35) && (Int(yPos) <= (offset2 + cellSize*amount)) {
             tableView.headerView(forSection: 1)?.alpha = 1
             tableView.headerView(forSection: 0)?.alpha = 0
             logOutButton.alpha = 0
@@ -229,13 +243,13 @@ class HomeTableViewController: UITableViewController {
                 }
                 incomingCell.alpha = 0
             }
-        } else if (Int(yPos) > (25 + cellSize*amount) && Int(yPos) <= offset + cellSize*(amount+1)) {
+        } else if (Int(yPos) > (offset2 + cellSize*amount) && Int(yPos) <= offset + offset2 + cellSize*amount) {
             logOutButton.alpha = 0
             
-            let slope = ((25 + cellSize*amount) - (offset + 50 + cellSize*(amount)))
-            let alphaX = Float((25 + cellSize*amount) - Int(yPos))/Float(slope)
+            let slope = ((offset2 + cellSize*amount) - (offset + offset2 + cellSize*amount))
+            let alphaX = Float((offset2 + cellSize*amount) - Int(yPos))/Float(slope)
             tableView.headerView(forSection: 1)?.alpha = CGFloat(1 - alphaX)
-            
+            print(alphaX)
             guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) else {
                 return
             }
@@ -246,7 +260,7 @@ class HomeTableViewController: UITableViewController {
             }
             cell2.alpha = 0
             
-        } else if (Int(yPos) > offset + cellSize*(amount + 1)) && (wAmount > 0) {
+        } else if (Int(yPos) > offset + offset2 + cellSize*amount) && (wAmount > 0) {
             tableView.headerView(forSection: 1)?.alpha = 0
             logOutButton.alpha = 0
             let index = Int(floor(Float((Int(yPos) - offset))/Float(cellSize))) - (amount + 1)
@@ -325,7 +339,9 @@ class HomeTableViewController: UITableViewController {
                         self.mainCall = try decoder.decode(jsonCall.self, from: jsonData)
                                 
                         DispatchQueue.main.async {
-                            self.tableView.reloadData()
+                            self.tableView.reloadData {
+                                self.updateView()
+                            }
                         }
                         
                     } catch {
@@ -458,7 +474,6 @@ class HomeTableViewController: UITableViewController {
         return 75
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        oldPos = tableView.contentOffset.y
         if(segue.identifier=="loginSegue"){
             let destVC = segue.destination as! LoginViewController
             
