@@ -167,8 +167,10 @@ class addScreenViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
             self.present(alertController, animated: true, completion: nil)
         }
-        else{        self.dismiss(animated: true, completion: nil)
-}
+        else{
+            
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
     /*

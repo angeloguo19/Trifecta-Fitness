@@ -40,6 +40,7 @@ class CreateAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.setNavigationBarHidden(true, animated: false)
         // UI for ViewController
         let topGradient = CGColor(srgbRed: 106/255.0, green: 194/255.0, blue: 164/255, alpha: 1)
         let bottomGradient = CGColor(srgbRed: 192/255.0, green: 255/255.0, blue: 255/255.0, alpha: 1)
